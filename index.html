@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Tech Sentry | Engenharia de Software e Suporte de TI</title>
+    <meta name="description" content="Transformamos o seu gargalo operacional em poder de escala através de engenharia de software de elite e soberania digital.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sentryDark: '#0f172a', sentryBlue: '#3b82f6', sentryAccent: '#1d4ed8' 
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-fast': 'float 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'marquee': 'marquee 25s linear infinite',
+                        'scan': 'scan 2s linear infinite',
+                    },
+                    keyframes: {
+                        float: { '0%, 100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-20px)' } },
+                        marquee: { '0%': { transform: 'translateX(0%)' }, '100%': { transform: 'translateX(-50%)' } },
+                        scan: { '0%, 100%': { transform: 'translateY(-10px)', opacity: 0.2 }, '50%': { transform: 'translateY(10px)', opacity: 0.8 } }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .smile-eye {
+            border-radius: 50% 50% 0 0 !important; border-top: 4px solid #4ade80 !important;
+            background-color: transparent !important; box-shadow: 0 -5px 10px rgba(74, 222, 128, 0.5) !important;
+            transform: translate(0, 0) !important; 
+        }
+        #chat-messages::-webkit-scrollbar { width: 6px; }
+        #chat-messages::-webkit-scrollbar-track { background: #1e293b; }
+        #chat-messages::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-sentryDark text-white font-sans antialiased relative z-0">
+
+    <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-sentryBlue rounded-full mix-blend-screen filter blur-[150px] opacity-20 animate-pulse-slow"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-indigo-600 rounded-full mix-blend-screen filter blur-[150px] opacity-20 animate-pulse-slow" style="animation-delay: 2s;"></div>
+    </div>
+
+    <header class="container mx-auto px-6 py-4 flex justify-between items-center border-b border-gray-800/50 backdrop-blur-md sticky top-0 z-50">
+        <div class="text-2xl font-bold tracking-wider text-white">Tech <span class="text-sentryBlue">Sentry</span></div>
+        <nav class="hidden md:flex space-x-8">
+            <a href="#solucoes" class="hover:text-sentryBlue transition font-medium">Soluções</a>
+            
+            <a href="#dna" class="hover:text-sentryBlue transition font-medium">Nosso DNA</a>
+            <a href="#cases" class="hover:text-sentryBlue transition font-medium">Cases</a>
+        </nav>
+        <div>
+            <a href="#agendar" class="bg-sentryBlue hover:bg-sentryAccent text-white px-5 py-2.5 rounded-md font-semibold transition shadow-lg shadow-blue-500/30">Diagnóstico Estratégico</a>
+        </div>
+    </header>
+
+    <section id="hero" class="container mx-auto px-6 py-20 text-center md:py-24 relative">
+        <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">Engenharia de Software para <br> <span class="text-sentryBlue">quem domina o mercado</span></h1>
+        <p class="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed">Transformamos o seu gargalo operacional em poder de escala através de arquitetura de software de elite, cloud corporativa e soberania digital.</p>
+        <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-16">
+            <a href="#agendar" class="bg-sentryBlue hover:bg-sentryAccent text-white px-8 py-4 rounded-md font-bold text-lg transition flex items-center shadow-lg shadow-blue-500/30 hover:scale-105 transform">Iniciar Deploy do Sucesso</a>
+            <a href="#solucoes" class="border border-gray-600 hover:border-sentryBlue hover:text-sentryBlue text-white px-8 py-4 rounded-md font-bold text-lg transition hover:scale-105 transform">Ver Nossas Soluções</a>
+        </div>
+
+        <div class="max-w-3xl mx-auto bg-gray-900 rounded-lg shadow-2xl overflow-hidden border border-gray-700 text-left font-mono text-sm md:text-base animate-float">
+            <div class="bg-gray-800 px-4 py-3 flex items-center space-x-2 border-b border-gray-700">
+                <div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div>
+                <span class="text-gray-400 ml-4 text-xs">root@techsentry:~</span>
+            </div>
+            <div class="p-6 h-48 overflow-hidden text-green-400 bg-black/50">
+                <span id="terminal-text"></span><span class="animate-pulse font-bold text-lg">_</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="w-full overflow-hidden bg-gray-900/50 border-y border-gray-800 py-6 relative flex items-center">
+        <div class="absolute left-0 top-0 w-24 h-full bg-gradient-to-r from-sentryDark to-transparent z-10"></div>
+        <div class="absolute right-0 top-0 w-24 h-full bg-gradient-to-l from-sentryDark to-transparent z-10"></div>
+        <div class="flex whitespace-nowrap animate-marquee">
+            <div class="flex space-x-16 px-8 items-center text-xl font-bold text-gray-500">
+                <span class="hover:text-sentryBlue transition">REACT NATIVE</span><span>•</span><span class="hover:text-sentryBlue transition">NODE.JS</span><span>•</span><span class="hover:text-sentryBlue transition">AWS CLOUD</span><span>•</span><span class="hover:text-sentryBlue transition">PYTHON</span><span>•</span><span class="hover:text-sentryBlue transition">DOCKER</span><span>•</span><span class="hover:text-sentryBlue transition">IA GENERATIVA</span><span>•</span>
+            </div>
+            <div class="flex space-x-16 px-8 items-center text-xl font-bold text-gray-500">
+                <span class="hover:text-sentryBlue transition">REACT NATIVE</span><span>•</span><span class="hover:text-sentryBlue transition">NODE.JS</span><span>•</span><span class="hover:text-sentryBlue transition">AWS CLOUD</span><span>•</span><span class="hover:text-sentryBlue transition">PYTHON</span><span>•</span><span class="hover:text-sentryBlue transition">DOCKER</span><span>•</span><span class="hover:text-sentryBlue transition">IA GENERATIVA</span><span>•</span>
+            </div>
+        </div>
+    </div>
+
+    <section id="solucoes" class="py-24 relative bg-sentryDark">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-sentryBlue/10 text-sentryBlue px-3 py-1 rounded-full text-sm font-semibold tracking-wide mb-4 border border-sentryBlue/20">O QUE FAZEMOS</div>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Poder de fogo para o seu negócio</h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">Do código à nuvem, cobrimos todas as camadas tecnológicas da sua empresa para você focar apenas em crescer.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="group bg-gray-800/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-700 hover:border-sentryBlue transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-gray-900 rounded-xl flex items-center justify-center mb-6 border border-gray-600 group-hover:border-sentryBlue transition-colors shadow-inner">
+                        <svg class="w-7 h-7 text-sentryBlue group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Engenharia de Software</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Desenvolvimento de sistemas sob medida, aplicativos (PWA) e APIs utilizando Node.js e React Native.</p>
+                </div>
+                <div class="group bg-gray-800/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-700 hover:border-sentryBlue transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-gray-900 rounded-xl flex items-center justify-center mb-6 border border-gray-600 group-hover:border-sentryBlue transition-colors shadow-inner">
+                        <svg class="w-7 h-7 text-sentryBlue group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Cloud & DevOps</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Arquitetura, migração e gestão em nuvem (AWS). Containers com Docker e pipelines de CI/CD ágeis.</p>
+                </div>
+                <div class="group bg-gray-800/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-700 hover:border-sentryBlue transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-gray-900 rounded-xl flex items-center justify-center mb-6 border border-gray-600 group-hover:border-sentryBlue transition-colors shadow-inner">
+                        <svg class="w-7 h-7 text-sentryBlue group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Inteligência Artificial</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Integração de IA Generativa aos seus processos. Criação de chatbots inteligentes e automação.</p>
+                </div>
+                <div id="itsm" class="group bg-gray-800/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-700 hover:border-sentryBlue transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] hover:-translate-y-2 scroll-mt-24">
+                    <div class="w-14 h-14 bg-gray-900 rounded-xl flex items-center justify-center mb-6 border border-gray-600 group-hover:border-sentryBlue transition-colors shadow-inner">
+                        <svg class="w-7 h-7 text-sentryBlue group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Suporte & ITSM</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Monitoramento de infraestrutura, suporte técnico avançado e consultoria estratégica.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="dna" class="py-24 bg-gray-900 border-t border-gray-800 overflow-hidden scroll-mt-10 relative">
+        <div class="absolute right-0 top-0 w-1/3 h-full bg-gradient-to-l from-sentryBlue/5 to-transparent pointer-events-none"></div>
+        
+        <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center gap-16">
+            
+            <div class="lg:w-1/2 relative z-20">
+                <div class="inline-block bg-gray-800 text-gray-300 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest mb-6 border border-gray-700 uppercase">A Filosofia Sentry</div>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight">O deploy não é a linha de chegada.<br><span class="text-sentryBlue">É o início da governança.</span></h2>
+                
+                <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                    O mercado está saturado de fábricas de código que entregam o software e terceirizam o problema. Nós nascemos para preencher o vácuo entre o desenvolvimento de ponta e a sustentação corporativa.
+                </p>
+
+                <div class="space-y-6 mb-10">
+                    <div class="flex items-start bg-gray-800/40 p-5 rounded-2xl border border-gray-700/50">
+                        <div class="w-12 h-12 rounded-lg bg-sentryBlue/10 flex items-center justify-center border border-sentryBlue/20 mr-4 shrink-0">
+                            <span class="text-2xl">🏛️</span>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold text-lg mb-1">Engenharia Arquitetural</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">Não apenas escrevemos linhas de código. Desenhamos sistemas resilientes focados em zerar a sua dívida técnica e escalar a sua receita.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start bg-gray-800/40 p-5 rounded-2xl border border-gray-700/50 relative overflow-hidden">
+                        <div class="absolute right-0 top-0 w-1 h-full bg-green-500 shadow-[0_0_15px_#4ade80]"></div>
+                        <div class="w-12 h-12 rounded-lg bg-green-500/10 flex items-center justify-center border border-green-500/20 mr-4 shrink-0">
+                            <span class="text-2xl">🛡️</span>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold text-lg mb-1">A "Sentinela" (ITSM Proprietário)</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">Com o Sentry ITSM, transformamos o suporte técnico reativo em monitoramento preditivo. A sua operação nunca dorme e nunca para.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-4 pt-6 border-t border-gray-800">
+                    <div class="w-14 h-14 rounded-full bg-gradient-to-br from-sentryBlue to-sentryAccent flex items-center justify-center font-bold text-xl text-white shadow-lg shadow-blue-500/30">LA</div>
+                    <div>
+                        <p class="font-bold text-white text-lg">Lucas Amarante</p>
+                        <p class="text-gray-400 text-sm">Fundador / CEO - Tech Sentry</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:w-1/2 h-[450px] flex items-center justify-center p-4 relative z-40 w-full">
+                <div class="absolute w-[400px] h-[400px] border border-gray-800 rounded-full flex items-center justify-center animate-[pulse_4s_cubic-bezier(0.4,0,0.6,1)_infinite]">
+                    <div class="w-[300px] h-[300px] border border-gray-700/50 rounded-full flex items-center justify-center">
+                        <div class="w-[200px] h-[200px] border border-sentryBlue/20 rounded-full"></div>
+                    </div>
+                </div>
+
+                <button id="sentrybot-trigger" class="group cursor-pointer relative w-64 h-80 flex flex-col items-center justify-center z-40 bg-transparent border-none focus:outline-none">
+                    <div class="absolute -top-10 bg-gray-800 text-xs text-gray-400 px-3 py-1 rounded-full border border-gray-700 opacity-100 group-hover:opacity-0 transition-opacity duration-300 whitespace-nowrap z-40">
+                        O SentryBot está ativo.
+                    </div>
+                    <div class="absolute -top-12 bg-green-500/20 text-sm font-bold text-green-400 px-4 py-2 rounded-xl border border-green-500 opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap shadow-[0_0_15px_rgba(74,222,128,0.4)] z-40 transform group-hover:-translate-y-2">
+                        Clique para blindar sua operação
+                    </div>
+                    
+                    <div class="animate-float group-hover:animate-float-fast transition-all duration-500 relative flex flex-col items-center z-10 hover:scale-105">
+                        <div class="w-1.5 h-8 bg-gray-600 relative origin-bottom group-hover:rotate-12 transition-transform duration-300 z-0">
+                            <div class="w-4 h-4 rounded-full bg-red-500 absolute -top-3 -left-[5px] group-hover:bg-green-400 shadow-[0_0_8px_#ef4444] group-hover:shadow-[0_0_12px_#4ade80] transition-colors duration-300"></div>
+                        </div>
+                        <div class="w-32 h-20 bg-gray-800 rounded-[2rem] border-t-4 border-gray-600 border-x-2 border-x-gray-700 border-b-2 border-b-gray-900 shadow-2xl flex items-center justify-center relative z-20">
+                            <div class="w-24 h-10 bg-black rounded-2xl overflow-hidden flex items-center justify-center space-x-4 relative border-2 border-gray-900 shadow-inner">
+                                <div class="absolute inset-0 w-full h-1/2 border-b-2 border-sentryBlue/50 bg-sentryBlue/10 animate-scan group-hover:hidden"></div>
+                                <div class="sentry-eye w-3 h-3 rounded-full bg-sentryBlue shadow-[0_0_8px_#3b82f6] transition-[width,height,border-radius,background-color] duration-300 group-hover:w-4 group-hover:h-3 group-hover:smile-eye relative z-10"></div>
+                                <div class="sentry-eye w-3 h-3 rounded-full bg-sentryBlue shadow-[0_0_8px_#3b82f6] transition-[width,height,border-radius,background-color] duration-300 group-hover:w-4 group-hover:h-3 group-hover:smile-eye relative z-10"></div>
+                            </div>
+                        </div>
+                        <div class="w-8 h-3 bg-gray-700 group-hover:h-4 transition-all duration-300 z-10 shadow-inner"></div>
+                        <div class="w-28 h-28 bg-gray-800 rounded-[2rem] border-2 border-gray-700 relative flex flex-col items-center justify-center z-20 shadow-xl overflow-hidden">
+                            <div class="absolute top-0 w-16 h-4 bg-gray-700 rounded-b-xl opacity-50"></div>
+                            <div class="w-10 h-10 rounded-full bg-gray-900 border-2 border-gray-600 flex items-center justify-center group-hover:border-green-400 transition-colors duration-300 shadow-inner mt-2">
+                                <div class="w-5 h-5 rounded-full bg-sentryBlue animate-pulse group-hover:bg-green-400 shadow-[0_0_15px_#3b82f6] group-hover:shadow-[0_0_20px_#4ade80] transition-colors duration-300"></div>
+                            </div>
+                            <div class="mt-3 flex space-x-2">
+                                <div class="w-2 h-1 bg-gray-600 rounded-full"></div>
+                                <div class="w-2 h-1 bg-gray-600 rounded-full"></div>
+                                <div class="w-2 h-1 bg-gray-600 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="absolute -left-5 top-20 w-6 h-16 bg-gray-700 rounded-full border-2 border-gray-600 origin-top transform rotate-12 group-hover:rotate-[120deg] group-hover:-translate-x-2 group-hover:-translate-y-2 transition-all duration-500 z-10 shadow-lg"></div>
+                        <div class="absolute -right-5 top-20 w-6 h-16 bg-gray-700 rounded-full border-2 border-gray-600 origin-top transform -rotate-12 group-hover:-rotate-[120deg] group-hover:translate-x-2 group-hover:-translate-y-2 transition-all duration-500 z-10 shadow-lg"></div>
+                        <div class="w-12 h-4 bg-gray-900 rounded-b-xl border-b border-gray-700 relative z-10 shadow-md"></div>
+                        <div class="w-8 h-12 bg-gradient-to-b from-sentryBlue to-transparent opacity-60 blur-[3px] rounded-full mt-0 animate-pulse group-hover:from-green-400 group-hover:h-20 group-hover:opacity-100 group-hover:blur-[5px] transition-all duration-300 z-0"></div>
+                    </div>
+                    <div class="absolute bottom-10 w-24 h-4 bg-black/40 rounded-[100%] blur-[6px] group-hover:w-20 group-hover:opacity-20 transition-all duration-500"></div>
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="cases" class="py-24 bg-sentryDark relative border-t border-gray-800 scroll-mt-10">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-sentryBlue/10 text-sentryBlue px-3 py-1 rounded-full text-sm font-semibold tracking-wide mb-4 border border-sentryBlue/20">CASES DE SUCESSO</div>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Tecnologia que resolve problemas reais</h2>
+                <p class="text-gray-400 text-lg max-w-3xl mx-auto">A tecnologia só cumpre seu papel quando destrava o dia a dia. Veja o resultado que a Tech Sentry entregou para a Auto Mecânica Garagem 184.</p>
+            </div>
+
+            <div class="bg-gray-800/50 rounded-3xl border border-gray-700 overflow-hidden flex flex-col lg:flex-row hover:border-sentryBlue transition-colors duration-500 shadow-2xl">
+                
+                <div class="lg:w-1/2 bg-gray-900 p-8 md:p-12 flex items-center justify-center relative border-b lg:border-b-0 lg:border-r border-gray-700 overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-sentryBlue/10 to-transparent opacity-50"></div>
+                    <img src="image_e7e4f4.png" alt="Dashboard do Sistema Garagem 184 PRO" class="w-full max-w-lg rounded-xl shadow-2xl border border-gray-700 object-cover transform group-hover:scale-105 transition-transform duration-700 relative z-10">
+                </div>
+
+                <div class="lg:w-1/2 p-10 lg:p-12">
+                    <h3 class="text-3xl font-bold text-white mb-6">Garagem 184 PRO</h3>
+                    
+                    <div class="space-y-6 mb-8">
+                        <div>
+                            <h4 class="text-red-400 font-semibold mb-2 flex items-center"><span class="mr-2">📉</span> O Desafio da Operação</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">Controle manual de Ordens de Serviço (OS), dificuldade em acompanhar resultados, histórico de clientes e o prazo das garantias. Um gargalo comum que dificultava o crescimento da oficina.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-green-400 font-semibold mb-2 flex items-center"><span class="mr-2">🛠️</span> A Solução Tech Sentry</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">Desenvolvemos do zero um sistema web Full-Stack focado em acabar com a papelada e dar controle total ao dono do negócio.</p>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-4 mb-8 text-sm text-gray-300">
+                        <li class="flex items-start"><span class="text-green-500 mr-3 mt-0.5">✅</span> <span><strong>Gestão Inteligente:</strong> Cadastro de clientes e veículos com trava de segurança (CPF único) e máscaras automáticas.</span></li>
+                        <li class="flex items-start"><span class="text-green-500 mr-3 mt-0.5">✅</span> <span><strong>Controle de OS com Evidências:</strong> Criação de orçamentos e serviços com upload de até 8 fotos direto na nuvem (protegendo oficina e cliente).</span></li>
+                        <li class="flex items-start"><span class="text-green-500 mr-3 mt-0.5">✅</span> <span><strong>Dashboard Financeiro:</strong> Painel gerencial de acompanhamento de veículos atendidos e faturamento bruto.</span></li>
+                        <li class="flex items-start"><span class="text-green-500 mr-3 mt-0.5">✅</span> <span><strong>Multiplataforma (PWA):</strong> Interface responsiva para o balcão (Web) e instalável direto no smartphone do mecânico.</span></li>
+                    </ul>
+
+                    <div class="pt-6 border-t border-gray-700">
+                        <h4 class="text-sentryBlue font-semibold mb-4 text-sm flex items-center"><span class="mr-2">🚀</span> Por baixo do capô (Arquitetura)</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">Para garantir velocidade, segurança e alta disponibilidade, construímos a solução com:</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-900 text-gray-300 px-3 py-1.5 rounded-md text-xs border border-gray-700">API RESTful (Node.js)</span>
+                            <span class="bg-gray-900 text-gray-300 px-3 py-1.5 rounded-md text-xs border border-gray-700">Cloud MySQL</span>
+                            <span class="bg-gray-900 text-gray-300 px-3 py-1.5 rounded-md text-xs border border-gray-700">PWA Frontend</span>
+                            <span class="bg-gray-900 text-gray-300 px-3 py-1.5 rounded-md text-xs border border-gray-700">Cloud Storage API</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="agendar" class="py-20 bg-sentryBlue/10 border-t border-gray-800 text-center relative scroll-mt-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-white mb-4">Sua empresa sofre com processos manuais?</h2>
+            <p class="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">A Tech Sentry constrói a tecnologia exata que você precisa para escalar. Vamos tomar um café virtual e mapear a sua solução!</p>
+            
+            <button onclick="document.getElementById('sentrybot-trigger').click();" class="bg-sentryBlue hover:bg-sentryAccent text-white px-8 py-4 rounded-md font-bold text-lg mb-10 shadow-lg transition hover:scale-105">
+                ☕ Iniciar Diagnóstico (Chat)
+            </button>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6 mt-4">
+                <a href="mailto:SEU_EMAIL@AQUI.COM" class="flex items-center space-x-2 text-gray-400 hover:text-white transition bg-gray-900 px-6 py-3 rounded-full border border-gray-700 hover:border-sentryBlue">
+                    <span>✉️</span> <span>E-mail Direto</span>
+                </a>
+                <a href="https://wa.me/SEU_NUMERO_AQUI" target="_blank" class="flex items-center space-x-2 text-gray-400 hover:text-white transition bg-gray-900 px-6 py-3 rounded-full border border-gray-700 hover:border-green-500">
+                    <span>📱</span> <span>WhatsApp</span>
+                </a>
+                <a href="https://www.linkedin.com/company/tech-sentry-communication/about/?viewAsMember=true" target="_blank" class="flex items-center space-x-2 text-gray-400 hover:text-white transition bg-gray-900 px-6 py-3 rounded-full border border-gray-700 hover:border-sentryBlue">
+                    <span>💼</span> <span>LinkedIn</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 bg-gray-900 border-t border-gray-800 text-center text-gray-500 text-sm">
+        &copy; 2024 Tech Sentry - Engenharia de Software Avançada.
+    </footer>
+
+    <div id="chat-window" class="fixed bottom-24 right-6 w-80 md:w-96 bg-gray-900 border border-gray-700 rounded-2xl shadow-2xl z-[100] flex flex-col overflow-hidden transition-all duration-300 scale-0 origin-bottom-right opacity-0">
+        <div class="bg-gray-800 p-4 border-b border-gray-700 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                <span class="font-bold text-sm text-white">SentryBot IA</span>
+            </div>
+            <button id="close-chat" class="text-gray-400 hover:text-white transition">✖</button>
+        </div>
+        
+        <div id="chat-messages" class="h-80 overflow-y-auto p-4 flex flex-col gap-3 bg-black/40">
+            <div class="bg-gray-800 p-3 rounded-lg rounded-tl-none text-sm text-gray-300 w-fit max-w-[85%] border border-gray-700">
+                <span class="text-sentryBlue font-mono text-xs mb-1 block">> Protocolo iniciado</span>
+                Olá! Como posso ajudar a escalar a sua operação hoje? Descreva rapidamente o seu desafio.
+            </div>
+        </div>
+        
+        <div class="p-4 border-t border-gray-700 bg-gray-900">
+            <div class="flex space-x-2">
+                <input type="text" id="chat-input" placeholder="Digite sua mensagem..." class="bg-gray-800 border border-gray-700 rounded-md px-3 py-2 text-sm w-full text-white outline-none focus:border-sentryBlue">
+                <button id="send-msg" class="bg-sentryBlue px-4 py-2 rounded-md hover:bg-sentryAccent text-white font-bold transition">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const terminalText = "> Iniciando protocolo de escala corporativa...\n> Tech Sentry: Engenharia de software para quem domina o mercado...\n> Sentry ITSM... [Em Desenvolvimento]\n> Analisando gargalos operacionais... [RESOLVIDO]\n> Status: Operação pronta para vencer!!_";
+        const element = document.getElementById("terminal-text");
+        let i = 0;
+        function typeWriter() {
+            if (i < terminalText.length) {
+                element.innerHTML += terminalText.charAt(i) === '\n' ? '<br>' : terminalText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 25); 
+            }
+        }
+        window.onload = typeWriter;
+
+        let isTicking = false;
+        const eyes = document.querySelectorAll('.sentry-eye');
+        document.addEventListener('mousemove', (e) => {
+            if (!isTicking) {
+                window.requestAnimationFrame(() => {
+                    eyes.forEach(eye => {
+                        const rect = eye.getBoundingClientRect();
+                        const eyeX = rect.left + rect.width / 2;
+                        const eyeY = rect.top + rect.height / 2;
+                        const angle = Math.atan2(e.clientY - eyeY, e.clientX - eyeX);
+                        const distance = 4;
+                        const x = Math.cos(angle) * distance;
+                        const y = Math.sin(angle) * distance;
+                        eye.style.transform = `translate(${x}px, ${y}px)`;
+                    });
+                    isTicking = false;
+                });
+                isTicking = true;
+            }
+        });
+
+        const chatWindow = document.getElementById('chat-window');
+        const chatInput = document.getElementById('chat-input');
+        const chatMessages = document.getElementById('chat-messages');
+        const sentrybotTrigger = document.getElementById('sentrybot-trigger');
+        
+        // ⚠️ MUDE AQUI PARA O SEU E-MAIL REAL ⚠️
+        const SEU_EMAIL = "SEU_EMAIL@AQUI.COM"; 
+
+        sentrybotTrigger.addEventListener('click', () => {
+            chatWindow.classList.remove('scale-0', 'opacity-0');
+            chatWindow.classList.add('scale-100', 'opacity-100');
+            chatInput.focus();
+        });
+
+        document.getElementById('close-chat').addEventListener('click', () => {
+            chatWindow.classList.remove('scale-100', 'opacity-100');
+            chatWindow.classList.add('scale-0', 'opacity-0');
+        });
+
+        let chatStep = 0; 
+        let mensagemDoCliente = "";
+
+        function addBotMessage(text, isAction = false) {
+            const html = `
+                <div class="bg-gray-800 p-3 rounded-lg rounded-tl-none text-sm text-gray-300 w-fit max-w-[85%] border border-gray-700 shadow-md">
+                    ${isAction ? '<span class="text-green-400 font-mono text-xs mb-1 block">> Processando...</span>' : ''}
+                    ${text}
+                </div>`;
+            chatMessages.insertAdjacentHTML('beforeend', html);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function addUserMessage(text) {
+            const html = `<div class="bg-sentryBlue p-3 rounded-lg rounded-tr-none text-sm text-white w-fit max-w-[85%] self-end shadow-md">${text}</div>`;
+            chatMessages.insertAdjacentHTML('beforeend', html);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function sendMessage() {
+            const text = chatInput.value.trim();
+            if (!text || chatStep === 2) return;
+
+            addUserMessage(text);
+            chatInput.value = '';
+            chatInput.disabled = true;
+
+            setTimeout(() => {
+                if (chatStep === 0) {
+                    mensagemDoCliente = text;
+                    addBotMessage("Entendido. Nossos arquitetos vão analisar esse cenário. Por favor, <b>digite o seu E-mail, WhatsApp ou LinkedIn</b> para retornarmos o contato:", true);
+                    chatStep = 1;
+                    chatInput.disabled = false;
+                    chatInput.focus();
+                } 
+                else if (chatStep === 1) {
+                    const contatoDoCliente = text;
+                    addBotMessage("Excelente! Enviando log para a nossa central...", true);
+                    
+                    fetch(`https://formsubmit.co/ajax/${SEU_EMAIL}`, {
+                        method: "POST",
+                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                        body: JSON.stringify({ Origem: "Contato SentryBot (Site)", Desafio: mensagemDoCliente, Contato: contatoDoCliente })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        addBotMessage("<b>✅ Recebemos seus dados com sucesso!</b><br>Em breve, nossa equipe entrará em contato.");
+                    })
+                    .catch(error => {
+                        addBotMessage("Ocorreu um erro técnico com a rede, mas os botões de contato no rodapé estão funcionando perfeitamente!");
+                    });
+
+                    chatStep = 2; 
+                    chatInput.placeholder = "Conversa finalizada.";
+                }
+            }, 1000); 
+        }
+
+        document.getElementById('send-msg').addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
+    </script>
+</body>
+</html>
