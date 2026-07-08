@@ -119,7 +119,7 @@
                             </div>
                             <div>
                                 <h4 class="text-white font-bold text-base mb-1">Automação de Diagnósticos</h4>
-                                <p class="text-gray-400 text-sm leading-relaxed">Execução remota de rotinas em roteadores (Mikrotik) com entrega de logs operacionais diretamente na interface do chamado.</p>
+                                <p class="text-gray-400 text-sm leading-relaxed">Execução remota de rotinas em Roteadores, Switch, OLTs, com entrega de logs operacionais diretamente na interface do chamado.</p>
                             </div>
                         </div>
                     </div>
@@ -154,31 +154,88 @@
     </section>
 
     <!-- PROJETO: Sentry-OS (ERP/PDV) -->
-    <section id="ecossistema" class="py-24 relative z-10 border-t border-gray-800/50">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col lg:flex-row-reverse items-center gap-16">
-                <div class="lg:w-1/2">
-                    <div class="inline-block bg-green-500/10 text-green-400 px-3 py-1 rounded-full text-xs font-bold mb-4 border border-green-500/20">FOOD SERVICE SAAS</div>
-                    <h2 class="text-4xl font-bold mb-6 text-white">Sentry-OS: ERP & Frente de Caixa</h2>
-                    <p class="text-gray-300 text-lg mb-8 leading-relaxed">Muito além de um PDV. Um ecossistema unificado focado em velocidade de atendimento, auditoria financeira antifraude e controle operacional estrito (RBAC).</p>
-                    
-                    <ul class="space-y-5 mb-10 text-base text-gray-300">
-                        <li class="flex items-start"><span class="text-green-500 mr-3 mt-1 text-xl">🖨️</span> <span><strong>CSS Print Nativo:</strong> Emissão de cupons térmicos direto do DOM, sem drivers pesados.</span></li>
-                        <li class="flex items-start"><span class="text-green-500 mr-3 mt-1 text-xl">🔄</span> <span><strong>Arquitetura de Estados:</strong> Controle resiliente de comandas contra quedas de energia.</span></li>
-                        <li class="flex items-start"><span class="text-green-500 mr-3 mt-1 text-xl">💰</span> <span><strong>Auditoria Matemática:</strong> Conciliação de gaveta apontando sobras ou quebras instantaneamente.</span></li>
-                    </ul>
+    <section id="ecossistema" class="py-32 relative z-10 border-b border-gray-800/50 bg-[#070b14] overflow-hidden">
+        <!-- Luz de fundo sutil verde/esmeralda -->
+        <div class="absolute top-1/2 right-1/4 -translate-y-1/2 w-[700px] h-[500px] bg-emerald-600/10 blur-[150px] rounded-full pointer-events-none"></div>
 
-                    <div class="flex flex-wrap gap-3">
-                        <span class="bg-gray-800 border border-gray-700 px-4 py-1.5 rounded-lg text-sm text-gray-300 font-medium">Fastify</span>
-                        <span class="bg-gray-800 border border-gray-700 px-4 py-1.5 rounded-lg text-sm text-gray-300 font-medium">JWT (RBAC)</span>
-                        <span class="bg-gray-800 border border-gray-700 px-4 py-1.5 rounded-lg text-sm text-gray-300 font-medium">Webhooks (iFood)</span>
+        <div class="container mx-auto px-6 relative z-10">
+            <!-- Invertemos a ordem no desktop com lg:flex-row-reverse -->
+            <div class="flex flex-col lg:flex-row-reverse items-center gap-16 lg:gap-8">
+                
+                <!-- Coluna de Texto -->
+                <div class="lg:w-5/12">
+                    <div class="inline-flex items-center space-x-2 bg-emerald-500/10 text-emerald-400 px-4 py-1.5 rounded-full text-xs font-bold mb-6 border border-emerald-500/20 uppercase tracking-widest shadow-inner">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span>Food Service SaaS • Omnichannel</span>
+                    </div>
+                    
+                    <h2 class="text-4xl md:text-5xl font-extrabold mb-6 text-white leading-tight">Sentry-OS: <br><span class="text-gray-300">Ecossistema ERP & PDV</span></h2>
+                    
+                    <p class="text-gray-400 text-lg mb-10 leading-relaxed">
+                        Esqueça os sistemas de balcão engessados. Arquitetamos um motor de alta performance que centraliza desde a auditoria financeira antifraude até a integração em tempo real com plataformas de delivery.
+                    </p>
+                    
+                    <div class="space-y-6 mb-10">
+                        <!-- Item 1 -->
+                        <div class="flex items-start">
+                            <div class="mt-1 bg-gray-800/80 p-2 rounded-lg border border-gray-700 text-emerald-400 mr-4 shadow-md">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-base mb-1">Auditoria Financeira Cega</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed">Motor de conciliação implacável. O sistema cruza matematicamente o faturamento esperado com o valor reportado pelo operador, blindando o caixa contra quebras.</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="flex items-start">
+                            <div class="mt-1 bg-gray-800/80 p-2 rounded-lg border border-gray-700 text-emerald-400 mr-4 shadow-md">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-base mb-1">CRM & Webhooks iFood</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed">Fim do trabalho duplicado. O banco de dados relacional unifica automaticamente clientes do salão físico e pedidos disparados via integrações do iFood.</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="flex items-start">
+                            <div class="mt-1 bg-gray-800/80 p-2 rounded-lg border border-gray-700 text-emerald-400 mr-4 shadow-md">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" /></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-base mb-1">Impressão Nativa (CSS Print)</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed">Emissão silenciosa de cupons térmicos e vias de cozinha utilizando lógicas de visibilidade no próprio DOM, eliminando a dependência de drivers pesados.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stack Badges -->
+                    <div class="flex flex-wrap gap-3 pt-4 border-t border-gray-800/60">
+                        <span class="bg-[#0f172a] border border-gray-700 px-3 py-1.5 rounded text-xs text-gray-300 font-medium">Node.js (Fastify)</span>
+                        <span class="bg-[#0f172a] border border-gray-700 px-3 py-1.5 rounded text-xs text-gray-300 font-medium">JWT (RBAC)</span>
+                        <span class="bg-[#0f172a] border border-gray-700 px-3 py-1.5 rounded text-xs text-gray-300 font-medium">PostgreSQL</span>
+                        <span class="bg-[#0f172a] border border-gray-700 px-3 py-1.5 rounded text-xs text-gray-300 font-medium">Railway</span>
                     </div>
                 </div>
-                <div class="lg:w-1/2 relative group">
-                    <div class="absolute inset-0 bg-green-500/10 blur-[80px] rounded-full transition duration-500 group-hover:bg-green-500/20"></div>
-                    <!-- IMAGEM TEMPORÁRIA: Substitua o link abaixo pela sua imagem -->
-                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2070&auto=format&fit=crop" alt="Sentry OS PDV" class="relative z-10 w-full h-[400px] object-cover rounded-2xl border border-gray-700 shadow-2xl transform transition duration-500 group-hover:scale-[1.02]">
+
+                <!-- Coluna Visual (Composição de Imagens) -->
+                <div class="lg:w-7/12 relative mt-12 lg:mt-0">
+                    <!-- Justify-start empurra as imagens para a esquerda -->
+                    <div class="relative w-full aspect-[4/3] lg:aspect-video flex items-center justify-start">
+                        
+                        <!-- Imagem Principal (Dashboard Visão Geral) -->
+                        <img src="os-dashboard.png" alt="Sentry OS Visão Geral" class="w-full lg:w-[85%] rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.6)] z-10 transition-transform duration-700 hover:scale-[1.02]">
+                        
+                        <!-- Imagem Flutuante 1 (Estoque) - Visível apenas em telas grandes -->
+                        <img src="os-estoque.png" alt="Sentry OS Estoque" class="absolute -right-4 top-4 w-[40%] rounded-xl shadow-[0_25px_60px_rgba(0,0,0,0.7)] z-20 hidden lg:block transition-transform duration-700 hover:-translate-y-3 hover:scale-105 border border-gray-200">
+                        
+                        <!-- Imagem Flutuante 2 (CRM) - Visível apenas em telas grandes -->
+                        <img src="os-crm.png" alt="Sentry OS CRM Clientes" class="absolute right-[10%] -bottom-8 w-[35%] rounded-xl shadow-[0_25px_60px_rgba(0,0,0,0.7)] z-30 hidden lg:block transition-transform duration-700 hover:-translate-y-3 hover:scale-105 border border-gray-200">
+                        
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
