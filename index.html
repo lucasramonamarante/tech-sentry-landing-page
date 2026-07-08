@@ -34,13 +34,19 @@
     <div class="fixed top-0 left-1/4 w-[600px] h-[600px] bg-blue-900/30 rounded-full mix-blend-screen filter blur-[150px] pointer-events-none -z-10"></div>
     <div class="fixed bottom-0 right-1/4 w-[600px] h-[600px] bg-indigo-900/20 rounded-full mix-blend-screen filter blur-[150px] pointer-events-none -z-10"></div>
 
-    <!-- Navegação -->
+    <!-- Navegação Atualizada -->
     <header class="fixed w-full z-50 glass-panel border-b border-gray-800/80">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-extrabold tracking-wider text-white">Tech <span class="text-sentryBlue">Sentry</span></div>
+            <a href="index.html" class="text-2xl font-extrabold tracking-wider text-white hover:text-sentryBlue transition">Tech <span class="text-sentryBlue">Sentry</span></a>
             <nav class="hidden md:flex space-x-8 text-sm font-medium text-gray-300">
-                <a href="#itsm" class="hover:text-white hover:text-sentryBlue transition">Sentry-ITSM</a>
-                <a href="#ecossistema" class="hover:text-white hover:text-sentryBlue transition">Sistemas de Gestão</a>
+                <a href="index.html#itsm" class="hover:text-white hover:text-sentryBlue transition">Sentry-ITSM</a>
+                <a href="index.html#ecossistema" class="hover:text-white hover:text-sentryBlue transition">Sistemas de Gestão</a>
+                
+                <!-- Link para a nova página de PME -->
+                <a href="pme.html" class="flex items-center space-x-2 text-white hover:text-green-400 transition bg-white/5 px-3 py-1.5 rounded-full border border-white/10">
+                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    <span>PME & Sob Medida</span>
+                </a>
             </nav>
             <button onclick="openChat()" class="bg-sentryBlue hover:bg-blue-600 text-white px-6 py-2.5 rounded-lg font-bold transition shadow-lg shadow-blue-500/30 text-sm">
                 Diagnóstico Estratégico
