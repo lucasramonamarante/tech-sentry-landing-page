@@ -10,10 +10,10 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: { sentryDark: '#0B0F19', sentryBlue: '#3b82f6', sentryAccent: '#60a5fa', sentryCard: '#111827' },
+                    colors: { sentryDark: '#070b14', sentryBlue: '#3b82f6', sentryAccent: '#60a5fa', sentryCard: '#111827' },
                     animation: { 'glow': 'glow 4s ease-in-out infinite alternate', 'float': 'float 6s ease-in-out infinite' },
                     keyframes: {
-                        glow: { '0%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.2)' }, '100%': { boxShadow: '0 0 40px rgba(59, 130, 246, 0.6)' } },
+                        glow: { '0%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.1)' }, '100%': { boxShadow: '0 0 40px rgba(59, 130, 246, 0.4)' } },
                         float: { '0%, 100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-15px)' } }
                     }
                 }
@@ -21,170 +21,187 @@
         }
     </script>
     <style>
-        body { background-color: #0B0F19; color: #f3f4f6; font-family: 'Inter', system-ui, sans-serif; overflow-x: hidden; }
+        body { background-color: #070b14; color: #f3f4f6; font-family: 'Inter', system-ui, sans-serif; overflow-x: hidden; }
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0B0F19; }
+        ::-webkit-scrollbar-track { background: #070b14; }
         ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 4px; }
-        .glass-panel { background: rgba(17, 24, 39, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(55, 65, 81, 0.5); }
-        .gradient-text { background: linear-gradient(to right, #60a5fa, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .glass-panel { background: rgba(17, 24, 39, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(75, 85, 99, 0.4); }
+        .gradient-text { background: linear-gradient(to right, #93c5fd, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
 </head>
 <body class="relative">
-    <div class="fixed top-[-10%] left-[-10%] w-[500px] h-[500px] bg-blue-900 rounded-full mix-blend-screen filter blur-[150px] opacity-20 pointer-events-none"></div>
-    <div class="fixed bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-indigo-900 rounded-full mix-blend-screen filter blur-[150px] opacity-20 pointer-events-none"></div>
+    <!-- Efeitos de Fundo (Luzes desfocadas) -->
+    <div class="fixed top-0 left-1/4 w-[600px] h-[600px] bg-blue-900/30 rounded-full mix-blend-screen filter blur-[150px] pointer-events-none -z-10"></div>
+    <div class="fixed bottom-0 right-1/4 w-[600px] h-[600px] bg-indigo-900/20 rounded-full mix-blend-screen filter blur-[150px] pointer-events-none -z-10"></div>
 
-    <header class="fixed w-full z-50 glass-panel border-b-0 border-gray-800/50">
+    <!-- Navegação -->
+    <header class="fixed w-full z-50 glass-panel border-b border-gray-800/80">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-extrabold tracking-wider">Tech <span class="text-sentryBlue">Sentry</span></div>
+            <div class="text-2xl font-extrabold tracking-wider text-white">Tech <span class="text-sentryBlue">Sentry</span></div>
             <nav class="hidden md:flex space-x-8 text-sm font-medium text-gray-300">
-                <a href="#itsm" class="hover:text-white transition">Sentry-ITSM</a>
-                <a href="#ecossistema" class="hover:text-white transition">Sistemas de Gestão</a>
-                <a href="#stack" class="hover:text-white transition">Nossa Stack</a>
+                <a href="#itsm" class="hover:text-white hover:text-sentryBlue transition">Sentry-ITSM</a>
+                <a href="#ecossistema" class="hover:text-white hover:text-sentryBlue transition">Sistemas de Gestão</a>
             </nav>
-            <button onclick="openChat()" class="bg-sentryBlue/10 border border-sentryBlue text-sentryBlue hover:bg-sentryBlue hover:text-white px-5 py-2 rounded-lg font-semibold transition text-sm">
+            <button onclick="openChat()" class="bg-sentryBlue hover:bg-blue-600 text-white px-6 py-2.5 rounded-lg font-bold transition shadow-lg shadow-blue-500/30 text-sm">
                 Diagnóstico Estratégico
             </button>
         </div>
     </header>
 
-    <section class="pt-40 pb-20 px-6 container mx-auto text-center relative z-10">
-        <div class="inline-block bg-sentryBlue/10 text-sentryBlue px-4 py-1.5 rounded-full text-xs font-bold tracking-widest mb-6 border border-sentryBlue/20 uppercase">Engenharia de Software & Infraestrutura</div>
-        <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6">Nós escalamos operações <br> <span class="gradient-text">que não podem parar.</span></h1>
-        <p class="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto mb-12 leading-relaxed">Da automação de NOC com arquitetura Zero-Inbound ao desenvolvimento de ecossistemas SaaS Full-Stack. Governância, performance e segurança em uma única esteira.</p>
+    <!-- Hero Section -->
+    <section class="pt-48 pb-24 px-6 container mx-auto text-center relative z-10 min-h-[90vh] flex flex-col justify-center">
+        <div class="inline-block bg-blue-500/10 text-blue-400 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest mb-8 border border-blue-500/20 uppercase shadow-inner">
+            Engenharia de Software & Infraestrutura
+        </div>
+        <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-8 text-white">Nós escalamos operações <br> <span class="gradient-text">que não podem parar.</span></h1>
+        <p class="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto mb-16 leading-relaxed">Da automação de NOC com arquitetura Zero-Inbound ao desenvolvimento de ecossistemas SaaS Full-Stack. Governança, performance e segurança em uma única esteira.</p>
         
-        <div class="max-w-2xl mx-auto glass-panel rounded-xl overflow-hidden text-left font-mono text-sm shadow-2xl animate-glow">
-            <div class="bg-gray-900 px-4 py-2 flex items-center space-x-2 border-b border-gray-700/50">
+        <!-- Terminal Decorativo -->
+        <div class="max-w-3xl mx-auto glass-panel rounded-xl overflow-hidden text-left font-mono text-sm shadow-[0_0_50px_rgba(59,130,246,0.15)]">
+            <div class="bg-gray-900 px-4 py-3 flex items-center space-x-2 border-b border-gray-700/50">
                 <div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div>
-                <span class="text-gray-500 text-xs ml-2">root@techsentry:~/deploy</span>
+                <span class="text-gray-500 text-xs ml-4">root@techsentry:~/deploy</span>
             </div>
-            <div class="p-6 text-green-400 h-32 flex flex-col justify-end">
-                <span id="typewriter"></span><span class="animate-pulse">_</span>
+            <div class="p-6 text-green-400 min-h-[140px] bg-black/40">
+                <span id="typewriter"></span><span class="animate-pulse font-bold text-lg">_</span>
             </div>
         </div>
     </section>
 
-    <section id="itsm" class="py-24 relative z-10">
+    <!-- PROJETO DESTAQUE: Sentry ITSM -->
+    <section id="itsm" class="py-24 relative z-10 border-t border-gray-800/50 bg-gray-900/20">
         <div class="container mx-auto px-6">
             <div class="flex flex-col lg:flex-row items-center gap-16">
                 <div class="lg:w-1/2">
                     <div class="inline-block bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full text-xs font-bold mb-4 border border-indigo-500/20">CARRO CHEFE</div>
-                    <h2 class="text-4xl font-bold mb-6">Sentry-ITSM: Automação de NOC & Governança</h2>
-                    <p class="text-gray-400 mb-6 leading-relaxed">Plataforma SaaS projetada para inteligência de dados e redução drástica do MTTR. Criamos uma ponte segura entre a nuvem e a sua infraestrutura sem comprometer o firewall.</p>
+                    <h2 class="text-4xl font-bold mb-6 text-white">Sentry-ITSM: Automação de NOC & Governança</h2>
+                    <p class="text-gray-300 text-lg mb-8 leading-relaxed">Plataforma SaaS projetada para inteligência de dados e redução drástica do MTTR. Criamos uma ponte segura entre a nuvem e a sua infraestrutura sem comprometer o firewall.</p>
                     
-                    <ul class="space-y-4 mb-8 text-sm text-gray-300">
-                        <li class="flex items-start"><span class="text-sentryBlue mr-3">⚡</span> <strong>Arquitetura Zero-Inbound:</strong> Agente satélite autônomo. Zero portas abertas no firewall do cliente.</li>
-                        <li class="flex items-start"><span class="text-sentryBlue mr-3">🛡️</span> <strong>Cofre SSH Criptografado:</strong> Gestão de credenciais de rede centralizada e blindada (1-para-N).</li>
-                        <li class="flex items-start"><span class="text-sentryBlue mr-3">📊</span> <strong>Automação de Diagnósticos:</strong> Execução remota em roteadores (Mikrotik/Cisco) entregando logs direto no ticket.</li>
+                    <ul class="space-y-5 mb-10 text-base text-gray-300">
+                        <li class="flex items-start"><span class="text-sentryBlue mr-3 mt-1 text-xl">⚡</span> <span><strong>Arquitetura Zero-Inbound:</strong> Agente satélite autônomo. Zero portas abertas no firewall do cliente.</span></li>
+                        <li class="flex items-start"><span class="text-sentryBlue mr-3 mt-1 text-xl">🛡️</span> <span><strong>Cofre SSH Criptografado:</strong> Gestão de credenciais de rede centralizada e blindada (1-para-N).</span></li>
+                        <li class="flex items-start"><span class="text-sentryBlue mr-3 mt-1 text-xl">📊</span> <span><strong>Automação de Diagnósticos:</strong> Execução remota em roteadores entregando logs direto no ticket.</span></li>
                     </ul>
 
-                    <div class="flex flex-wrap gap-2">
-                        <span class="glass-panel px-3 py-1 rounded-md text-xs text-gray-300">React + Vite</span>
-                        <span class="glass-panel px-3 py-1 rounded-md text-xs text-gray-300">Node.js (PM2)</span>
-                        <span class="glass-panel px-3 py-1 rounded-md text-xs text-gray-300">Prisma ORM</span>
-                        <span class="glass-panel px-3 py-1 rounded-md text-xs text-gray-300">PostgreSQL</span>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-gray-800 border border-gray-700 px-4 py-1.5 rounded-lg text-sm text-gray-300 font-medium">React + Vite</span>
+                        <span class="bg-gray-800 border border-gray-700 px-4 py-1.5 rounded-lg text-sm text-gray-300 font-medium">Node.js (PM2)</span>
+                        <span class="bg-gray-800 border border-gray-700 px-4 py-1.5 rounded-lg text-sm text-gray-300 font-medium">Prisma ORM</span>
+                        <span class="bg-sentryBlue/20 border border-sentryBlue/30 text-sentryBlue px-4 py-1.5 rounded-lg text-sm font-medium">PostgreSQL</span>
                     </div>
                 </div>
-                <div class="lg:w-1/2 relative group perspective">
-                    <div class="absolute inset-0 bg-blue-500/20 blur-[100px] rounded-full"></div>
-                    <img src="image_46d544.png" alt="Sentry ITSM Dashboard" class="relative z-10 w-full rounded-2xl border border-gray-700 shadow-2xl transform transition duration-500 group-hover:scale-105 group-hover:rotate-1">
+                <div class="lg:w-1/2 relative group">
+                    <div class="absolute inset-0 bg-blue-500/20 blur-[80px] rounded-full transition duration-500 group-hover:bg-blue-500/30"></div>
+                    <!-- IMAGEM TEMPORÁRIA: Substitua o link abaixo pela sua imagem -->
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" alt="Sentry ITSM Dashboard" class="relative z-10 w-full h-[400px] object-cover rounded-2xl border border-gray-700 shadow-2xl transform transition duration-500 group-hover:scale-[1.02]">
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="ecossistema" class="py-24 bg-gray-900/30 border-y border-gray-800/50 relative z-10">
+    <!-- PROJETO: Sentry-OS (ERP/PDV) -->
+    <section id="ecossistema" class="py-24 relative z-10 border-t border-gray-800/50">
         <div class="container mx-auto px-6">
             <div class="flex flex-col lg:flex-row-reverse items-center gap-16">
                 <div class="lg:w-1/2">
                     <div class="inline-block bg-green-500/10 text-green-400 px-3 py-1 rounded-full text-xs font-bold mb-4 border border-green-500/20">FOOD SERVICE SAAS</div>
-                    <h2 class="text-4xl font-bold mb-6">Sentry-OS: ERP & Frente de Caixa de Alta Performance</h2>
-                    <p class="text-gray-400 mb-6 leading-relaxed">Muito além de um PDV. Um ecossistema unificado focado em velocidade de atendimento, auditoria financeira antifraude e controle operacional estrito (RBAC).</p>
+                    <h2 class="text-4xl font-bold mb-6 text-white">Sentry-OS: ERP & Frente de Caixa</h2>
+                    <p class="text-gray-300 text-lg mb-8 leading-relaxed">Muito além de um PDV. Um ecossistema unificado focado em velocidade de atendimento, auditoria financeira antifraude e controle operacional estrito (RBAC).</p>
                     
-                    <ul class="space-y-4 mb-8 text-sm text-gray-300">
-                        <li class="flex items-start"><span class="text-green-500 mr-3">🖨️</span> <strong>CSS Print Nativo:</strong> Emissão de cupons térmicos (balcão e cozinha) direto do DOM, sem drivers pesados.</li>
-                        <li class="flex items-start"><span class="text-green-500 mr-3">🔄</span> <strong>Arquitetura de Estados:</strong> Controle resiliente de comandas (Open/Completed) contra quedas de energia.</li>
-                        <li class="flex items-start"><span class="text-green-500 mr-3">💰</span> <strong>Auditoria Matemática:</strong> Conciliação cega de gaveta vs sistema, apontando sobras ou quebras instantaneamente.</li>
+                    <ul class="space-y-5 mb-10 text-base text-gray-300">
+                        <li class="flex items-start"><span class="text-green-500 mr-3 mt-1 text-xl">🖨️</span> <span><strong>CSS Print Nativo:</strong> Emissão de cupons térmicos direto do DOM, sem drivers pesados.</span></li>
+                        <li class="flex items-start"><span class="text-green-500 mr-3 mt-1 text-xl">🔄</span> <span><strong>Arquitetura de Estados:</strong> Controle resiliente de comandas contra quedas de energia.</span></li>
+                        <li class="flex items-start"><span class="text-green-500 mr-3 mt-1 text-xl">💰</span> <span><strong>Auditoria Matemática:</strong> Conciliação de gaveta apontando sobras ou quebras instantaneamente.</span></li>
                     </ul>
 
-                    <div class="flex flex-wrap gap-2">
-                        <span class="glass-panel px-3 py-1 rounded-md text-xs text-gray-300">Fastify</span>
-                        <span class="glass-panel px-3 py-1 rounded-md text-xs text-gray-300">JWT (RBAC)</span>
-                        <span class="glass-panel px-3 py-1 rounded-md text-xs text-gray-300">Webhooks (iFood)</span>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-gray-800 border border-gray-700 px-4 py-1.5 rounded-lg text-sm text-gray-300 font-medium">Fastify</span>
+                        <span class="bg-gray-800 border border-gray-700 px-4 py-1.5 rounded-lg text-sm text-gray-300 font-medium">JWT (RBAC)</span>
+                        <span class="bg-gray-800 border border-gray-700 px-4 py-1.5 rounded-lg text-sm text-gray-300 font-medium">Webhooks (iFood)</span>
                     </div>
                 </div>
                 <div class="lg:w-1/2 relative group">
-                    <div class="absolute inset-0 bg-green-500/10 blur-[80px] rounded-full"></div>
-                    <img src="image_46d946.png" alt="Sentry OS PDV" class="relative z-10 w-full rounded-2xl border border-gray-700 shadow-2xl transform transition duration-500 group-hover:scale-105 group-hover:-rotate-1">
+                    <div class="absolute inset-0 bg-green-500/10 blur-[80px] rounded-full transition duration-500 group-hover:bg-green-500/20"></div>
+                    <!-- IMAGEM TEMPORÁRIA: Substitua o link abaixo pela sua imagem -->
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2070&auto=format&fit=crop" alt="Sentry OS PDV" class="relative z-10 w-full h-[400px] object-cover rounded-2xl border border-gray-700 shadow-2xl transform transition duration-500 group-hover:scale-[1.02]">
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-24 relative z-10">
+    <!-- MOTORES DE GESTÃO ESCALÁVEL (Garagem & Brothers) -->
+    <section class="py-24 relative z-10 border-t border-gray-800/50 bg-gray-900/20">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold mb-4">Motor de Gestão Escalável (Custom)</h2>
-            <p class="text-gray-400 max-w-2xl mx-auto mb-16">Desenvolvemos núcleos de software (Core) sólidos que se adaptam às regras de negócio específicas da sua operação, entregando PWA, cálculos matemáticos e geração de documentos em tempo real.</p>
+            <h2 class="text-4xl font-bold mb-6 text-white">Motor de Gestão Escalável (Custom)</h2>
+            <p class="text-gray-400 text-lg max-w-3xl mx-auto mb-16">Desenvolvemos núcleos de software (Core) sólidos que se adaptam às regras de negócio específicas da sua operação, entregando alta performance e estabilidade.</p>
             
-            <div class="grid md:grid-cols-2 gap-10">
-                <div class="glass-panel p-6 rounded-2xl text-left hover:border-sentryBlue transition duration-300 group">
-                    <div class="h-48 overflow-hidden rounded-xl mb-6 relative">
-                        <img src="image_46ca5e.png" alt="Garagem 184" class="w-full object-cover transform group-hover:scale-110 transition duration-700">
+            <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+                <!-- Case Garagem -->
+                <div class="glass-panel p-8 rounded-2xl text-left hover:border-sentryBlue transition duration-300 group shadow-xl">
+                    <!-- IMAGEM TEMPORÁRIA -->
+                    <div class="h-56 overflow-hidden rounded-xl mb-8 relative border border-gray-700">
+                        <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=1974&auto=format&fit=crop" alt="Garagem 184" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Garagem 184 PRO</h3>
-                    <p class="text-sm text-gray-400 mb-4">Migração do papel para um fluxo 100% digital. Cálculo dinâmico de Mão de Obra vs Peças e geração de O.S. em PDF direto do front-end (html2pdf).</p>
-                    <div class="flex gap-2">
-                        <span class="text-[10px] uppercase font-bold text-gray-500 border border-gray-700 px-2 py-1 rounded">Node.js</span>
-                        <span class="text-[10px] uppercase font-bold text-gray-500 border border-gray-700 px-2 py-1 rounded">TiDB Cloud</span>
+                    <h3 class="text-2xl font-bold mb-3 text-white">Garagem 184 PRO</h3>
+                    <p class="text-base text-gray-400 mb-6 leading-relaxed">Migração do papel para um fluxo 100% digital. Cálculo dinâmico de Mão de Obra vs Peças e geração de O.S. em PDF direto do front-end.</p>
+                    <div class="flex gap-3">
+                        <span class="bg-gray-900 border border-gray-700 px-3 py-1 rounded text-xs text-gray-300 font-bold uppercase tracking-wider">Node.js</span>
+                        <span class="bg-gray-900 border border-gray-700 px-3 py-1 rounded text-xs text-gray-300 font-bold uppercase tracking-wider">TiDB Cloud</span>
                     </div>
                 </div>
 
-                <div class="glass-panel p-6 rounded-2xl text-left hover:border-sentryBlue transition duration-300 group">
-                    <div class="h-48 overflow-hidden rounded-xl mb-6 relative">
-                        <img src="image_46ce7b.png" alt="Brothers Reparos" class="w-full object-cover transform group-hover:scale-110 transition duration-700 object-top">
+                <!-- Case Brothers -->
+                <div class="glass-panel p-8 rounded-2xl text-left hover:border-sentryBlue transition duration-300 group shadow-xl">
+                    <!-- IMAGEM TEMPORÁRIA -->
+                    <div class="h-56 overflow-hidden rounded-xl mb-8 relative border border-gray-700">
+                        <img src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?q=80&w=2070&auto=format&fit=crop" alt="Brothers Reparos" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Brothers Reparos PRO</h3>
-                    <p class="text-sm text-gray-400 mb-4">PWA nativo com Service Workers. Compressão brutal de imagens via Canvas no client-side antes do upload para a nuvem, salvando banda da oficina.</p>
-                    <div class="flex gap-2">
-                        <span class="text-[10px] uppercase font-bold text-gray-500 border border-gray-700 px-2 py-1 rounded">MySQL</span>
-                        <span class="text-[10px] uppercase font-bold text-gray-500 border border-gray-700 px-2 py-1 rounded">Canvas API</span>
+                    <h3 class="text-2xl font-bold mb-3 text-white">Brothers Reparos PRO</h3>
+                    <p class="text-base text-gray-400 mb-6 leading-relaxed">PWA nativo com Service Workers. Compressão brutal de imagens via Canvas no client-side antes do upload para a nuvem, salvando banda da oficina.</p>
+                    <div class="flex gap-3">
+                        <span class="bg-gray-900 border border-gray-700 px-3 py-1 rounded text-xs text-gray-300 font-bold uppercase tracking-wider">MySQL</span>
+                        <span class="bg-gray-900 border border-gray-700 px-3 py-1 rounded text-xs text-gray-300 font-bold uppercase tracking-wider">Canvas API</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <div id="chat-window" class="fixed bottom-6 right-6 w-80 md:w-96 glass-panel rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden transition-all duration-300 transform scale-0 origin-bottom-right opacity-0 border border-gray-700">
-        <div class="bg-gray-900/80 p-4 border-b border-gray-700 flex justify-between items-center">
+    <!-- SentryBot (Chat de Qualificação) -->
+    <div id="chat-window" class="fixed bottom-6 right-6 w-[350px] md:w-[400px] glass-panel rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.5)] z-50 flex flex-col overflow-hidden transition-all duration-300 transform scale-0 origin-bottom-right opacity-0 border border-gray-700">
+        <div class="bg-gray-900/90 p-5 border-b border-gray-700 flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <div class="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></div>
-                <span class="font-bold text-sm text-white">Sentry Lead Architect</span>
+                <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse shadow-[0_0_10px_#22c55e]"></div>
+                <span class="font-bold text-base text-white">Sentry Lead Architect</span>
             </div>
-            <button onclick="closeChat()" class="text-gray-400 hover:text-white transition">✖</button>
+            <button onclick="closeChat()" class="text-gray-400 hover:text-white transition text-lg">✖</button>
         </div>
         
-        <div id="chat-messages" class="h-80 overflow-y-auto p-4 flex flex-col gap-3 bg-sentryDark">
-            <div class="bg-gray-800 p-3 rounded-xl rounded-tl-none text-sm text-gray-300 w-fit max-w-[90%] border border-gray-700">
-                <span class="text-sentryBlue font-mono text-xs mb-1 block">> Protocolo de Triagem Iniciado</span>
+        <div id="chat-messages" class="h-96 overflow-y-auto p-5 flex flex-col gap-4 bg-sentryDark">
+            <div class="bg-gray-800 p-4 rounded-xl rounded-tl-none text-sm text-gray-300 w-fit max-w-[90%] border border-gray-700 shadow-md">
+                <span class="text-sentryBlue font-mono text-xs mb-2 block">> Protocolo de Triagem Iniciado</span>
                 Olá! Para entendermos a sua arquitetura atual, qual é o principal gargalo da sua operação hoje? (Ex: Escalabilidade, Automação, Integração, etc.)
             </div>
         </div>
-        <div class="p-4 bg-gray-900/80 border-t border-gray-700">
+        <div class="p-4 bg-gray-900/90 border-t border-gray-700">
             <div class="flex space-x-2">
-                <input type="text" id="chat-input" placeholder="Digite seu desafio..." class="bg-gray-950 border border-gray-700 rounded-lg px-3 py-2 text-sm w-full text-white outline-none focus:border-sentryBlue transition" onkeypress="if(event.key === 'Enter') sendMessage()">
-                <button onclick="sendMessage()" class="bg-sentryBlue px-4 py-2 rounded-lg hover:bg-blue-600 text-white font-bold transition">➤</button>
+                <input type="text" id="chat-input" placeholder="Descreva seu desafio..." class="bg-[#0a0f18] border border-gray-700 rounded-lg px-4 py-3 text-sm w-full text-white outline-none focus:border-sentryBlue transition" onkeypress="if(event.key === 'Enter') sendMessage()">
+                <button onclick="sendMessage()" class="bg-sentryBlue px-5 py-3 rounded-lg hover:bg-blue-600 text-white font-bold transition shadow-lg">➤</button>
             </div>
         </div>
     </div>
 
-    <footer class="py-10 border-t border-gray-800 text-center text-gray-500 text-sm glass-panel">
-        <p>&copy; 2026 Tech Sentry. All rights reserved. Deployed on Railway.</p>
-        <div class="flex justify-center gap-6 mt-4">
-            <a href="https://wa.me/+5519996589243" target="_blank" class="hover:text-white transition">WhatsApp</a>
-            <a href="mailto:comercial@techsentry.info" class="hover:text-white transition">E-mail</a>
-            <a href="https://www.linkedin.com/company/tech-sentry-communication/" target="_blank" class="hover:text-white transition">LinkedIn</a>
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800 text-center text-gray-500 text-sm bg-gray-900/50">
+        <p class="mb-4">&copy; 2026 Tech Sentry. All rights reserved. Deployed on Railway.</p>
+        <div class="flex justify-center gap-8 font-medium">
+            <a href="https://wa.me/+5519996589243" target="_blank" class="hover:text-sentryBlue transition">WhatsApp</a>
+            <a href="mailto:comercial@techsentry.info" class="hover:text-sentryBlue transition">E-mail</a>
+            <a href="https://www.linkedin.com/company/tech-sentry-communication/" target="_blank" class="hover:text-sentryBlue transition">LinkedIn</a>
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script>
         // Efeito Máquina de Escrever no Hero
         const text = "> Conectando aos clusters...\n> Autenticando credenciais corporativas...\n> Inicializando Sentry-ITSM [OK]\n> Carregando Engine Sentry-OS [OK]\n> Status: Infraestrutura pronta para escala.";
@@ -195,12 +212,12 @@
             if (i < text.length) {
                 twElement.innerHTML += text.charAt(i) === '\n' ? '<br>' : text.charAt(i);
                 i++;
-                setTimeout(typeWriter, 30);
+                setTimeout(typeWriter, 35);
             }
         }
-        setTimeout(typeWriter, 500);
+        setTimeout(typeWriter, 800);
 
-        // Lógica do SentryBot (Chat)
+        // Lógica do SentryBot
         const chatWindow = document.getElementById('chat-window');
         const chatInput = document.getElementById('chat-input');
         const chatMessages = document.getElementById('chat-messages');
@@ -219,13 +236,13 @@
         }
 
         function addBotMessage(msg, isSystem = false) {
-            const systemPrefix = isSystem ? '<span class="text-green-400 font-mono text-xs mb-1 block">> Analisando...</span>' : '';
-            chatMessages.insertAdjacentHTML('beforeend', `<div class="bg-gray-800 p-3 rounded-xl rounded-tl-none text-sm text-gray-300 w-fit max-w-[90%] border border-gray-700 shadow-lg">${systemPrefix}${msg}</div>`);
+            const systemPrefix = isSystem ? '<span class="text-green-400 font-mono text-xs mb-2 block">> Analisando...</span>' : '';
+            chatMessages.insertAdjacentHTML('beforeend', `<div class="bg-gray-800 p-4 rounded-xl rounded-tl-none text-sm text-gray-300 w-fit max-w-[90%] border border-gray-700 shadow-lg">${systemPrefix}${msg}</div>`);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
         function addUserMessage(msg) {
-            chatMessages.insertAdjacentHTML('beforeend', `<div class="bg-sentryBlue p-3 rounded-xl rounded-tr-none text-sm text-white w-fit max-w-[90%] self-end shadow-lg">${msg}</div>`);
+            chatMessages.insertAdjacentHTML('beforeend', `<div class="bg-sentryBlue p-4 rounded-xl rounded-tr-none text-sm text-white w-fit max-w-[90%] self-end shadow-lg">${msg}</div>`);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
@@ -249,7 +266,6 @@
                     leadData.contato = text;
                     addBotMessage("Enviando payload para a engenharia da Tech Sentry...", true);
                     
-                    // Envio real para o seu e-mail (usando formsubmit como no original)
                     fetch(`https://formsubmit.co/ajax/comercial@techsentry.info`, {
                         method: "POST",
                         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
