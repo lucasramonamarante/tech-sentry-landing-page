@@ -10,11 +10,10 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: { sentryDark: '#070b14', sentryBlue: '#3b82f6', sentryAccent: '#60a5fa', sentryCard: '#111827' },
-                    animation: { 'glow': 'glow 4s ease-in-out infinite alternate', 'float': 'float 6s ease-in-out infinite' },
+                    colors: { sentryDark: '#070b14', sentryBlue: '#3b82f6' },
+                    animation: { 'glow': 'glow 4s ease-in-out infinite alternate' },
                     keyframes: {
-                        glow: { '0%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.1)' }, '100%': { boxShadow: '0 0 40px rgba(59, 130, 246, 0.4)' } },
-                        float: { '0%, 100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-15px)' } }
+                        glow: { '0%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.1)' }, '100%': { boxShadow: '0 0 40px rgba(59, 130, 246, 0.4)' } }
                     }
                 }
             }
@@ -27,266 +26,263 @@
         ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 4px; }
         .glass-panel { background: rgba(17, 24, 39, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(75, 85, 99, 0.4); }
         .gradient-text { background: linear-gradient(to right, #93c5fd, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .timeline-line::before { content: ''; position: absolute; left: 15px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, #3b82f6, #070b14); z-index: 0; }
     </style>
 </head>
 <body class="relative">
-    <!-- Efeitos de Fundo (Luzes desfocadas) -->
+    <!-- Efeitos de Fundo -->
     <div class="fixed top-0 left-1/4 w-[600px] h-[600px] bg-blue-900/30 rounded-full mix-blend-screen filter blur-[150px] pointer-events-none -z-10"></div>
     <div class="fixed bottom-0 right-1/4 w-[600px] h-[600px] bg-indigo-900/20 rounded-full mix-blend-screen filter blur-[150px] pointer-events-none -z-10"></div>
 
-    <!-- Navegação (index.html) -->
+    <!-- Navegação (As Abas) -->
     <header class="fixed w-full z-50 glass-panel border-b border-gray-800/80">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- 1. Logo -->
+            <a href="#home" class="text-2xl font-extrabold tracking-wider text-white hover:text-sentryBlue transition">Tech <span class="text-sentryBlue">Sentry</span></a>
             
-            <!-- 1. Logo (Fica na Esquerda) -->
-            <a href="index.html" class="text-2xl font-extrabold tracking-wider text-white hover:text-sentryBlue transition">Tech <span class="text-sentryBlue">Sentry</span></a>
-            
-            <!-- 2. Menu (Fica no Centro - Todos os links iguais) -->
+            <!-- 2. Menu / Abas -->
             <nav class="hidden md:flex space-x-8 text-sm font-medium text-gray-300">
-                <a href="index.html#itsm" class="hover:text-white hover:text-sentryBlue transition">Sentry-ITSM</a>
-                <a href="index.html#ecossistema" class="hover:text-white hover:text-sentryBlue transition">Sistemas de Gestão</a>
+                <a href="#dna" class="hover:text-white hover:text-sentryBlue transition">Nosso DNA</a>
+                <a href="#itsm" class="hover:text-white hover:text-sentryBlue transition">Sentry-ITSM</a>
+                <a href="#ecossistema" class="hover:text-white hover:text-sentryBlue transition">Sistemas de Gestão</a>
                 <a href="pme.html" class="hover:text-white hover:text-sentryBlue transition">PME & Sob Medida</a>
             </nav>
             
-            <!-- 3. Botão Principal (Fica na Direita) -->
+            <!-- 3. Botão CTA -->
             <button onclick="openChat()" class="bg-sentryBlue hover:bg-blue-600 text-white px-6 py-2.5 rounded-lg font-bold transition shadow-lg shadow-blue-500/30 text-sm">
                 Diagnóstico Estratégico
             </button>
-
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="pt-48 pb-24 px-6 container mx-auto text-center relative z-10 min-h-[90vh] flex flex-col justify-center">
+    <!-- Hero Institucional -->
+    <section id="home" class="pt-48 pb-20 px-6 container mx-auto text-center relative z-10">
         <div class="inline-block bg-blue-500/10 text-blue-400 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest mb-8 border border-blue-500/20 uppercase shadow-inner">
-            Engenharia de Software & Infraestrutura
+            Engenharia de Software & Governança de TI
         </div>
         <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-8 text-white">Nós escalamos operações <br> <span class="gradient-text">que não podem parar.</span></h1>
-        <p class="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto mb-16 leading-relaxed">Da automação de NOC com arquitetura Zero-Inbound ao desenvolvimento de ecossistemas SaaS Full-Stack. Governança, performance e segurança em uma única esteira.</p>
-        
-        <!-- Terminal Decorativo -->
-        <div class="max-w-3xl mx-auto glass-panel rounded-xl overflow-hidden text-left font-mono text-sm shadow-[0_0_50px_rgba(59,130,246,0.15)]">
-            <div class="bg-gray-900 px-4 py-3 flex items-center space-x-2 border-b border-gray-700/50">
-                <div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div>
-                <span class="text-gray-500 text-xs ml-4">root@techsentry:~/deploy</span>
+        <p class="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto mb-16 leading-relaxed">Da automação de NOC com arquitetura Zero-Inbound ao desenvolvimento de ecossistemas SaaS Full-Stack. Onde a mentalidade de missão crítica encontra a engenharia de elite.</p>
+    </section>
+
+    <!-- Nosso DNA (Missão, Visão, Valores) -->
+    <section id="dna" class="py-24 relative z-10 border-t border-gray-800/50 bg-gray-900/20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">O DNA Tech Sentry</h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">Não somos apenas desenvolvedores. Somos executivos de tecnologia forjados no caos das operações 24x7, construindo sistemas para blindar o seu negócio.</p>
             </div>
-            <div class="p-6 text-green-400 min-h-[140px] bg-black/40">
-                <span id="typewriter"></span><span class="animate-pulse font-bold text-lg">_</span>
+
+            <!-- Missão e Visão -->
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="glass-panel p-8 rounded-2xl border-t-4 border-t-sentryBlue shadow-lg">
+                    <h3 class="text-2xl font-bold text-white mb-4 flex items-center"><span class="text-sentryBlue mr-3">🎯</span> Nossa Missão</h3>
+                    <p class="text-gray-400 leading-relaxed">Erradicar o tempo de inatividade (downtime) e transformar gargalos operacionais em inteligência de dados. Unimos engenharia de software sob medida e alta governança corporativa para operações que exigem SLA de 99,9%.</p>
+                </div>
+                <div class="glass-panel p-8 rounded-2xl border-t-4 border-t-indigo-500 shadow-lg">
+                    <h3 class="text-2xl font-bold text-white mb-4 flex items-center"><span class="text-indigo-400 mr-3">👁️</span> Nossa Visão</h3>
+                    <p class="text-gray-400 leading-relaxed">Ser a vanguarda técnica em ecossistemas de missão crítica, onde a integração de Inteligência Artificial Generativa e a observabilidade atuem antes da falha, garantindo o "Zero Downtime" absoluto.</p>
+                </div>
+            </div>
+
+            <!-- Valores / Cultura -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-gray-800/40 p-6 rounded-xl border border-gray-700/50">
+                    <div class="text-3xl mb-4">🛡️</div>
+                    <h4 class="text-white font-bold mb-2">Governança (ITIL/COBIT)</h4>
+                    <p class="text-gray-400 text-sm">Estrutura e padronização como pilares. Nada entra em produção sem gestão rigorosa de mudanças.</p>
+                </div>
+                <div class="bg-gray-800/40 p-6 rounded-xl border border-gray-700/50">
+                    <div class="text-3xl mb-4">⏱️</div>
+                    <h4 class="text-white font-bold mb-2">Resiliência 24x7</h4>
+                    <p class="text-gray-400 text-sm">Mindset de War Room. Nossos sistemas são arquitetados prevendo o pior cenário possível.</p>
+                </div>
+                <div class="bg-gray-800/40 p-6 rounded-xl border border-gray-700/50">
+                    <div class="text-3xl mb-4">🧠</div>
+                    <h4 class="text-white font-bold mb-2">Observabilidade e IA</h4>
+                    <p class="text-gray-400 text-sm">Dados traduzidos em decisão. Antecipamos incidentes críticos aplicando APM e LLMs nos diagnósticos.</p>
+                </div>
+                <div class="bg-gray-800/40 p-6 rounded-xl border border-gray-700/50">
+                    <div class="text-3xl mb-4">📉</div>
+                    <h4 class="text-white font-bold mb-2">Eficiência (Six Sigma)</h4>
+                    <p class="text-gray-400 text-sm">Redução agressiva do MTTR e otimização financeira, eliminando desperdícios da sua infraestrutura.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Linha do Tempo (Trajetória Executiva) -->
+    <section class="py-24 relative z-10 border-t border-gray-800/50">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row gap-16">
+                
+                <!-- Foto / Apresentação -->
+                <div class="lg:w-1/3">
+                    <div class="sticky top-32">
+                        <h2 class="text-4xl font-bold text-white mb-6">A Mente por trás da Operação</h2>
+                        <div class="glass-panel p-6 rounded-2xl">
+                            <div class="w-20 h-20 bg-sentryBlue text-white rounded-full flex items-center justify-center text-2xl font-bold mb-4 shadow-[0_0_20px_rgba(59,130,246,0.4)]">LA</div>
+                            <h3 class="text-2xl font-bold text-white mb-1">Lucas Amarante</h3>
+                            <p class="text-sentryBlue font-medium text-sm mb-4">Executivo de Tecnologia & Lead Architect</p>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                                Mais de 12 anos liderando equipes em ambientes de alta complexidade. Especialista em gestão de NOCs, War Rooms, redes e integração de arquiteturas de grande escala. 
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-gray-900 border border-gray-700 px-2 py-1 rounded text-[10px] text-gray-400 uppercase">ITIL 4</span>
+                                <span class="bg-gray-900 border border-gray-700 px-2 py-1 rounded text-[10px] text-gray-400 uppercase">COBIT 5</span>
+                                <span class="bg-gray-900 border border-gray-700 px-2 py-1 rounded text-[10px] text-gray-400 uppercase">Lean Six Sigma Black Belt</span>
+                                <span class="bg-gray-900 border border-gray-700 px-2 py-1 rounded text-[10px] text-gray-400 uppercase">CCNA</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline -->
+                <div class="lg:w-2/3 relative timeline-line pl-10">
+                    
+                    <!-- Milestone 1 -->
+                    <div class="relative mb-12">
+                        <div class="absolute -left-[45px] top-1 w-4 h-4 bg-gray-900 border-2 border-gray-500 rounded-full z-10"></div>
+                        <div class="text-sm font-bold text-gray-500 mb-1">2016 - 2021 | A Fundação Crítica</div>
+                        <h3 class="text-xl font-bold text-white mb-2">Gestão de Missão Crítica (Telecom)</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Liderança de operações 24x7 envolvendo mais de 6.000 sites de rede (2G/3G/4G). Implementação de processos ITIL, elevando o índice de atendimento de incidentes de 75% para 93% e gerenciando arquiteturas Core e anéis ópticos de altíssima criticidade.
+                        </p>
+                    </div>
+
+                    <!-- Milestone 2 -->
+                    <div class="relative mb-12">
+                        <div class="absolute -left-[45px] top-1 w-4 h-4 bg-gray-900 border-2 border-gray-500 rounded-full z-10"></div>
+                        <div class="text-sm font-bold text-gray-500 mb-1">2023 - 2024 | Eficiência & Escala</div>
+                        <h3 class="text-xl font-bold text-white mb-2">Sustentação Nacional & Automação</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Gestão de indicadores contratuais (SLA/SLO) e operação nacional em Telecom. Implantação de RPA e projetos de melhoria, resultando na redução drástica de 68% no tempo de atendimento do N1 e aumento de 90% na resolutividade do N2.
+                        </p>
+                    </div>
+
+                    <!-- Milestone 3 -->
+                    <div class="relative mb-12">
+                        <div class="absolute -left-[45px] top-1 w-4 h-4 bg-gray-900 border-2 border-gray-500 rounded-full z-10"></div>
+                        <div class="text-sm font-bold text-gray-500 mb-1">2024 - 2026 | Cultura "Zero Downtime"</div>
+                        <h3 class="text-xl font-bold text-white mb-2">Governança, Integração e Observabilidade</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Direcionamento estratégico focado em sistemas Core e integração Dev/Ops. Implantação de monitoramento preditivo e Dashboards Executivos, garantindo 99,9% de SLA e reduzindo o tempo de indisponibilidade (MTTR) em 20%.
+                        </p>
+                    </div>
+
+                    <!-- Milestone 4 -->
+                    <div class="relative">
+                        <div class="absolute -left-[48px] top-1 w-6 h-6 bg-sentryBlue rounded-full z-10 animate-pulse shadow-[0_0_15px_#3b82f6]"></div>
+                        <div class="text-sm font-bold text-sentryBlue mb-1">O Futuro</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Nascimento da Tech Sentry</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            A convergência definitiva entre governança de TI e Engenharia de Software de elite. Transformando mais de uma década de expertise na resolução de falhas sistêmicas em plataformas SaaS blindadas, autônomas e baseadas em Inteligência Artificial.
+                        </p>
+                    </div>
+
+                </div>
             </div>
         </div>
     </section>
 
     <!-- PROJETO DESTAQUE: Sentry ITSM -->
     <section id="itsm" class="py-32 relative z-10 border-y border-gray-800/50 bg-[#0a0f1a] overflow-hidden">
-        <!-- Luz de fundo sutil -->
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-blue-600/10 blur-[120px] rounded-full pointer-events-none"></div>
-
         <div class="container mx-auto px-6 relative z-10">
             <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-8">
-                
-                <!-- Coluna de Texto -->
+                <!-- Coluna de Texto ITSM -->
                 <div class="lg:w-5/12">
                     <div class="inline-flex items-center space-x-2 bg-indigo-500/10 text-indigo-400 px-4 py-1.5 rounded-full text-xs font-bold mb-6 border border-indigo-500/20 uppercase tracking-widest shadow-inner">
                         <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
                         <span>Plataforma SaaS • Carro Chefe</span>
                     </div>
-                    
                     <h2 class="text-4xl md:text-5xl font-extrabold mb-6 text-white leading-tight">Sentry-ITSM: <br><span class="text-gray-300">Automação de NOC & Governança</span></h2>
-                    
                     <p class="text-gray-400 text-lg mb-10 leading-relaxed">
                         O centro de comando da sua operação. Desenhado para líderes de TI que exigem visibilidade em tempo real e redução agressiva do MTTR. Uma ponte invisível e blindada entre a nuvem e a sua infraestrutura física.
                     </p>
-                    
                     <div class="space-y-6 mb-10">
-                        <!-- Item 1 -->
                         <div class="flex items-start">
-                            <div class="mt-1 bg-gray-800/80 p-2 rounded-lg border border-gray-700 text-sentryBlue mr-4 shadow-md">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-                            </div>
+                            <div class="mt-1 bg-gray-800/80 p-2 rounded-lg border border-gray-700 text-sentryBlue mr-4 shadow-md"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg></div>
                             <div>
                                 <h4 class="text-white font-bold text-base mb-1">Arquitetura Zero-Inbound</h4>
-                                <p class="text-gray-400 text-sm leading-relaxed">Agente satélite autônomo on-premise. Elimine a necessidade de VPNs complexas e não exponha nenhuma porta no firewall do cliente.</p>
+                                <p class="text-gray-400 text-sm leading-relaxed">Agente satélite autônomo on-premise. Elimine a necessidade de VPNs complexas e não exponha portas no firewall do cliente.</p>
                             </div>
                         </div>
-
-                        <!-- Item 2 -->
                         <div class="flex items-start">
-                            <div class="mt-1 bg-gray-800/80 p-2 rounded-lg border border-gray-700 text-sentryBlue mr-4 shadow-md">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
-                            </div>
+                            <div class="mt-1 bg-gray-800/80 p-2 rounded-lg border border-gray-700 text-sentryBlue mr-4 shadow-md"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg></div>
                             <div>
                                 <h4 class="text-white font-bold text-base mb-1">Cofre SSH Criptografado</h4>
                                 <p class="text-gray-400 text-sm leading-relaxed">Gestão centralizada de acessos. Credenciais de rede blindadas no banco de dados com relação 1-para-N aos ativos.</p>
                             </div>
                         </div>
-
-                        <!-- Item 3 -->
-                        <div class="flex items-start">
-                            <div class="mt-1 bg-gray-800/80 p-2 rounded-lg border border-gray-700 text-sentryBlue mr-4 shadow-md">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-                            </div>
-                            <div>
-                                <h4 class="text-white font-bold text-base mb-1">Automação de Diagnósticos</h4>
-                                <p class="text-gray-400 text-sm leading-relaxed">Execução remota de rotinas em Roteadores, Switch, OLTs, com entrega de logs operacionais diretamente na interface do chamado.</p>
-                            </div>
-                        </div>
                     </div>
-
-                    <!-- Stack Badges -->
                     <div class="flex flex-wrap gap-3 pt-4 border-t border-gray-800/60">
                         <span class="bg-[#0f172a] border border-gray-700 px-3 py-1.5 rounded text-xs text-gray-300 font-medium">React + Vite</span>
                         <span class="bg-[#0f172a] border border-gray-700 px-3 py-1.5 rounded text-xs text-gray-300 font-medium">Node.js (PM2)</span>
-                        <span class="bg-[#0f172a] border border-gray-700 px-3 py-1.5 rounded text-xs text-gray-300 font-medium">Prisma ORM</span>
                         <span class="bg-[#0f172a] border border-gray-700 px-3 py-1.5 rounded text-xs text-gray-300 font-medium">PostgreSQL</span>
                     </div>
                 </div>
-
-                <!-- Coluna Visual (Composição de Imagens) -->
+                <!-- Coluna Visual ITSM -->
                 <div class="lg:w-7/12 relative mt-12 lg:mt-0">
                     <div class="relative w-full aspect-[4/3] lg:aspect-video flex items-center justify-end">
-                        
-                        <!-- Imagem Principal (Dashboard) -->
-<img src="itsm-dashboard.png" alt="Sentry ITSM Dashboard" class="w-full lg:w-[90%] rounded-xl border border-gray-700 shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-10 transition-transform duration-700 hover:scale-[1.02]">
-
-<!-- Imagem Flutuante 1 (Menu Lateral) -->
-<img src="itsm-menu.png" alt="Sentry ITSM Menu" class="absolute left-0 top-10 w-[22%] rounded-xl border border-gray-700 shadow-[0_25px_60px_rgba(0,0,0,0.8)] z-20 hidden lg:block transition-transform duration-700 hover:-translate-y-3 hover:scale-105">
-
-<!-- Imagem Flutuante 2 (Login) -->
-<img src="itsm-login.png" alt="Sentry ITSM Login" class="absolute right-[5%] -bottom-12 w-[28%] rounded-xl border border-gray-700 shadow-[0_25px_60px_rgba(0,0,0,0.8)] z-30 hidden lg:block transition-transform duration-700 hover:-translate-y-3 hover:scale-105">
-                        
+                        <img src="itsm-dashboard.png" alt="Sentry ITSM Dashboard" class="w-full lg:w-[90%] rounded-xl border border-gray-700 shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-10 transition-transform duration-700 hover:scale-[1.02]">
+                        <img src="itsm-menu.png" alt="Sentry ITSM Menu" class="absolute left-0 top-10 w-[22%] rounded-xl border border-gray-700 shadow-[0_25px_60px_rgba(0,0,0,0.8)] z-20 hidden lg:block transition-transform duration-700 hover:-translate-y-3 hover:scale-105">
+                        <img src="itsm-login.png" alt="Sentry ITSM Login" class="absolute right-[5%] -bottom-12 w-[28%] rounded-xl border border-gray-700 shadow-[0_25px_60px_rgba(0,0,0,0.8)] z-30 hidden lg:block transition-transform duration-700 hover:-translate-y-3 hover:scale-105">
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
     <!-- PROJETO: Sentry-OS (ERP/PDV) -->
     <section id="ecossistema" class="py-32 relative z-10 border-b border-gray-800/50 bg-[#070b14] overflow-hidden">
-        <!-- Luz de fundo sutil verde/esmeralda -->
         <div class="absolute top-1/2 right-1/4 -translate-y-1/2 w-[700px] h-[500px] bg-emerald-600/10 blur-[150px] rounded-full pointer-events-none"></div>
-
         <div class="container mx-auto px-6 relative z-10">
-            <!-- Invertemos a ordem no desktop com lg:flex-row-reverse -->
             <div class="flex flex-col lg:flex-row-reverse items-center gap-16 lg:gap-8">
-                
-                <!-- Coluna de Texto -->
+                <!-- Coluna de Texto OS -->
                 <div class="lg:w-5/12">
                     <div class="inline-flex items-center space-x-2 bg-emerald-500/10 text-emerald-400 px-4 py-1.5 rounded-full text-xs font-bold mb-6 border border-emerald-500/20 uppercase tracking-widest shadow-inner">
                         <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                         <span>Food Service SaaS • Omnichannel</span>
                     </div>
-                    
                     <h2 class="text-4xl md:text-5xl font-extrabold mb-6 text-white leading-tight">Sentry-OS: <br><span class="text-gray-300">Ecossistema ERP & PDV</span></h2>
-                    
                     <p class="text-gray-400 text-lg mb-10 leading-relaxed">
                         Esqueça os sistemas de balcão engessados. Arquitetamos um motor de alta performance que centraliza desde a auditoria financeira antifraude até a integração em tempo real com plataformas de delivery.
                     </p>
-                    
                     <div class="space-y-6 mb-10">
-                        <!-- Item 1 -->
                         <div class="flex items-start">
-                            <div class="mt-1 bg-gray-800/80 p-2 rounded-lg border border-gray-700 text-emerald-400 mr-4 shadow-md">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
-                            </div>
+                            <div class="mt-1 bg-gray-800/80 p-2 rounded-lg border border-gray-700 text-emerald-400 mr-4 shadow-md"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg></div>
                             <div>
                                 <h4 class="text-white font-bold text-base mb-1">Auditoria Financeira Cega</h4>
-                                <p class="text-gray-400 text-sm leading-relaxed">Motor de conciliação implacável. O sistema cruza matematicamente o faturamento esperado com o valor reportado pelo operador, blindando o caixa contra quebras.</p>
+                                <p class="text-gray-400 text-sm leading-relaxed">Motor de conciliação implacável cruzando matematicamente faturamento vs valor contado.</p>
                             </div>
                         </div>
-
-                        <!-- Item 2 -->
                         <div class="flex items-start">
-                            <div class="mt-1 bg-gray-800/80 p-2 rounded-lg border border-gray-700 text-emerald-400 mr-4 shadow-md">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
-                            </div>
-                            <div>
-                                <h4 class="text-white font-bold text-base mb-1">CRM & Webhooks iFood</h4>
-                                <p class="text-gray-400 text-sm leading-relaxed">Fim do trabalho duplicado. O banco de dados relacional unifica automaticamente clientes do salão físico e pedidos disparados via integrações do iFood.</p>
-                            </div>
-                        </div>
-
-                        <!-- Item 3 -->
-                        <div class="flex items-start">
-                            <div class="mt-1 bg-gray-800/80 p-2 rounded-lg border border-gray-700 text-emerald-400 mr-4 shadow-md">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" /></svg>
-                            </div>
+                            <div class="mt-1 bg-gray-800/80 p-2 rounded-lg border border-gray-700 text-emerald-400 mr-4 shadow-md"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" /></svg></div>
                             <div>
                                 <h4 class="text-white font-bold text-base mb-1">Impressão Nativa (CSS Print)</h4>
-                                <p class="text-gray-400 text-sm leading-relaxed">Emissão silenciosa de cupons térmicos e vias de cozinha utilizando lógicas de visibilidade no próprio DOM, eliminando a dependência de drivers pesados.</p>
+                                <p class="text-gray-400 text-sm leading-relaxed">Emissão silenciosa de cupons térmicos eliminando a dependência de drivers pesados.</p>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Stack Badges -->
                     <div class="flex flex-wrap gap-3 pt-4 border-t border-gray-800/60">
                         <span class="bg-[#0f172a] border border-gray-700 px-3 py-1.5 rounded text-xs text-gray-300 font-medium">Node.js (Fastify)</span>
                         <span class="bg-[#0f172a] border border-gray-700 px-3 py-1.5 rounded text-xs text-gray-300 font-medium">JWT (RBAC)</span>
-                        <span class="bg-[#0f172a] border border-gray-700 px-3 py-1.5 rounded text-xs text-gray-300 font-medium">PostgreSQL</span>
                         <span class="bg-[#0f172a] border border-gray-700 px-3 py-1.5 rounded text-xs text-gray-300 font-medium">Railway</span>
                     </div>
                 </div>
-
-                <!-- Coluna Visual (Composição de Imagens) -->
+                <!-- Coluna Visual OS -->
                 <div class="lg:w-7/12 relative mt-12 lg:mt-0">
-                    <!-- Justify-start empurra as imagens para a esquerda -->
                     <div class="relative w-full aspect-[4/3] lg:aspect-video flex items-center justify-start">
-                        
-                        <!-- Imagem Principal (Dashboard Visão Geral) -->
                         <img src="os-dashboard.png" alt="Sentry OS Visão Geral" class="w-full lg:w-[85%] rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.6)] z-10 transition-transform duration-700 hover:scale-[1.02]">
-                        
-                        <!-- Imagem Flutuante 1 (auditoria) - Visível apenas em telas grandes -->
-                        <img src="os-auditoria.png" alt="Sentry OS Auditoria" class="absolute -right-4 top-4 w-[40%] rounded-xl shadow-[0_25px_60px_rgba(0,0,0,0.7)] z-20 hidden lg:block transition-transform duration-700 hover:-translate-y-3 hover:scale-105 border border-gray-200">
-                        
-                        <!-- Imagem Flutuante 2 (CRM) - Visível apenas em telas grandes -->
+                        <img src="os-estoque.png" alt="Sentry OS Estoque" class="absolute -right-4 top-4 w-[40%] rounded-xl shadow-[0_25px_60px_rgba(0,0,0,0.7)] z-20 hidden lg:block transition-transform duration-700 hover:-translate-y-3 hover:scale-105 border border-gray-200">
                         <img src="os-crm.png" alt="Sentry OS CRM Clientes" class="absolute right-[10%] -bottom-8 w-[35%] rounded-xl shadow-[0_25px_60px_rgba(0,0,0,0.7)] z-30 hidden lg:block transition-transform duration-700 hover:-translate-y-3 hover:scale-105 border border-gray-200">
-                        
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- MOTORES DE GESTÃO ESCALÁVEL (Garagem & Brothers) -->
-    <section class="py-24 relative z-10 border-t border-gray-800/50 bg-gray-900/20">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold mb-6 text-white">Motor de Gestão Escalável (Custom)</h2>
-            <p class="text-gray-400 text-lg max-w-3xl mx-auto mb-16">Desenvolvemos núcleos de software (Core) sólidos que se adaptam às regras de negócio específicas da sua operação, entregando alta performance e estabilidade.</p>
-            
-            <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-                <!-- Case Garagem -->
-                <div class="glass-panel p-8 rounded-2xl text-left hover:border-sentryBlue transition duration-300 group shadow-xl">
-                    <!-- IMAGEM TEMPORÁRIA -->
-                    <div class="h-56 overflow-hidden rounded-xl mb-8 relative border border-gray-700">
-                        <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=1974&auto=format&fit=crop" alt="Garagem 184" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3 text-white">Garagem 184 PRO</h3>
-                    <p class="text-base text-gray-400 mb-6 leading-relaxed">Migração do papel para um fluxo 100% digital. Cálculo dinâmico de Mão de Obra vs Peças e geração de O.S. em PDF direto do front-end.</p>
-                    <div class="flex gap-3">
-                        <span class="bg-gray-900 border border-gray-700 px-3 py-1 rounded text-xs text-gray-300 font-bold uppercase tracking-wider">Node.js</span>
-                        <span class="bg-gray-900 border border-gray-700 px-3 py-1 rounded text-xs text-gray-300 font-bold uppercase tracking-wider">TiDB Cloud</span>
-                    </div>
-                </div>
-
-                <!-- Case Brothers -->
-                <div class="glass-panel p-8 rounded-2xl text-left hover:border-sentryBlue transition duration-300 group shadow-xl">
-                    <!-- IMAGEM TEMPORÁRIA -->
-                    <div class="h-56 overflow-hidden rounded-xl mb-8 relative border border-gray-700">
-                        <img src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?q=80&w=2070&auto=format&fit=crop" alt="Brothers Reparos" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3 text-white">Brothers Reparos PRO</h3>
-                    <p class="text-base text-gray-400 mb-6 leading-relaxed">PWA nativo com Service Workers. Compressão brutal de imagens via Canvas no client-side antes do upload para a nuvem, salvando banda da oficina.</p>
-                    <div class="flex gap-3">
-                        <span class="bg-gray-900 border border-gray-700 px-3 py-1 rounded text-xs text-gray-300 font-bold uppercase tracking-wider">MySQL</span>
-                        <span class="bg-gray-900 border border-gray-700 px-3 py-1 rounded text-xs text-gray-300 font-bold uppercase tracking-wider">Canvas API</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SentryBot (Chat de Qualificação) -->
+    <!-- SentryBot Modal -->
     <div id="chat-window" class="fixed bottom-6 right-6 w-[350px] md:w-[400px] glass-panel rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.5)] z-50 flex flex-col overflow-hidden transition-all duration-300 transform scale-0 origin-bottom-right opacity-0 border border-gray-700">
         <div class="bg-gray-900/90 p-5 border-b border-gray-700 flex justify-between items-center">
             <div class="flex items-center space-x-3">
@@ -295,11 +291,10 @@
             </div>
             <button onclick="closeChat()" class="text-gray-400 hover:text-white transition text-lg">✖</button>
         </div>
-        
         <div id="chat-messages" class="h-96 overflow-y-auto p-5 flex flex-col gap-4 bg-sentryDark">
             <div class="bg-gray-800 p-4 rounded-xl rounded-tl-none text-sm text-gray-300 w-fit max-w-[90%] border border-gray-700 shadow-md">
                 <span class="text-sentryBlue font-mono text-xs mb-2 block">> Protocolo de Triagem Iniciado</span>
-                Olá! Para entendermos a sua arquitetura atual, qual é o principal gargalo da sua operação hoje? (Ex: Escalabilidade, Automação, Integração, etc.)
+                Olá! Qual é o principal gargalo tecnológico da sua operação hoje?
             </div>
         </div>
         <div class="p-4 bg-gray-900/90 border-t border-gray-700">
@@ -316,87 +311,44 @@
         <div class="flex justify-center gap-8 font-medium">
             <a href="https://wa.me/+5519996589243" target="_blank" class="hover:text-sentryBlue transition">WhatsApp</a>
             <a href="mailto:comercial@techsentry.info" class="hover:text-sentryBlue transition">E-mail</a>
-            <a href="https://www.linkedin.com/company/tech-sentry-communication/" target="_blank" class="hover:text-sentryBlue transition">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/lucas-amarante" target="_blank" class="hover:text-sentryBlue transition">LinkedIn</a>
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script>
-        // Efeito Máquina de Escrever no Hero
-        const text = "> Conectando aos clusters...\n> Autenticando credenciais corporativas...\n> Inicializando Sentry-ITSM [OK]\n> Carregando Engine Sentry-OS [OK]\n> Status: Infraestrutura pronta para escala.";
-        let i = 0;
-        const twElement = document.getElementById("typewriter");
-        
-        function typeWriter() {
-            if (i < text.length) {
-                twElement.innerHTML += text.charAt(i) === '\n' ? '<br>' : text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 35);
-            }
-        }
-        setTimeout(typeWriter, 800);
-
-        // Lógica do SentryBot
+        // Logica do SentryBot (Mantida Intacta)
         const chatWindow = document.getElementById('chat-window');
         const chatInput = document.getElementById('chat-input');
         const chatMessages = document.getElementById('chat-messages');
-        let chatStep = 0;
-        let leadData = { desafio: "", contato: "" };
-
-        function openChat() {
-            chatWindow.classList.remove('scale-0', 'opacity-0');
-            chatWindow.classList.add('scale-100', 'opacity-100');
-            chatInput.focus();
-        }
-
-        function closeChat() {
-            chatWindow.classList.remove('scale-100', 'opacity-100');
-            chatWindow.classList.add('scale-0', 'opacity-0');
-        }
-
+        let chatStep = 0; let leadData = { desafio: "", contato: "" };
+        function openChat() { chatWindow.classList.remove('scale-0', 'opacity-0'); chatWindow.classList.add('scale-100', 'opacity-100'); chatInput.focus(); }
+        function closeChat() { chatWindow.classList.remove('scale-100', 'opacity-100'); chatWindow.classList.add('scale-0', 'opacity-0'); }
         function addBotMessage(msg, isSystem = false) {
-            const systemPrefix = isSystem ? '<span class="text-green-400 font-mono text-xs mb-2 block">> Analisando...</span>' : '';
-            chatMessages.insertAdjacentHTML('beforeend', `<div class="bg-gray-800 p-4 rounded-xl rounded-tl-none text-sm text-gray-300 w-fit max-w-[90%] border border-gray-700 shadow-lg">${systemPrefix}${msg}</div>`);
+            const sys = isSystem ? '<span class="text-green-400 font-mono text-xs mb-2 block">> Analisando...</span>' : '';
+            chatMessages.insertAdjacentHTML('beforeend', `<div class="bg-gray-800 p-4 rounded-xl rounded-tl-none text-sm text-gray-300 w-fit max-w-[90%] border border-gray-700 shadow-lg">${sys}${msg}</div>`);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
-
         function addUserMessage(msg) {
             chatMessages.insertAdjacentHTML('beforeend', `<div class="bg-sentryBlue p-4 rounded-xl rounded-tr-none text-sm text-white w-fit max-w-[90%] self-end shadow-lg">${msg}</div>`);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
-
         function sendMessage() {
-            const text = chatInput.value.trim();
-            if (!text || chatStep === 2) return;
-            
-            addUserMessage(text);
-            chatInput.value = '';
-            chatInput.disabled = true;
-
+            const text = chatInput.value.trim(); if (!text || chatStep === 2) return;
+            addUserMessage(text); chatInput.value = ''; chatInput.disabled = true;
             setTimeout(() => {
                 if (chatStep === 0) {
                     leadData.desafio = text;
-                    addBotMessage("Compreendido. Temos o escopo arquitetural para resolver isso. Por favor, <b>digite seu LinkedIn corporativo, WhatsApp ou E-mail</b> para agendarmos o diagnóstico técnico:", true);
-                    chatStep = 1;
-                    chatInput.disabled = false;
-                    chatInput.focus();
-                } 
-                else if (chatStep === 1) {
+                    addBotMessage("Compreendido. Por favor, <b>digite seu LinkedIn corporativo, WhatsApp ou E-mail</b> para agendarmos o diagnóstico técnico:", true);
+                    chatStep = 1; chatInput.disabled = false; chatInput.focus();
+                } else if (chatStep === 1) {
                     leadData.contato = text;
-                    addBotMessage("Enviando payload para a engenharia da Tech Sentry...", true);
-                    
+                    addBotMessage("Enviando payload para a engenharia...", true);
                     fetch(`https://formsubmit.co/ajax/comercial@techsentry.info`, {
-                        method: "POST",
-                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                        method: "POST", headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                         body: JSON.stringify({ Origem: "SentryBot VIP Lead", Desafio: leadData.desafio, Contato: leadData.contato })
-                    }).then(() => {
-                        addBotMessage("<b>✅ Dados recebidos.</b><br>O Lucas Amarante (Lead Architect) entrará em contato em breve. A sessão está finalizada.");
-                    }).catch(() => {
-                        addBotMessage("Erro de rota, mas nossa equipe já foi notificada. Obrigado!");
-                    });
-                    
-                    chatStep = 2;
-                    chatInput.placeholder = "Sessão encerrada.";
+                    }).then(() => { addBotMessage("<b>✅ Dados recebidos.</b><br>Sessão finalizada.");
+                    }).catch(() => { addBotMessage("Equipe notificada. Obrigado!"); });
+                    chatStep = 2; chatInput.placeholder = "Sessão encerrada.";
                 }
             }, 800);
         }
