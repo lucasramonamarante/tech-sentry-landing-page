@@ -112,13 +112,13 @@
                         <h2 class="text-4xl font-bold text-white mb-6">A Mente por trás da Operação</h2>
                         <div class="glass-panel p-6 rounded-2xl border-t-2 border-t-sentryBlue">
                             
-<!-- PLAYER DE VÍDEO NO LUGAR DA FOTO -->
-<div class="relative w-full aspect-video mb-6 rounded-xl overflow-hidden border border-gray-700 shadow-[0_0_20px_rgba(59,130,246,0.3)] bg-black group">
-    <video controls playsinline preload="auto" class="w-full h-full object-cover" poster="capa-video.jpg">
-        <source src="manifesto.mp4" type="video/mp4">
-        Seu navegador não suporta vídeos HTML5.
-    </video>
-</div>
+                            <!-- PLAYER DE VÍDEO NO LUGAR DA FOTO -->
+                            <div class="relative w-full aspect-video mb-6 rounded-xl overflow-hidden border border-gray-700 shadow-[0_0_20px_rgba(59,130,246,0.3)] bg-black group">
+                                <video controls playsinline preload="auto" class="w-full h-full object-cover" poster="capa-video.jpg">
+                                    <source src="manifesto.mp4" type="video/mp4">
+                                    Seu navegador não suporta vídeos HTML5.
+                                </video>
+                            </div>
 
                             <h3 class="text-2xl font-bold text-white mb-1">Lucas Amarante</h3>
                             <p class="text-sentryBlue font-medium text-sm mb-4">CEO & Lead Architect</p>
@@ -384,7 +384,7 @@
         </div>
     </div>
 
-<footer class="py-12 border-t border-gray-800 text-center text-gray-500 text-sm bg-gray-900/50">
+    <footer class="py-12 border-t border-gray-800 text-center text-gray-500 text-sm bg-gray-900/50">
         <p class="mb-4">&copy; 2026 Tech Sentry. All rights reserved. Deployed on Railway.</p>
         <div class="flex justify-center gap-8 font-medium">
             <a href="https://wa.me/+5519996589243" target="_blank" class="hover:text-sentryBlue transition">WhatsApp</a>
@@ -394,23 +394,38 @@
         </div>
     </footer>
 
+    <!-- AVISO DE COOKIES / LGPD (Estilo Card Flutuante) -->
+    <div id="cookie-banner" class="fixed bottom-6 left-6 z-[100] w-[340px] bg-gray-900 border border-gray-700 rounded-xl shadow-[0_15px_50px_rgba(0,0,0,0.6)] p-6 transform translate-y-[150%] opacity-0 transition-all duration-700">
+        <p class="text-sm text-gray-300 mb-5 leading-relaxed">
+            Ao clicar no botão "Aceito", você concorda com a nossa 
+            <a href="politica-privacidade.html" class="text-sentryBlue hover:underline font-semibold">Política de Privacidade e cookies.</a>
+        </p>
+        <button onclick="acceptCookies()" class="bg-sentryBlue hover:bg-blue-600 text-white px-8 py-2.5 rounded-lg font-bold transition shadow-lg shadow-blue-500/20 text-sm">
+            Aceito
+        </button>
+    </div>
+
     <script>
-        // Logica do SentryBot (Mantida Intacta)
+        // Logica do SentryBot
         const chatWindow = document.getElementById('chat-window');
         const chatInput = document.getElementById('chat-input');
         const chatMessages = document.getElementById('chat-messages');
         let chatStep = 0; let leadData = { desafio: "", contato: "" };
+        
         function openChat() { chatWindow.classList.remove('scale-0', 'opacity-0'); chatWindow.classList.add('scale-100', 'opacity-100'); chatInput.focus(); }
         function closeChat() { chatWindow.classList.remove('scale-100', 'opacity-100'); chatWindow.classList.add('scale-0', 'opacity-0'); }
+        
         function addBotMessage(msg, isSystem = false) {
             const sys = isSystem ? '<span class="text-green-400 font-mono text-xs mb-2 block">> Analisando...</span>' : '';
             chatMessages.insertAdjacentHTML('beforeend', `<div class="bg-gray-800 p-4 rounded-xl rounded-tl-none text-sm text-gray-300 w-fit max-w-[90%] border border-gray-700 shadow-lg">${sys}${msg}</div>`);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
+        
         function addUserMessage(msg) {
             chatMessages.insertAdjacentHTML('beforeend', `<div class="bg-sentryBlue p-4 rounded-xl rounded-tr-none text-sm text-white w-fit max-w-[90%] self-end shadow-lg">${msg}</div>`);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
+        
         function sendMessage() {
             const text = chatInput.value.trim(); if (!text || chatStep === 2) return;
             addUserMessage(text); chatInput.value = ''; chatInput.disabled = true;
@@ -430,6 +445,22 @@
                     chatStep = 2; chatInput.placeholder = "Sessão encerrada.";
                 }
             }, 800);
+        }
+
+        // Lógica do Cookie Banner Flutuante
+        document.addEventListener("DOMContentLoaded", () => {
+            const banner = document.getElementById('cookie-banner');
+            if (!localStorage.getItem('techsentry_cookie_consent')) {
+                setTimeout(() => {
+                    banner.classList.remove('translate-y-[150%]', 'opacity-0');
+                }, 1000);
+            }
+        });
+
+        function acceptCookies() {
+            localStorage.setItem('techsentry_cookie_consent', 'true');
+            const banner = document.getElementById('cookie-banner');
+            banner.classList.add('translate-y-[150%]', 'opacity-0');
         }
     </script>
 </body>
