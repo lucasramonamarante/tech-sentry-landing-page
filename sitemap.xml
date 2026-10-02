@@ -11,4 +11,6 @@
   <url><loc>https://www.techsentry.com.br/solucoes/servicos/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.techsentry.com.br/politica-privacidade.html</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
   <url><loc>https://www.techsentry.com.br/termos-de-uso.html</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://www.techsentry.com.br/diagnostico/itsm/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.techsentry.com.br/diagnostico/business-ops/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
