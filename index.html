@@ -1,596 +1,635 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Sentry | Engenharia de Software e Operações de Elite</title>
-    <meta name="description" content="Governança de TI, automação de NOC e desenvolvimento Full-Stack para operações que não podem parar.">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: { sentryDark: '#070b14', sentryBlue: '#3b82f6' },
-                    animation: { 'glow': 'glow 4s ease-in-out infinite alternate' },
-                    keyframes: {
-                        glow: { '0%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.1)' }, '100%': { boxShadow: '0 0 40px rgba(59, 130, 246, 0.4)' } }
-                    }
-                }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech Sentry | Operational Intelligence for Technology and Business</title>
+  <meta name="description" content="Operational Intelligence para operações de tecnologia e negócio. Sentry-ITSM para IT & Network Operations e Sentry-OS para Business Operations.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://www.techsentry.com.br/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://www.techsentry.com.br/">
+  <meta property="og:title" content="Tech Sentry | Operational Intelligence">
+  <meta property="og:description" content="Software operacional para Technology Operations e Business Operations, com governança, inteligência e evolução para operações progressivamente mais autônomas.">
+  <meta property="og:site_name" content="Tech Sentry">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tech Sentry | Operational Intelligence">
+  <meta name="twitter:description" content="Operational Intelligence for Technology and Business.">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sentry: {
+              950: '#050816',
+              900: '#08101f',
+              800: '#0d1729',
+              700: '#17243b',
+              blue: '#4f8cff',
+              cyan: '#22d3ee',
+              emerald: '#34d399'
             }
+          },
+          boxShadow: {
+            'sentry': '0 24px 80px rgba(0,0,0,.38)',
+            'glow-blue': '0 0 48px rgba(79,140,255,.18)',
+            'glow-green': '0 0 48px rgba(52,211,153,.14)'
+          }
         }
-    </script>
-    <style>
-        body { background-color: #070b14; color: #f3f4f6; font-family: 'Inter', system-ui, sans-serif; overflow-x: hidden; }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #070b14; }
-        ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 4px; }
-        .glass-panel { background: rgba(17, 24, 39, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(75, 85, 99, 0.4); }
-        .gradient-text { background: linear-gradient(to right, #93c5fd, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .timeline-line::before { content: ''; position: absolute; left: 15px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, #3b82f6, #070b14); z-index: 0; }
-    </style>
+      }
+    }
+  </script>
 
-    <!-- INÍCIO DO BLOCO DE MARKETING TECH SENTRY -->
-    <!-- Meta Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1086168663977296');
-    fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1086168663977296&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code -->
+  <style>
+    :root { color-scheme: dark; }
+    body {
+      background:
+        radial-gradient(circle at 20% 0%, rgba(79,140,255,.13), transparent 30%),
+        radial-gradient(circle at 90% 20%, rgba(34,211,238,.08), transparent 25%),
+        #050816;
+      color: #e5edf8;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    ::selection { background: rgba(79,140,255,.35); color: #fff; }
+    .glass {
+      background: linear-gradient(180deg, rgba(13,23,41,.82), rgba(8,16,31,.7));
+      border: 1px solid rgba(148,163,184,.16);
+      backdrop-filter: blur(18px);
+    }
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(148,163,184,.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148,163,184,.055) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, black, transparent 88%);
+    }
+    .text-gradient {
+      background: linear-gradient(90deg, #93c5fd 0%, #67e8f9 50%, #a7f3d0 100%);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .roadmap {
+      background: repeating-linear-gradient(
+        135deg,
+        rgba(79,140,255,.06),
+        rgba(79,140,255,.06) 10px,
+        rgba(79,140,255,.025) 10px,
+        rgba(79,140,255,.025) 20px
+      );
+    }
+    .focus-ring:focus-visible {
+      outline: 2px solid #67e8f9;
+      outline-offset: 3px;
+    }
+  </style>
 
-    <!-- LinkedIn Insight Tag -->
-    <script type="text/javascript">
-    _linkedin_partner_id = "10536425";
-    window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
-    window._linkedin_data_partner_ids.push(_linkedin_partner_id);
-    </script><script type="text/javascript">
-    (function(l) {
-    if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};
-    window.lintrk.q=[]}
-    var s = document.getElementsByTagName("script")[0];
-    var b = document.createElement("script");
-    b.type = "text/javascript";b.async = true;
-    b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
-    s.parentNode.insertBefore(b, s);})(window.lintrk);
-    </script>
-    <noscript>
-    <img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=10536425&fmt=gif" />
-    </noscript>
-    <!-- End LinkedIn Insight Tag -->
-    <!-- FIM DO BLOCO DE MARKETING TECH SENTRY -->
-
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Tech Sentry",
+    "url": "https://www.techsentry.com.br/",
+    "email": "comercial@techsentry.info",
+    "telephone": "+55 19 99658-9243",
+    "description": "Operational Intelligence for Technology and Business."
+  }
+  </script>
 </head>
-<body class="relative">
-    <div class="fixed top-0 left-1/4 w-[600px] h-[600px] bg-blue-900/30 rounded-full mix-blend-screen filter blur-[150px] pointer-events-none -z-10"></div>
-    <div class="fixed bottom-0 right-1/4 w-[600px] h-[600px] bg-indigo-900/20 rounded-full mix-blend-screen filter blur-[150px] pointer-events-none -z-10"></div>
 
-    <header class="fixed w-full z-50 glass-panel border-b border-gray-800/80">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#home" class="text-2xl font-extrabold tracking-wider text-white hover:text-sentryBlue transition">Tech <span class="text-sentryBlue">Sentry</span></a>
-            
-            <nav class="hidden md:flex space-x-8 text-sm font-medium text-gray-300">
-                <a href="#dna" class="hover:text-white hover:text-sentryBlue transition">Nosso DNA</a>
-                <a href="#itsm" class="hover:text-white hover:text-sentryBlue transition">Sentry-ITSM</a>
-                <a href="#planos" class="hover:text-white hover:text-sentryBlue transition">Planos</a>
-                <a href="#ecossistema" class="hover:text-white hover:text-sentryBlue transition">Sistemas de Gestão</a>
-                <a href="pme.html" class="hover:text-white hover:text-sentryBlue transition">PME & Sob Medida</a>
-            </nav>
-            
-            <button onclick="openChat()" class="bg-sentryBlue hover:bg-blue-600 text-white px-6 py-2.5 rounded-lg font-bold transition shadow-lg shadow-blue-500/30 text-sm">
-                Diagnóstico Estratégico
-            </button>
-        </div>
-    </header>
+<body class="min-h-screen overflow-x-hidden">
+  <div aria-hidden="true" class="fixed inset-0 grid-bg pointer-events-none -z-10"></div>
+  <div aria-hidden="true" class="fixed -top-40 left-1/3 w-[760px] h-[760px] bg-blue-600/10 rounded-full blur-[160px] pointer-events-none -z-10"></div>
 
-    <section id="home" class="pt-48 pb-20 px-6 container mx-auto text-center relative z-10">
-        <div class="inline-block bg-blue-500/10 text-blue-400 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest mb-8 border border-blue-500/20 uppercase shadow-inner">
-            Engenharia de Software & Governança de TI
-        </div>
-        <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-8 text-white">Nós escalamos operações <br> <span class="gradient-text">que não podem parar.</span></h1>
-        <p class="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto mb-16 leading-relaxed">Da automação de NOC com arquitetura Zero-Inbound ao desenvolvimento de ecossistemas SaaS Full-Stack. Onde a mentalidade de missão crítica encontra a engenharia de elite.</p>
-    </section>
+  <header class="fixed inset-x-0 top-0 z-50 border-b border-slate-800/80 bg-sentry-950/80 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 h-20 flex items-center justify-between">
+      <a href="#home" class="focus-ring flex items-center gap-3" aria-label="Tech Sentry — início">
+        <span class="w-9 h-9 rounded-xl bg-blue-500/15 border border-blue-400/25 flex items-center justify-center font-black text-blue-300">TS</span>
+        <span class="text-xl font-black tracking-tight text-white">Tech <span class="text-blue-400">Sentry</span></span>
+      </a>
 
-    <section id="dna" class="py-24 relative z-10 border-t border-gray-800/50 bg-gray-900/20">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-white mb-4">O DNA Tech Sentry</h2>
-                <p class="text-gray-400 text-lg max-w-2xl mx-auto">Não somos apenas desenvolvedores. Somos executivos de tecnologia forjados no caos das operações 24x7, construindo sistemas para blindar o seu negócio.</p>
-            </div>
+      <nav class="hidden lg:flex items-center gap-7 text-sm text-slate-300" aria-label="Navegação principal">
+        <a class="focus-ring hover:text-white transition" href="#platform">Plataforma</a>
+        <a class="focus-ring hover:text-white transition" href="#itsm">Sentry-ITSM</a>
+        <a class="focus-ring hover:text-white transition" href="#os">Sentry-OS</a>
+        <a class="focus-ring hover:text-white transition" href="#governance">Governança</a>
+        <a class="focus-ring hover:text-white transition" href="#roadmap">Visão 2027</a>
+      </nav>
 
-            <div class="grid md:grid-cols-2 gap-8 mb-12">
-                <div class="glass-panel p-8 rounded-2xl border-t-4 border-t-sentryBlue shadow-lg">
-                    <h3 class="text-2xl font-bold text-white mb-4 flex items-center"><span class="text-sentryBlue mr-3">🎯</span> Nossa Missão</h3>
-                    <p class="text-gray-400 leading-relaxed">Erradicar o tempo de inatividade (downtime) e transformar gargalos operacionais em inteligência de dados. Unimos engenharia de software sob medida e alta governança corporativa para operações que exigem SLA de 99,9%.</p>
-                </div>
-                <div class="glass-panel p-8 rounded-2xl border-t-4 border-t-indigo-500 shadow-lg">
-                    <h3 class="text-2xl font-bold text-white mb-4 flex items-center"><span class="text-indigo-400 mr-3">👁️</span> Nossa Visão</h3>
-                    <p class="text-gray-400 leading-relaxed">Ser a vanguarda técnica em ecossistemas de missão crítica, onde a integração de Inteligência Artificial Generativa e a observabilidade atuem antes da falha, garantindo o "Zero Downtime" absoluto.</p>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-gray-800/40 p-6 rounded-xl border border-gray-700/50">
-                    <div class="text-3xl mb-4">🛡️</div>
-                    <h4 class="text-white font-bold mb-2">Governança (ITIL/COBIT)</h4>
-                    <p class="text-gray-400 text-sm">Estrutura e padronização como pilares. Nada entra em produção sem gestão rigorosa de mudanças.</p>
-                </div>
-                <div class="bg-gray-800/40 p-6 rounded-xl border border-gray-700/50">
-                    <div class="text-3xl mb-4">⏱️</div>
-                    <h4 class="text-white font-bold mb-2">Resiliência 24x7</h4>
-                    <p class="text-gray-400 text-sm">Mindset de War Room. Nossos sistemas são arquitetados prevendo o pior cenário possível.</p>
-                </div>
-                <div class="bg-gray-800/40 p-6 rounded-xl border border-gray-700/50">
-                    <div class="text-3xl mb-4">🧠</div>
-                    <h4 class="text-white font-bold mb-2">Observabilidade e IA</h4>
-                    <p class="text-gray-400 text-sm">Dados traduzidos em decisão. Antecipamos incidentes críticos aplicando APM e LLMs nos diagnósticos.</p>
-                </div>
-                <div class="bg-gray-800/40 p-6 rounded-xl border border-gray-700/50">
-                    <div class="text-3xl mb-4">📉</div>
-                    <h4 class="text-white font-bold mb-2">Eficiência (Six Sigma)</h4>
-                    <p class="text-gray-400 text-sm">Redução agressiva do MTTR e otimização financeira, eliminando desperdícios da sua infraestrutura.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-24 relative z-10 border-t border-gray-800/50">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col lg:flex-row gap-16">
-                
-                <div class="lg:w-1/3">
-                    <div class="sticky top-32">
-                        <h2 class="text-4xl font-bold text-white mb-6">A Mente por trás da Operação</h2>
-                        <div class="glass-panel p-6 rounded-2xl border-t-2 border-t-sentryBlue">
-                            
-                            <!-- PLAYER DE VÍDEO -->
-                            <div class="relative w-full aspect-video mb-6 rounded-xl overflow-hidden border border-gray-700 shadow-[0_0_20px_rgba(59,130,246,0.3)] bg-black group">
-                                <video controls playsinline preload="auto" class="w-full h-full object-cover" poster="capa-video.jpg">
-                                    <source src="manifesto.mp4" type="video/mp4">
-                                    Seu navegador não suporta vídeos HTML5.
-                                </video>
-                            </div>
-
-                            <h3 class="text-2xl font-bold text-white mb-1">Lucas Amarante</h3>
-                            <p class="text-sentryBlue font-medium text-sm mb-4">CEO & Lead Architect</p>
-                            <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                                Mais de 12 anos liderando equipes em ambientes de alta complexidade. Especialista em gestão de NOCs, War Rooms, redes e integração de arquiteturas de grande escala. 
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="bg-gray-900 border border-gray-700 px-2 py-1 rounded text-[10px] text-gray-400 uppercase">Engenheiro de Software</span>
-                                <span class="bg-gray-900 border border-gray-700 px-2 py-1 rounded text-[10px] text-gray-400 uppercase">ITIL 4</span>
-                                <span class="bg-gray-900 border border-gray-700 px-2 py-1 rounded text-[10px] text-gray-400 uppercase">COBIT 5</span>
-                                <span class="bg-gray-900 border border-gray-700 px-2 py-1 rounded text-[10px] text-gray-400 uppercase">Lean Six Sigma Black Belt</span>
-                                <span class="bg-gray-900 border border-gray-700 px-2 py-1 rounded text-[10px] text-gray-400 uppercase">LLM, AIOps & FinOps</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="lg:w-2/3 relative timeline-line pl-10 mt-10 lg:mt-0">
-                    
-                    <div class="relative mb-12">
-                        <div class="absolute -left-[45px] top-1 w-4 h-4 bg-gray-900 border-2 border-gray-500 rounded-full z-10"></div>
-                        <div class="text-sm font-bold text-gray-500 mb-1">2016 - 2021 | A Fundação Crítica</div>
-                        <h3 class="text-xl font-bold text-white mb-2">Gestão de Missão Crítica (Telecom)</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            Liderança de operações 24x7 envolvendo mais de 6.000 sites de rede (2G/3G/4G). Implementação de processos ITIL, elevando o índice de atendimento de incidentes de 75% para 93% e gerenciando arquiteturas Core e anéis ópticos de altíssima criticidade.
-                        </p>
-                    </div>
-
-                    <div class="relative mb-12">
-                        <div class="absolute -left-[45px] top-1 w-4 h-4 bg-gray-900 border-2 border-gray-500 rounded-full z-10"></div>
-                        <div class="text-sm font-bold text-gray-500 mb-1">2023 - 2024 | Eficiência & Escala</div>
-                        <h3 class="text-xl font-bold text-white mb-2">Sustentação Nacional & Automação</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            Gestão de indicadores contratuais (SLA/SLO) e operação nacional em Telecom. Implantação de RPA e projetos de melhoria, resultando na redução drástica de 68% no tempo de atendimento do N1 e aumento de 90% na resolutividade do N2.
-                        </p>
-                    </div>
-
-                    <div class="relative mb-12">
-                        <div class="absolute -left-[45px] top-1 w-4 h-4 bg-gray-900 border-2 border-gray-500 rounded-full z-10"></div>
-                        <div class="text-sm font-bold text-gray-500 mb-1">2024 - 2026 | Cultura "Zero Downtime"</div>
-                        <h3 class="text-xl font-bold text-white mb-2">Governança, Integração e Observabilidade</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            Direcionamento estratégico focado em sistemas Core e integração Dev/Ops. Implantação de monitoramento preditivo e Dashboards Executivos, garantindo 99,9% de SLA e reduzindo o tempo de indisponibilidade (MTTR) em 20%.
-                        </p>
-                    </div>
-
-                    <div class="relative">
-                        <div class="absolute -left-[48px] top-1 w-6 h-6 bg-sentryBlue rounded-full z-10 animate-pulse shadow-[0_0_15px_#3b82f6]"></div>
-                        <div class="text-sm font-bold text-sentryBlue mb-1">O Futuro</div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Nascimento da Tech Sentry</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            A convergência definitiva entre governança de TI e Engenharia de Software de elite. Transformando mais de uma década de expertise na resolução de falhas sistêmicas em plataformas SaaS blindadas, autônomas e baseadas em Inteligência Artificial.
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ÁREA DO SENTRY ITSM -->
-    <section id="itsm" class="py-32 relative z-10 border-y border-gray-800/50 bg-[#0a0f1a] overflow-hidden">
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-blue-600/10 blur-[120px] rounded-full pointer-events-none"></div>
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-8">
-                <div class="lg:w-5/12">
-                    <div class="inline-flex items-center space-x-2 bg-indigo-500/10 text-indigo-400 px-4 py-1.5 rounded-full text-xs font-bold mb-6 border border-indigo-500/20 uppercase tracking-widest shadow-inner">
-                        <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
-                        <span>Plataforma SaaS •</span>
-                    </div>
-                    <h2 class="text-4xl md:text-5xl font-extrabold mb-6 text-white leading-tight">Sentry-ITSM: <br><span class="text-gray-300">Automação de NOC & Governança</span></h2>
-                    <p class="text-gray-400 text-lg mb-10 leading-relaxed">
-                        O centro de comando da sua operação. Desenhado para líderes de TI que exigem visibilidade em tempo real e redução agressiva do MTTR. Uma ponte invisível e blindada entre a nuvem e a sua infraestrutura física.
-                    </p>
-                    <div class="space-y-6 mb-10">
-                        <div class="flex items-start">
-                            <div class="mt-1 bg-gray-800/80 p-2 rounded-lg border border-gray-700 text-sentryBlue mr-4 shadow-md"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg></div>
-                            <div>
-                                <h4 class="text-white font-bold text-base mb-1">Arquitetura Zero-Inbound</h4>
-                                <p class="text-gray-400 text-sm leading-relaxed">Agente satélite autônomo on-premise. Elimine a necessidade de VPNs complexas e não exponha portas no firewall do cliente.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="mt-1 bg-gray-800/80 p-2 rounded-lg border border-gray-700 text-sentryBlue mr-4 shadow-md"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg></div>
-                            <div>
-                                <h4 class="text-white font-bold text-base mb-1">Cofre SSH Criptografado</h4>
-                                <p class="text-gray-400 text-sm leading-relaxed">Gestão centralizada de acessos. Credenciais de rede blindadas no banco de dados com relação 1-para-N aos ativos.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap gap-3 pt-4 border-t border-gray-800/60">
-                        <span class="bg-[#0f172a] border border-gray-700 px-3 py-1.5 rounded text-xs text-gray-300 font-medium">React + Vite</span>
-                        <span class="bg-[#0f172a] border border-gray-700 px-3 py-1.5 rounded text-xs text-gray-300 font-medium">Node.js (PM2)</span>
-                        <span class="bg-[#0f172a] border border-gray-700 px-3 py-1.5 rounded text-xs text-gray-300 font-medium">PostgreSQL</span>
-                    </div>
-                </div>
-                <div class="lg:w-7/12 relative mt-12 lg:mt-0">
-                    <div class="relative w-full aspect-[4/3] lg:aspect-video flex items-center justify-end">
-                        <img src="itsm-dashboard.png" alt="Sentry ITSM Dashboard" class="w-full lg:w-[90%] rounded-xl border border-gray-700 shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-10 transition-transform duration-700 hover:scale-[1.02]">
-                        <img src="itsm-menu.png" alt="Sentry ITSM Menu" class="absolute left-0 top-10 w-[22%] rounded-xl border border-gray-700 shadow-[0_25px_60px_rgba(0,0,0,0.8)] z-20 hidden lg:block transition-transform duration-700 hover:-translate-y-3 hover:scale-105">
-                        <img src="itsm-login.png" alt="Sentry ITSM Login" class="absolute right-[5%] -bottom-12 w-[28%] rounded-xl border border-gray-700 shadow-[0_25px_60px_rgba(0,0,0,0.8)] z-30 hidden lg:block transition-transform duration-700 hover:-translate-y-3 hover:scale-105">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PRICING: Sentry-ITSM (Logo abaixo da seção dele) -->
-    <section id="planos" class="py-24 relative z-10 border-b border-gray-800/50 bg-gray-900/20">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <div class="inline-block bg-indigo-500/10 text-indigo-400 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest mb-4 border border-indigo-500/20 uppercase">
-                    Escalabilidade SaaS
-                </div>
-                <h2 class="text-4xl font-bold text-white mb-4">Escolha a blindagem da sua operação</h2>
-                <p class="text-gray-400 text-lg max-w-2xl mx-auto">Do Help Desk inicial ao NOC 100% Autônomo e preditivo. Licenciamento flexível adaptado ao tamanho da sua infraestrutura.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-                
-                <!-- BRONZE -->
-                <div class="glass-panel p-8 rounded-2xl border-t-4 border-t-gray-500 flex flex-col relative transition-transform duration-300 hover:-translate-y-2">
-                    <h3 class="text-2xl font-bold text-white mb-2">Bronze</h3>
-                    <div class="mb-6">
-                        <span class="text-3xl font-extrabold text-white">R$ 499</span><span class="text-gray-400">/mês</span>
-                        <p class="text-xs text-gray-400 mt-1">Custo efetivo: ~R$ 99,80 /usuário</p>
-                    </div>
-                    <p class="text-gray-400 text-sm mb-6 h-16 italic">"Operações enxutas que precisam sair do caos e ter um portal de atendimento corporativo."</p>
-                    <ul class="space-y-4 mb-8 text-sm text-gray-300 flex-grow">
-                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> Até 5 Analistas</li>
-                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> Gestão de Incidentes</li>
-                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> Portal do Cliente (Padrão)</li>
-                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> SLA e Respostas Padrão</li>
-                    </ul>
-                    <a href="https://wa.me/+5519996589243?text=Olá, tenho interesse no plano BRONZE do Sentry-ITSM." target="_blank" class="w-full block text-center py-3 rounded-lg border border-gray-600 text-white font-bold hover:bg-gray-800 transition">Assinar Bronze</a>
-                </div>
-
-                <!-- PRATA -->
-                <div class="glass-panel p-8 rounded-2xl border-t-4 border-t-gray-300 flex flex-col relative transition-transform duration-300 hover:-translate-y-2">
-                    <h3 class="text-2xl font-bold text-white mb-2">Prata</h3>
-                    <div class="mb-6">
-                        <span class="text-3xl font-extrabold text-white">R$ 1.299</span><span class="text-gray-400">/mês</span>
-                        <p class="text-xs text-gray-400 mt-1">Custo efetivo: ~R$ 129,90 /usuário</p>
-                    </div>
-                    <p class="text-gray-400 text-sm mb-6 h-16 italic">"Equipes estruturando processos de governança ITIL com um CMDB ativo e integração direta."</p>
-                    <ul class="space-y-4 mb-8 text-sm text-gray-300 flex-grow">
-                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> Até 10 Analistas</li>
-                        <li class="flex items-center font-semibold text-white"><span class="text-green-500 mr-2">✔</span> CMDB: Até 150 Ativos</li>
-                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> Gestão de Problemas</li>
-                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> Alertas no Telegram</li>
-                        <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> Dashboard Executivo</li>
-                    </ul>
-                    <a href="https://wa.me/+5519996589243?text=Olá, tenho interesse no plano PRATA do Sentry-ITSM." target="_blank" class="w-full block text-center py-3 rounded-lg border border-gray-400 text-white font-bold hover:bg-gray-700 transition">Assinar Prata</a>
-                </div>
-
-                <!-- OURO -->
-                <div class="bg-[#0a0f1a] p-8 rounded-2xl border-2 border-sentryBlue shadow-[0_0_30px_rgba(59,130,246,0.2)] flex flex-col relative transform scale-105 z-10">
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-sentryBlue text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider uppercase shadow-lg">Operação de Elite</div>
-                    <h3 class="text-2xl font-bold text-white mb-2 text-sentryBlue">Ouro</h3>
-                    <div class="mb-6">
-                        <span class="text-3xl font-extrabold text-white">R$ 2.999</span><span class="text-gray-400">/mês</span>
-                        <p class="text-xs text-blue-400 mt-1 font-medium">Custo efetivo: ~R$ 119,90 /usuário</p>
-                    </div>
-                    <p class="text-gray-300 text-sm mb-6 h-16 italic">"Operações críticas e provedores. Governança avançada com GMUD, Cofre de Senhas e IA nativa."</p>
-                    <ul class="space-y-4 mb-8 text-sm text-gray-200 flex-grow">
-                        <li class="flex items-center"><span class="text-sentryBlue mr-2">✔</span> Até 25 Analistas</li>
-                        <li class="flex items-center font-semibold text-white"><span class="text-sentryBlue mr-2">✔</span> CMDB: Até 500 Ativos</li>
-                        <li class="flex items-center"><span class="text-sentryBlue mr-2">✔</span> Gestão de Mudanças (CAB)</li>
-                        <li class="flex items-center"><span class="text-sentryBlue mr-2">✔</span> Cofre de Senhas Criptografado</li>
-                        <li class="flex items-center"><span class="text-sentryBlue mr-2">✔</span> Bulk Resolve & Catálogos</li>
-                        <li class="flex items-center"><span class="text-purple-400 mr-2">✦</span> AIOps: Análise de Logs</li>
-                    </ul>
-                    <a href="https://wa.me/+5519996589243?text=Olá, quero agendar um diagnóstico para implementar o plano OURO na minha operação." target="_blank" class="w-full block text-center py-3 rounded-lg bg-sentryBlue hover:bg-blue-600 text-white font-bold shadow-lg shadow-blue-500/30 transition">Assinar Ouro</a>
-                </div>
-
-                <!-- DIAMANTE -->
-                <div class="glass-panel p-8 rounded-2xl border-t-4 border-t-purple-500 flex flex-col relative transition-transform duration-300 hover:-translate-y-2">
-                    <h3 class="text-2xl font-bold text-white mb-2">Diamante</h3>
-                    <div class="mb-6">
-                        <p class="text-xs text-purple-400 mb-1 font-bold uppercase tracking-widest"></p>
-                        <span class="text-3xl font-extrabold text-white">Consulte Especialista</span>
-                    </div>
-                    <p class="text-gray-400 text-sm mb-6 h-16 italic">"Grandes provedores e operadoras. Automação remota extrema, White-label e capacidade infinita."</p>
-                    <ul class="space-y-4 mb-8 text-sm text-gray-300 flex-grow">
-                        <li class="flex items-center font-bold text-white"><span class="text-purple-500 mr-2">✔</span> Analistas Ilimitados</li>
-                        <li class="flex items-center font-bold text-white"><span class="text-purple-500 mr-2">✔</span> CMDB: Ativos Ilimitados</li>
-                        <li class="flex items-center"><span class="text-purple-500 mr-2">✔</span> AIOps: Troubleshooting SSH</li>
-                        <li class="flex items-center"><span class="text-purple-500 mr-2">✔</span> White-label (Seu Logotipo)</li>
-                        <li class="flex items-center"><span class="text-purple-500 mr-2">✔</span> SLA Garantido em Contrato</li>
-                    </ul>
-                    <button onclick="openChat()" class="w-full py-3 rounded-lg border border-purple-500 text-purple-400 font-bold hover:bg-purple-500/10 transition">Falar com Especialista</button>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- ÁREA DO SENTRY OS -->
-    <section id="ecossistema" class="py-32 relative z-10 border-b border-gray-800/50 bg-[#070b14] overflow-hidden">
-        <div class="absolute top-1/2 right-1/4 -translate-y-1/2 w-[700px] h-[500px] bg-emerald-600/10 blur-[150px] rounded-full pointer-events-none"></div>
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="flex flex-col lg:flex-row-reverse items-center gap-16 lg:gap-8">
-                <div class="lg:w-5/12">
-                    <div class="inline-flex items-center space-x-2 bg-emerald-500/10 text-emerald-400 px-4 py-1.5 rounded-full text-xs font-bold mb-6 border border-emerald-500/20 uppercase tracking-widest shadow-inner">
-                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                        <span>Food Service SaaS • Omnichannel</span>
-                    </div>
-                    <h2 class="text-4xl md:text-5xl font-extrabold mb-6 text-white leading-tight">Sentry-OS: <br><span class="text-gray-300">Ecossistema ERP & CRM</span></h2>
-                    <p class="text-gray-400 text-lg mb-10 leading-relaxed">
-                        Esqueça os sistemas de balcão engessados. Arquitetamos um motor de alta performance que centraliza desde a auditoria financeira antifraude até a integração em tempo real com plataformas de delivery.
-                    </p>
-                    <div class="space-y-6 mb-10">
-                        <div class="flex items-start">
-                            <div class="mt-1 bg-gray-800/80 p-2 rounded-lg border border-gray-700 text-emerald-400 mr-4 shadow-md"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg></div>
-                            <div>
-                                <h4 class="text-white font-bold text-base mb-1">Auditoria Financeira Cega</h4>
-                                <p class="text-gray-400 text-sm leading-relaxed">Motor de conciliação implacável cruzando matematicamente faturamento vs valor contado.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="mt-1 bg-gray-800/80 p-2 rounded-lg border border-gray-700 text-emerald-400 mr-4 shadow-md"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" /></svg></div>
-                            <div>
-                                <h4 class="text-white font-bold text-base mb-1">Impressão Nativa (CSS Print)</h4>
-                                <p class="text-gray-400 text-sm leading-relaxed">Emissão silenciosa de cupons térmicos eliminando a dependência de drivers pesados.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap gap-3 pt-4 border-t border-gray-800/60">
-                        <span class="bg-[#0f172a] border border-gray-700 px-3 py-1.5 rounded text-xs text-gray-300 font-medium">Node.js (Fastify)</span>
-                        <span class="bg-[#0f172a] border border-gray-700 px-3 py-1.5 rounded text-xs text-gray-300 font-medium">JWT (RBAC)</span>
-                        <span class="bg-[#0f172a] border border-gray-700 px-3 py-1.5 rounded text-xs text-gray-300 font-medium">Railway</span>
-                    </div>
-                </div>
-                <div class="lg:w-7/12 relative mt-12 lg:mt-0">
-                    <div class="relative w-full aspect-[4/3] lg:aspect-video flex items-center justify-start">
-                        <img src="os-dashboard.png" alt="Sentry OS Visão Geral" class="w-full lg:w-[85%] rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.6)] z-10 transition-transform duration-700 hover:scale-[1.02]">
-                        <img src="os-auditoria.png" alt="Sentry OS auditoria" class="absolute -right-4 top-4 w-[40%] rounded-xl shadow-[0_25px_60px_rgba(0,0,0,0.7)] z-20 hidden lg:block transition-transform duration-700 hover:-translate-y-3 hover:scale-105 border border-gray-200">
-                        <img src="os-crm.png" alt="Sentry OS CRM Clientes" class="absolute right-[10%] -bottom-8 w-[35%] rounded-xl shadow-[0_25px_60px_rgba(0,0,0,0.7)] z-30 hidden lg:block transition-transform duration-700 hover:-translate-y-3 hover:scale-105 border border-gray-200">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PRICING: Sentry-OS (Logo abaixo da seção dele) -->
-    <section id="planos-os" class="py-24 relative z-10 border-b border-gray-800/50 bg-gray-900/20">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <div class="inline-block bg-emerald-500/10 text-emerald-400 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest mb-4 border border-emerald-500/20 uppercase">
-                    Food Service SaaS
-                </div>
-                <h2 class="text-4xl font-bold text-white mb-4">Escolha o motor do seu ecossistema</h2>
-                <p class="text-gray-400 text-lg max-w-2xl mx-auto">Do balcão enxuto às redes de franquias e Dark Kitchens. Escalabilidade desenhada para operações de alto volume.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-                
-                <!-- BRONZE -->
-                <div class="glass-panel p-8 rounded-2xl border-t-4 border-t-gray-500 flex flex-col relative transition-transform duration-300 hover:-translate-y-2">
-                    <h3 class="text-2xl font-bold text-white mb-2">Bronze</h3>
-                    <div class="mb-6">
-                        <span class="text-3xl font-extrabold text-white">R$ 97</span><span class="text-gray-400">/mês</span>
-                    </div>
-                    <p class="text-gray-400 text-sm mb-6 h-16 italic">"Para quem precisa sair do caderno e ter controle total do caixa."</p>
-                    <ul class="space-y-4 mb-8 text-sm text-gray-300 flex-grow">
-                        <li class="flex items-center"><span class="text-emerald-500 mr-2">✔</span> 1 Frente de Caixa (PDV)</li>
-                        <li class="flex items-center"><span class="text-emerald-500 mr-2">✔</span> Gestão de Estoque</li>
-                        <li class="flex items-center"><span class="text-emerald-500 mr-2">✔</span> Cadastro de Clientes</li>
-                        <li class="flex items-center"><span class="text-emerald-500 mr-2">✔</span> Dashboard Financeiro</li>
-                        <li class="flex items-center"><span class="text-emerald-500 mr-2">✔</span> Suporte em Horário Comercial</li>
-                    </ul>
-                    <a href="https://wa.me/+5519996589243?text=Olá, tenho interesse no plano BRONZE do Sentry-OS." target="_blank" class="w-full block text-center py-3 rounded-lg border border-gray-600 text-white font-bold hover:bg-gray-800 transition">Assinar Bronze</a>
-                </div>
-
-                <!-- PRATA -->
-                <div class="glass-panel p-8 rounded-2xl border-t-4 border-t-gray-300 flex flex-col relative transition-transform duration-300 hover:-translate-y-2">
-                    <h3 class="text-2xl font-bold text-white mb-2">Prata</h3>
-                    <div class="mb-6">
-                        <span class="text-3xl font-extrabold text-white">R$ 197</span><span class="text-gray-400">/mês</span>
-                    </div>
-                    <p class="text-gray-400 text-sm mb-6 h-16 italic">"Para lojas estruturadas que precisam de agilidade no atendimento."</p>
-                    <ul class="space-y-4 mb-8 text-sm text-gray-300 flex-grow">
-                        <li class="flex items-center"><span class="text-emerald-500 mr-2">✔</span> Até 3 Terminais PDV</li>
-                        <li class="flex items-center"><span class="text-emerald-500 mr-2">✔</span> Módulo de Comandas</li>
-                        <li class="flex items-center"><span class="text-emerald-500 mr-2">✔</span> Painel de Produção (KDS)</li>
-                        <li class="flex items-center font-bold text-white"><span class="text-emerald-500 mr-2">✔</span> Integração Oficial com iFood</li>
-                        <li class="flex items-center"><span class="text-emerald-500 mr-2">✔</span> Controle de Acesso</li>
-                    </ul>
-                    <a href="https://wa.me/+5519996589243?text=Olá, tenho interesse no plano PRATA do Sentry-OS." target="_blank" class="w-full block text-center py-3 rounded-lg border border-gray-400 text-white font-bold hover:bg-gray-700 transition">Assinar Prata</a>
-                </div>
-
-                <!-- OURO -->
-                <div class="bg-[#0a0f1a] p-8 rounded-2xl border-2 border-emerald-500 shadow-[0_0_30px_rgba(16,185,129,0.15)] flex flex-col relative transform scale-105 z-10">
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-emerald-500 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider uppercase shadow-lg">Mais Vendido</div>
-                    <h3 class="text-2xl font-bold text-emerald-400 mb-2">Ouro</h3>
-                    <div class="mb-6">
-                        <span class="text-3xl font-extrabold text-white">R$ 347</span><span class="text-gray-400">/mês</span>
-                    </div>
-                    <p class="text-gray-300 text-sm mb-6 h-16 italic">"Para operações de alto volume, Dark Kitchens e foco total em Delivery."</p>
-                    <ul class="space-y-4 mb-8 text-sm text-gray-200 flex-grow">
-                        <li class="flex items-center font-bold text-white"><span class="text-emerald-400 mr-2">✔</span> Terminais PDV Ilimitados</li>
-                        <li class="flex items-center"><span class="text-emerald-400 mr-2">✔</span> Gestor Kanban em Tempo Real</li>
-                        <li class="flex items-center"><span class="text-emerald-400 mr-2">✔</span> Alerta Sonoro de Pedidos</li>
-                        <li class="flex items-center"><span class="text-emerald-400 mr-2">✔</span> Dashboards Executivos</li>
-                        <li class="flex items-center font-bold text-white"><span class="text-emerald-400 mr-2">✦</span> Suporte Prioritário VIP</li>
-                    </ul>
-                    <a href="https://wa.me/+5519996589243?text=Olá, quero agendar uma demonstração do plano OURO para a minha operação de delivery." target="_blank" class="w-full block text-center py-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold shadow-lg shadow-emerald-500/30 transition">Assinar Ouro</a>
-                </div>
-
-                <!-- DIAMANTE -->
-                <div class="glass-panel p-8 rounded-2xl border-t-4 border-t-purple-500 flex flex-col relative transition-transform duration-300 hover:-translate-y-2">
-                    <h3 class="text-2xl font-bold text-white mb-2">Diamante</h3>
-                    <div class="mb-6">
-                        <p class="text-xs text-purple-400 mb-1 font-bold uppercase tracking-widest"></p>
-                        <span class="text-2xl font-extrabold text-white">Fale com Especialista</span>
-                    </div>
-                    <p class="text-gray-400 text-sm mb-6 h-16 italic">"Para redes, franquias e operações que exigem governança centralizada."</p>
-                    <ul class="space-y-4 mb-8 text-sm text-gray-300 flex-grow">
-                        <li class="flex items-center"><span class="text-purple-500 mr-2">✔</span> Múltiplas Lojas (CNPJs)</li>
-                        <li class="flex items-center font-bold text-white"><span class="text-purple-500 mr-2">✔</span> Sistema White-Label</li>
-                        <li class="flex items-center"><span class="text-purple-500 mr-2">✔</span> Integrações via API</li>
-                        <li class="flex items-center"><span class="text-purple-500 mr-2">✔</span> Servidor Dedicado</li>
-                        <li class="flex items-center"><span class="text-purple-500 mr-2">✔</span> Gerente de Contas</li>
-                    </ul>
-                    <button onclick="openChat()" class="w-full py-3 rounded-lg border border-purple-500 text-purple-400 font-bold hover:bg-purple-500/10 transition">Falar com Especialista</button>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- COMPONENTES FIXOS: CHAT, RODAPÉ E COOKIES -->
-    <div id="chat-window" class="fixed bottom-6 right-6 w-[350px] md:w-[400px] glass-panel rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.5)] z-50 flex flex-col overflow-hidden transition-all duration-300 transform scale-0 origin-bottom-right opacity-0 border border-gray-700">
-        <div class="bg-gray-900/90 p-5 border-b border-gray-700 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse shadow-[0_0_10px_#22c55e]"></div>
-                <span class="font-bold text-base text-white">Sentry Lead Architect</span>
-            </div>
-            <button onclick="closeChat()" class="text-gray-400 hover:text-white transition text-lg">✖</button>
-        </div>
-        <div id="chat-messages" class="h-96 overflow-y-auto p-5 flex flex-col gap-4 bg-sentryDark">
-            <div class="bg-gray-800 p-4 rounded-xl rounded-tl-none text-sm text-gray-300 w-fit max-w-[90%] border border-gray-700 shadow-md">
-                <span class="text-sentryBlue font-mono text-xs mb-2 block">> Protocolo de Triagem Iniciado</span>
-                Olá! Qual é o principal gargalo tecnológico da sua operação hoje?
-            </div>
-        </div>
-        <div class="p-4 bg-gray-900/90 border-t border-gray-700">
-            <div class="flex space-x-2">
-                <input type="text" id="chat-input" placeholder="Descreva seu desafio..." class="bg-[#0a0f18] border border-gray-700 rounded-lg px-4 py-3 text-sm w-full text-white outline-none focus:border-sentryBlue transition" onkeypress="if(event.key === 'Enter') sendMessage()">
-                <button onclick="sendMessage()" class="bg-sentryBlue px-5 py-3 rounded-lg hover:bg-blue-600 text-white font-bold transition shadow-lg">➤</button>
-            </div>
-        </div>
-    </div>
-
-    <footer class="py-12 border-t border-gray-800 text-center text-gray-500 text-sm bg-gray-900/50">
-        <p class="mb-4">&copy; 2026 Tech Sentry. All rights reserved. Deployed on Railway.</p>
-        <div class="flex justify-center gap-6 font-medium flex-wrap">
-            <a href="https://wa.me/+5519996589243" target="_blank" class="hover:text-sentryBlue transition">WhatsApp</a>
-            <a href="mailto:comercial@techsentry.info" class="hover:text-sentryBlue transition">E-mail</a>
-            <a href="https://www.linkedin.com/in/lucas-amarante" target="_blank" class="hover:text-sentryBlue transition">LinkedIn</a>
-            <a href="politica-privacidade.html" class="hover:text-sentryBlue transition">Privacidade</a>
-            <a href="termos-de-uso.html" class="hover:text-sentryBlue transition">Termos de Uso</a>
-        </div>
-    </footer>
-
-    <div id="cookie-banner" class="fixed bottom-6 left-6 z-[100] w-[340px] bg-gray-900 border border-gray-700 rounded-xl shadow-[0_15px_50px_rgba(0,0,0,0.6)] p-6 transform translate-y-[150%] opacity-0 transition-all duration-700">
-        <p class="text-sm text-gray-300 mb-5 leading-relaxed">
-            Ao clicar no botão "Aceito", você concorda com a nossa 
-            <a href="politica-privacidade.html" class="text-sentryBlue hover:underline font-semibold">Política de Privacidade e cookies.</a>
-        </p>
-        <button onclick="acceptCookies()" class="bg-sentryBlue hover:bg-blue-600 text-white px-8 py-2.5 rounded-lg font-bold transition shadow-lg shadow-blue-500/20 text-sm">
-            Aceito
+      <div class="flex items-center gap-3">
+        <button onclick="openContact('Tech Sentry')" class="focus-ring hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-blue-500 hover:bg-blue-400 text-white text-sm font-bold transition shadow-lg shadow-blue-500/20">
+          Falar com especialista
         </button>
+        <button id="menu-button" onclick="toggleMenu()" class="focus-ring lg:hidden w-10 h-10 rounded-xl border border-slate-700 text-slate-200" aria-label="Abrir menu" aria-expanded="false">☰</button>
+      </div>
     </div>
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-800 bg-sentry-950/95 px-5 py-5">
+      <div class="flex flex-col gap-4 text-sm text-slate-300">
+        <a onclick="toggleMenu()" href="#platform">Plataforma</a>
+        <a onclick="toggleMenu()" href="#itsm">Sentry-ITSM</a>
+        <a onclick="toggleMenu()" href="#os">Sentry-OS</a>
+        <a onclick="toggleMenu()" href="#governance">Governança</a>
+        <a onclick="toggleMenu()" href="#roadmap">Visão 2027</a>
+        <button onclick="toggleMenu();openContact('Tech Sentry')" class="mt-2 bg-blue-500 text-white font-bold rounded-xl py-3">Falar com especialista</button>
+      </div>
+    </div>
+  </header>
 
-    <script>
-        // Logica do SentryBot
-        const chatWindow = document.getElementById('chat-window');
-        const chatInput = document.getElementById('chat-input');
-        const chatMessages = document.getElementById('chat-messages');
-        let chatStep = 0; let leadData = { desafio: "", contato: "" };
-        
-        function openChat() { chatWindow.classList.remove('scale-0', 'opacity-0'); chatWindow.classList.add('scale-100', 'opacity-100'); chatInput.focus(); }
-        function closeChat() { chatWindow.classList.remove('scale-100', 'opacity-100'); chatWindow.classList.add('scale-0', 'opacity-0'); }
-        
-        function addBotMessage(msg, isSystem = false) {
-            const sys = isSystem ? '<span class="text-green-400 font-mono text-xs mb-2 block">> Analisando...</span>' : '';
-            chatMessages.insertAdjacentHTML('beforeend', `<div class="bg-gray-800 p-4 rounded-xl rounded-tl-none text-sm text-gray-300 w-fit max-w-[90%] border border-gray-700 shadow-lg">${sys}${msg}</div>`);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-        
-        function addUserMessage(msg) {
-            chatMessages.insertAdjacentHTML('beforeend', `<div class="bg-sentryBlue p-4 rounded-xl rounded-tr-none text-sm text-white w-fit max-w-[90%] self-end shadow-lg">${msg}</div>`);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-        
-        function sendMessage() {
-            const text = chatInput.value.trim(); if (!text || chatStep === 2) return;
-            addUserMessage(text); chatInput.value = ''; chatInput.disabled = true;
-            setTimeout(() => {
-                if (chatStep === 0) {
-                    leadData.desafio = text;
-                    addBotMessage("Compreendido. Por favor, <b>digite seu LinkedIn corporativo, WhatsApp ou E-mail</b> para agendarmos o diagnóstico técnico:", true);
-                    chatStep = 1; chatInput.disabled = false; chatInput.focus();
-                } else if (chatStep === 1) {
-                    leadData.contato = text;
-                    addBotMessage("Enviando payload para a engenharia...", true);
-                    fetch(`https://formsubmit.co/ajax/comercial@techsentry.info`, {
-                        method: "POST", headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                        body: JSON.stringify({ Origem: "SentryBot VIP Lead", Desafio: leadData.desafio, Contato: leadData.contato })
-                    }).then(() => { addBotMessage("<b>✅ Dados recebidos.</b><br>Sessão finalizada.");
-                    }).catch(() => { addBotMessage("Equipe notificada. Obrigado!"); });
-                    chatStep = 2; chatInput.placeholder = "Sessão encerrada.";
-                }
-            }, 800);
-        }
+  <main>
+    <section id="home" class="pt-36 lg:pt-44 pb-24">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-[1.08fr_.92fr] gap-12 lg:gap-16 items-center">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-cyan-400/20 bg-cyan-400/5 text-cyan-300 text-xs font-bold uppercase tracking-[.2em]">
+            Operational Intelligence
+          </div>
 
-        // Lógica do Cookie Banner Flutuante
-        document.addEventListener("DOMContentLoaded", () => {
-            const banner = document.getElementById('cookie-banner');
-            if (!localStorage.getItem('techsentry_cookie_consent')) {
-                setTimeout(() => {
-                    banner.classList.remove('translate-y-[150%]', 'opacity-0');
-                }, 1000);
-            }
+          <h1 class="mt-7 text-5xl md:text-6xl xl:text-7xl leading-[1.02] font-black tracking-[-.04em] text-white">
+            Operações mais inteligentes.
+            <span class="text-gradient">Decisões com contexto.</span>
+          </h1>
+
+          <p class="mt-7 max-w-3xl text-lg md:text-xl leading-relaxed text-slate-300">
+            A Tech Sentry desenvolve software operacional para <strong class="text-white">Technology Operations</strong> e <strong class="text-white">Business Operations</strong>. Duas plataformas independentes, uma filosofia: observar, entender, decidir, executar dentro de governança e verificar o resultado.
+          </p>
+
+          <div class="mt-9 flex flex-col sm:flex-row gap-3">
+            <a href="#itsm" class="focus-ring inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-blue-500 hover:bg-blue-400 font-bold text-white transition shadow-lg shadow-blue-500/20">
+              Conhecer Sentry-ITSM
+            </a>
+            <a href="#os" class="focus-ring inline-flex items-center justify-center px-6 py-3.5 rounded-xl border border-emerald-400/35 hover:border-emerald-300/70 bg-emerald-400/5 font-bold text-emerald-200 transition">
+              Conhecer Sentry-OS
+            </a>
+          </div>
+
+          <p class="mt-5 text-xs text-slate-500">
+            ITSM e OS são produtos independentes, contratados e operados separadamente.
+          </p>
+        </div>
+
+        <div class="glass rounded-3xl p-6 md:p-8 shadow-sentry relative overflow-hidden">
+          <div class="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/70 to-transparent"></div>
+          <div class="flex items-center justify-between gap-4 mb-7">
+            <div>
+              <p class="text-xs uppercase tracking-[.22em] text-slate-500 font-bold">Operating model</p>
+              <h2 class="text-2xl font-bold text-white mt-1">Do sinal ao resultado</h2>
+            </div>
+            <span class="px-3 py-1 rounded-full text-xs border border-blue-400/20 bg-blue-400/5 text-blue-300">Governed loop</span>
+          </div>
+
+          <div class="space-y-3">
+            <div class="grid grid-cols-4 gap-2">
+              <div class="rounded-xl border border-slate-700 bg-slate-900/60 p-3 text-center"><span class="text-[11px] text-slate-400">01</span><p class="text-sm font-bold text-white mt-1">Observe</p></div>
+              <div class="rounded-xl border border-slate-700 bg-slate-900/60 p-3 text-center"><span class="text-[11px] text-slate-400">02</span><p class="text-sm font-bold text-white mt-1">Understand</p></div>
+              <div class="rounded-xl border border-slate-700 bg-slate-900/60 p-3 text-center"><span class="text-[11px] text-slate-400">03</span><p class="text-sm font-bold text-white mt-1">Detect</p></div>
+              <div class="rounded-xl border border-slate-700 bg-slate-900/60 p-3 text-center"><span class="text-[11px] text-slate-400">04</span><p class="text-sm font-bold text-white mt-1">Decide</p></div>
+            </div>
+            <div class="grid grid-cols-4 gap-2">
+              <div class="rounded-xl border border-cyan-400/20 bg-cyan-400/5 p-3 text-center"><span class="text-[11px] text-cyan-400">05</span><p class="text-sm font-bold text-white mt-1">Approve</p></div>
+              <div class="rounded-xl border border-blue-400/20 bg-blue-400/5 p-3 text-center"><span class="text-[11px] text-blue-400">06</span><p class="text-sm font-bold text-white mt-1">Act</p></div>
+              <div class="rounded-xl border border-emerald-400/20 bg-emerald-400/5 p-3 text-center"><span class="text-[11px] text-emerald-400">07</span><p class="text-sm font-bold text-white mt-1">Verify</p></div>
+              <div class="rounded-xl border border-purple-400/20 bg-purple-400/5 p-3 text-center"><span class="text-[11px] text-purple-400">08</span><p class="text-sm font-bold text-white mt-1">Learn</p></div>
+            </div>
+          </div>
+
+          <div class="mt-7 pt-6 border-t border-slate-800 grid sm:grid-cols-3 gap-4">
+            <div><p class="text-white font-bold">Contexto</p><p class="text-sm text-slate-400 mt-1">Dados operacionais conectados à decisão.</p></div>
+            <div><p class="text-white font-bold">Governança</p><p class="text-sm text-slate-400 mt-1">Políticas, aprovações e auditoria.</p></div>
+            <div><p class="text-white font-bold">Resultado</p><p class="text-sm text-slate-400 mt-1">Ação seguida de verificação e aprendizado.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-y border-slate-800/80 bg-sentry-900/55">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8 py-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm text-slate-400">
+        <div><span class="text-blue-400 font-bold">Technology Operations</span><br>TI, Telecom, ISP, NOC, SRE</div>
+        <div><span class="text-emerald-400 font-bold">Business Operations</span><br>Comércio, varejo e serviços</div>
+        <div><span class="text-cyan-300 font-bold">Governed Automation</span><br>Automação com controle explícito</div>
+        <div><span class="text-purple-300 font-bold">Closed-loop Operations</span><br>Observar, agir, verificar, aprender</div>
+      </div>
+    </section>
+
+    <section id="platform" class="py-24 lg:py-32">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="text-blue-400 text-sm font-bold uppercase tracking-[.2em]">A tese Tech Sentry</p>
+          <h2 class="mt-4 text-4xl md:text-5xl font-black tracking-tight text-white">Mais do que registrar o que aconteceu.</h2>
+          <p class="mt-5 text-lg leading-relaxed text-slate-400">Sistemas operacionais precisam ajudar equipes a interpretar sinais, organizar contexto, tomar decisões e controlar a execução. É esse espaço entre registro e ação que a Tech Sentry chama de Operational Intelligence.</p>
+        </div>
+
+        <div class="mt-12 grid md:grid-cols-2 xl:grid-cols-4 gap-5">
+          <article class="glass rounded-2xl p-6">
+            <div class="text-blue-400 font-mono text-sm">01</div>
+            <h3 class="text-xl font-bold text-white mt-4">Operação, não apenas workflow</h3>
+            <p class="mt-3 text-slate-400 leading-relaxed">Produtos desenhados para o trabalho contínuo de equipes que operam tecnologia ou negócios no dia a dia.</p>
+          </article>
+          <article class="glass rounded-2xl p-6">
+            <div class="text-cyan-300 font-mono text-sm">02</div>
+            <h3 class="text-xl font-bold text-white mt-4">Inteligência sobre contexto</h3>
+            <p class="mt-3 text-slate-400 leading-relaxed">Dados, eventos, ativos, clientes e histórico ganham valor quando ajudam a interpretar o que está acontecendo.</p>
+          </article>
+          <article class="glass rounded-2xl p-6">
+            <div class="text-purple-300 font-mono text-sm">03</div>
+            <h3 class="text-xl font-bold text-white mt-4">Automação governada</h3>
+            <p class="mt-3 text-slate-400 leading-relaxed">Permissões, políticas, feature flags, auditoria e aprovações fazem parte do modelo operacional.</p>
+          </article>
+          <article class="glass rounded-2xl p-6">
+            <div class="text-emerald-300 font-mono text-sm">04</div>
+            <h3 class="text-xl font-bold text-white mt-4">Resultado verificável</h3>
+            <p class="mt-3 text-slate-400 leading-relaxed">A visão de longo prazo fecha o ciclo: executar, verificar o efeito e aprender com o resultado.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="itsm" class="py-24 lg:py-32 border-y border-slate-800/80 bg-[#070d19]">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-2 gap-14 items-center">
+        <div>
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-[.18em] bg-blue-500/10 border border-blue-400/20 text-blue-300">Disponível hoje</span>
+            <span class="text-sm text-slate-500">Technology Operations</span>
+          </div>
+
+          <h2 class="mt-5 text-4xl md:text-5xl font-black text-white">Sentry-ITSM</h2>
+          <p class="mt-2 text-xl font-semibold text-blue-300">IT & Network Operations com governança operacional.</p>
+          <p class="mt-5 text-slate-400 text-lg leading-relaxed">
+            Para equipes de TI, telecom, ISPs, NOCs, SRE e operações críticas que precisam combinar gestão de incidentes, ativos, topologia, mudanças, observabilidade e automação em uma operação governada.
+          </p>
+
+          <div class="mt-8 grid sm:grid-cols-2 gap-3">
+            <div class="rounded-xl border border-slate-800 bg-slate-900/45 px-4 py-3 text-sm text-slate-300"><span class="text-blue-400 mr-2">✓</span>Incidentes e chamados</div><div class="rounded-xl border border-slate-800 bg-slate-900/45 px-4 py-3 text-sm text-slate-300"><span class="text-blue-400 mr-2">✓</span>CMDB e topologia</div><div class="rounded-xl border border-slate-800 bg-slate-900/45 px-4 py-3 text-sm text-slate-300"><span class="text-blue-400 mr-2">✓</span>GMUD / CAB</div><div class="rounded-xl border border-slate-800 bg-slate-900/45 px-4 py-3 text-sm text-slate-300"><span class="text-blue-400 mr-2">✓</span>Clientes e ativos</div><div class="rounded-xl border border-slate-800 bg-slate-900/45 px-4 py-3 text-sm text-slate-300"><span class="text-blue-400 mr-2">✓</span>Vault de credenciais</div><div class="rounded-xl border border-slate-800 bg-slate-900/45 px-4 py-3 text-sm text-slate-300"><span class="text-blue-400 mr-2">✓</span>Integração com Zabbix</div><div class="rounded-xl border border-slate-800 bg-slate-900/45 px-4 py-3 text-sm text-slate-300"><span class="text-blue-400 mr-2">✓</span>Agente / satélite</div><div class="rounded-xl border border-slate-800 bg-slate-900/45 px-4 py-3 text-sm text-slate-300"><span class="text-blue-400 mr-2">✓</span>Catálogo de comandos</div><div class="rounded-xl border border-slate-800 bg-slate-900/45 px-4 py-3 text-sm text-slate-300"><span class="text-blue-400 mr-2">✓</span>AIOps</div><div class="rounded-xl border border-slate-800 bg-slate-900/45 px-4 py-3 text-sm text-slate-300"><span class="text-blue-400 mr-2">✓</span>Telegram</div><div class="rounded-xl border border-slate-800 bg-slate-900/45 px-4 py-3 text-sm text-slate-300"><span class="text-blue-400 mr-2">✓</span>RBAC e SSO</div><div class="rounded-xl border border-slate-800 bg-slate-900/45 px-4 py-3 text-sm text-slate-300"><span class="text-blue-400 mr-2">✓</span>White-label</div>
+          </div>
+
+          <div class="mt-9 flex flex-col sm:flex-row gap-3">
+            <button onclick="openContact('Sentry-ITSM')" class="focus-ring px-6 py-3.5 rounded-xl bg-blue-500 hover:bg-blue-400 text-white font-bold transition">Solicitar demonstração</button>
+            <a href="#roadmap" class="focus-ring px-6 py-3.5 rounded-xl border border-slate-700 hover:border-blue-400/50 text-slate-200 font-bold transition text-center">Ver visão de evolução</a>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="absolute -inset-6 bg-blue-500/8 blur-3xl rounded-full"></div>
+          <div class="relative glass rounded-3xl p-4 shadow-sentry">
+            <img src="itsm-dashboard.png" loading="lazy" alt="Interface do Sentry-ITSM" class="w-full rounded-2xl border border-slate-700/70">
+            <div class="mt-4 grid grid-cols-3 gap-3">
+              <div class="rounded-xl bg-slate-950/70 border border-slate-800 p-3">
+                <p class="text-[11px] uppercase tracking-wider text-slate-500">Domínio</p>
+                <p class="text-sm font-bold text-white mt-1">ITSM</p>
+              </div>
+              <div class="rounded-xl bg-slate-950/70 border border-slate-800 p-3">
+                <p class="text-[11px] uppercase tracking-wider text-slate-500">Observabilidade</p>
+                <p class="text-sm font-bold text-white mt-1">Zabbix</p>
+              </div>
+              <div class="rounded-xl bg-slate-950/70 border border-slate-800 p-3">
+                <p class="text-[11px] uppercase tracking-wider text-slate-500">Edge</p>
+                <p class="text-sm font-bold text-white mt-1">Agent/Satellite</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="os" class="py-24 lg:py-32">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-2 gap-14 items-center">
+        <div class="relative order-2 lg:order-1">
+          <div class="absolute -inset-6 bg-emerald-500/8 blur-3xl rounded-full"></div>
+          <div class="relative glass rounded-3xl p-4 shadow-sentry">
+            <img src="os-dashboard.png" loading="lazy" alt="Interface do Sentry-OS" class="w-full rounded-2xl border border-slate-700/70">
+            <div class="mt-4 grid grid-cols-3 gap-3">
+              <div class="rounded-xl bg-slate-950/70 border border-slate-800 p-3">
+                <p class="text-[11px] uppercase tracking-wider text-slate-500">Operação</p>
+                <p class="text-sm font-bold text-white mt-1">PDV</p>
+              </div>
+              <div class="rounded-xl bg-slate-950/70 border border-slate-800 p-3">
+                <p class="text-[11px] uppercase tracking-wider text-slate-500">Gestão</p>
+                <p class="text-sm font-bold text-white mt-1">CRM / ERP</p>
+              </div>
+              <div class="rounded-xl bg-slate-950/70 border border-slate-800 p-3">
+                <p class="text-[11px] uppercase tracking-wider text-slate-500">Integração</p>
+                <p class="text-sm font-bold text-white mt-1">iFood</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="order-1 lg:order-2">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-[.18em] bg-emerald-500/10 border border-emerald-400/20 text-emerald-300">Disponível hoje</span>
+            <span class="text-sm text-slate-500">Business Operations</span>
+          </div>
+
+          <h2 class="mt-5 text-4xl md:text-5xl font-black text-white">Sentry-OS</h2>
+          <p class="mt-2 text-xl font-semibold text-emerald-300">Operação comercial em uma plataforma própria.</p>
+          <p class="mt-5 text-slate-400 text-lg leading-relaxed">
+            Para comércio, varejo e prestadores de serviço que precisam conectar frente de caixa, estoque, clientes, vendas e operação diária sem depender de múltiplos controles isolados.
+          </p>
+
+          <div class="mt-8 grid sm:grid-cols-2 gap-3">
+            <div class="rounded-xl border border-slate-800 bg-slate-900/45 px-4 py-3 text-sm text-slate-300"><span class="text-emerald-400 mr-2">✓</span>Multi-loja</div><div class="rounded-xl border border-slate-800 bg-slate-900/45 px-4 py-3 text-sm text-slate-300"><span class="text-emerald-400 mr-2">✓</span>PDV</div><div class="rounded-xl border border-slate-800 bg-slate-900/45 px-4 py-3 text-sm text-slate-300"><span class="text-emerald-400 mr-2">✓</span>Produtos e categorias</div><div class="rounded-xl border border-slate-800 bg-slate-900/45 px-4 py-3 text-sm text-slate-300"><span class="text-emerald-400 mr-2">✓</span>Estoque e movimentações</div><div class="rounded-xl border border-slate-800 bg-slate-900/45 px-4 py-3 text-sm text-slate-300"><span class="text-emerald-400 mr-2">✓</span>Vendas</div><div class="rounded-xl border border-slate-800 bg-slate-900/45 px-4 py-3 text-sm text-slate-300"><span class="text-emerald-400 mr-2">✓</span>Clientes</div><div class="rounded-xl border border-slate-800 bg-slate-900/45 px-4 py-3 text-sm text-slate-300"><span class="text-emerald-400 mr-2">✓</span>CRM operacional</div><div class="rounded-xl border border-slate-800 bg-slate-900/45 px-4 py-3 text-sm text-slate-300"><span class="text-emerald-400 mr-2">✓</span>Caixa</div><div class="rounded-xl border border-slate-800 bg-slate-900/45 px-4 py-3 text-sm text-slate-300"><span class="text-emerald-400 mr-2">✓</span>Cashback</div><div class="rounded-xl border border-slate-800 bg-slate-900/45 px-4 py-3 text-sm text-slate-300"><span class="text-emerald-400 mr-2">✓</span>Membresia / academia</div><div class="rounded-xl border border-slate-800 bg-slate-900/45 px-4 py-3 text-sm text-slate-300"><span class="text-emerald-400 mr-2">✓</span>Comandas e produção</div><div class="rounded-xl border border-slate-800 bg-slate-900/45 px-4 py-3 text-sm text-slate-300"><span class="text-emerald-400 mr-2">✓</span>Integração com iFood</div>
+          </div>
+
+          <div class="mt-9 flex flex-col sm:flex-row gap-3">
+            <button onclick="openContact('Sentry-OS')" class="focus-ring px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-sentry-950 font-black transition">Solicitar demonstração</button>
+            <a href="#roadmap" class="focus-ring px-6 py-3.5 rounded-xl border border-slate-700 hover:border-emerald-400/50 text-slate-200 font-bold transition text-center">Ver visão de evolução</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="master" class="py-24 border-y border-slate-800/80 bg-sentry-900/45">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="glass rounded-3xl p-7 md:p-10 lg:p-12">
+          <div class="grid lg:grid-cols-[.8fr_1.2fr] gap-10 items-center">
+            <div>
+              <p class="text-purple-300 text-sm font-bold uppercase tracking-[.2em]">Sentry-Master</p>
+              <h2 class="mt-4 text-3xl md:text-4xl font-black text-white">The Tech Sentry SaaS Control Plane.</h2>
+              <p class="mt-5 text-slate-400 leading-relaxed">O Master administra o ecossistema Tech Sentry. Ele governa clientes, assinaturas, planos, provisionamento, billing, saúde básica, auditoria administrativa e features.</p>
+              <p class="mt-5 text-sm text-slate-500">Não é ITSM. Não é ERP. Não transporta chamados do ITSM para o OS nem vendas do OS para o ITSM.</p>
+            </div>
+
+            <div class="grid gap-4">
+              <div class="rounded-2xl border border-purple-400/25 bg-purple-400/5 p-5 text-center">
+                <p class="text-sm text-purple-200 font-bold">SENTRY-MASTER</p>
+                <p class="text-xs text-slate-500 mt-1">Gestão / Governança</p>
+              </div>
+              <div class="grid grid-cols-[1fr_auto_1fr] gap-4 items-center">
+                <div class="rounded-2xl border border-blue-400/25 bg-blue-400/5 p-5 text-center">
+                  <p class="text-white font-bold">Sentry-ITSM</p>
+                  <p class="text-xs text-slate-500 mt-1">Assinatura independente</p>
+                </div>
+                <div class="text-slate-600 font-mono">≠</div>
+                <div class="rounded-2xl border border-emerald-400/25 bg-emerald-400/5 p-5 text-center">
+                  <p class="text-white font-bold">Sentry-OS</p>
+                  <p class="text-xs text-slate-500 mt-1">Assinatura independente</p>
+                </div>
+              </div>
+              <p class="text-xs text-center text-slate-500">Não existe pacote ou licença “BOTH”.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="governance" class="py-24 lg:py-32">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="text-cyan-300 text-sm font-bold uppercase tracking-[.2em]">Segurança e governança</p>
+          <h2 class="mt-4 text-4xl md:text-5xl font-black text-white">Autonomia só faz sentido com controle.</h2>
+          <p class="mt-5 text-lg text-slate-400 leading-relaxed">A arquitetura Tech Sentry parte de princípios comuns de isolamento, menor privilégio, auditoria e reversibilidade. O objetivo não é automatizar a qualquer custo — é aumentar capacidade operacional com guardrails explícitos.</p>
+        </div>
+
+        <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <article class="glass rounded-2xl p-6"><h3 class="font-bold text-white">Tenant isolation</h3><p class="mt-2 text-sm leading-relaxed text-slate-400">Separação de dados e contexto por tenant.</p></article><article class="glass rounded-2xl p-6"><h3 class="font-bold text-white">Least privilege + RBAC</h3><p class="mt-2 text-sm leading-relaxed text-slate-400">Acesso limitado ao necessário para cada papel.</p></article><article class="glass rounded-2xl p-6"><h3 class="font-bold text-white">Auditoria privilegiada</h3><p class="mt-2 text-sm leading-relaxed text-slate-400">Ações sensíveis devem deixar trilha verificável.</p></article><article class="glass rounded-2xl p-6"><h3 class="font-bold text-white">Feature flags / kill switches</h3><p class="mt-2 text-sm leading-relaxed text-slate-400">Automação pode ser controlada ou interrompida.</p></article><article class="glass rounded-2xl p-6"><h3 class="font-bold text-white">Política explícita</h3><p class="mt-2 text-sm leading-relaxed text-slate-400">Ações destrutivas exigem regras e autorização.</p></article><article class="glass rounded-2xl p-6"><h3 class="font-bold text-white">Verificável e reversível</h3><p class="mt-2 text-sm leading-relaxed text-slate-400">Produção deve permitir validação e rollback quando aplicável.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="roadmap" class="py-24 lg:py-32 border-y border-slate-800/80 roadmap">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-[.18em] border border-amber-400/25 bg-amber-400/5 text-amber-300">Roadmap / Visão de Produto</div>
+          <h2 class="mt-5 text-4xl md:text-5xl font-black text-white">A direção é autonomia governada.</h2>
+          <p class="mt-5 text-lg text-slate-400 leading-relaxed">Os itens abaixo representam a arquitetura-alvo e capacidades planejadas. <strong class="text-amber-200">Não são apresentados como funcionalidades já entregues.</strong></p>
+        </div>
+
+        <div class="mt-12 grid lg:grid-cols-2 gap-6">
+          <article class="glass rounded-3xl p-7 md:p-8 border-blue-400/20">
+            <p class="text-blue-300 text-sm font-bold">Sentry-ITSM — visão</p>
+            <h3 class="text-2xl font-black text-white mt-2">Autonomous IT & Network Operations</h3>
+            <div class="mt-6 grid sm:grid-cols-2 gap-3 text-sm text-slate-300">
+              <div class="rounded-xl border border-blue-400/15 bg-blue-400/5 p-3">Event Correlation Engine</div><div class="rounded-xl border border-blue-400/15 bg-blue-400/5 p-3">Telecom Digital Twin</div><div class="rounded-xl border border-blue-400/15 bg-blue-400/5 p-3">Blast Radius</div><div class="rounded-xl border border-blue-400/15 bg-blue-400/5 p-3">RCA automático com evidências</div><div class="rounded-xl border border-blue-400/15 bg-blue-400/5 p-3">Change Risk Intelligence</div><div class="rounded-xl border border-blue-400/15 bg-blue-400/5 p-3">Autonomous NOC governado</div><div class="rounded-xl border border-blue-400/15 bg-blue-400/5 p-3">Verify / rollback</div><div class="rounded-xl border border-blue-400/15 bg-blue-400/5 p-3">SLO/SLA orientado a impacto</div>
+            </div>
+          </article>
+
+          <article class="glass rounded-3xl p-7 md:p-8 border-emerald-400/20">
+            <p class="text-emerald-300 text-sm font-bold">Sentry-OS — visão</p>
+            <h3 class="text-2xl font-black text-white mt-2">Autonomous Business Operations</h3>
+            <div class="mt-6 grid sm:grid-cols-2 gap-3 text-sm text-slate-300">
+              <div class="rounded-xl border border-emerald-400/15 bg-emerald-400/5 p-3">Margem real por produto/canal</div><div class="rounded-xl border border-emerald-400/15 bg-emerald-400/5 p-3">Business Incident Detection</div><div class="rounded-xl border border-emerald-400/15 bg-emerald-400/5 p-3">Estoque inteligente</div><div class="rounded-xl border border-emerald-400/15 bg-emerald-400/5 p-3">CRM comportamental</div><div class="rounded-xl border border-emerald-400/15 bg-emerald-400/5 p-3">Business Autopilot</div><div class="rounded-xl border border-emerald-400/15 bg-emerald-400/5 p-3">Execução autorizada</div><div class="rounded-xl border border-emerald-400/15 bg-emerald-400/5 p-3">Fiscal Guardian</div><div class="rounded-xl border border-emerald-400/15 bg-emerald-400/5 p-3">Medição de resultado das ações</div>
+            </div>
+          </article>
+        </div>
+
+        <div class="mt-6 rounded-2xl border border-slate-700 bg-sentry-950/60 p-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div>
+            <p class="font-bold text-white">Regra de comunicação Tech Sentry</p>
+            <p class="text-sm text-slate-400 mt-1">Capacidade atual = disponível hoje. Arquitetura-alvo / planejado = roadmap.</p>
+          </div>
+          <span class="text-xs px-3 py-1.5 rounded-full border border-amber-400/25 text-amber-300 bg-amber-400/5 w-fit">NOW ≠ ROADMAP</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 lg:py-32">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="rounded-[2rem] border border-blue-400/20 bg-gradient-to-br from-blue-500/12 via-cyan-400/5 to-emerald-400/8 p-8 md:p-12 lg:p-16 text-center shadow-glow-blue">
+          <p class="text-cyan-300 text-sm font-bold uppercase tracking-[.2em]">Próximo passo</p>
+          <h2 class="mt-4 text-4xl md:text-5xl font-black text-white max-w-4xl mx-auto">Sua operação precisa de mais controle, mais contexto ou mais capacidade de execução?</h2>
+          <p class="mt-5 text-lg text-slate-300 max-w-2xl mx-auto">Conte o cenário. A Tech Sentry identifica se o melhor ponto de entrada é Technology Operations ou Business Operations — sem misturar os produtos.</p>
+          <div class="mt-8 flex flex-col sm:flex-row justify-center gap-3">
+            <button onclick="openContact('Sentry-ITSM')" class="focus-ring px-6 py-3.5 rounded-xl bg-blue-500 hover:bg-blue-400 text-white font-bold transition">Quero falar sobre ITSM</button>
+            <button onclick="openContact('Sentry-OS')" class="focus-ring px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-sentry-950 font-black transition">Quero falar sobre OS</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-800 bg-sentry-950/85">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 py-10 flex flex-col md:flex-row justify-between gap-8">
+      <div>
+        <p class="font-black text-white text-lg">Tech <span class="text-blue-400">Sentry</span></p>
+        <p class="text-sm text-slate-500 mt-2">Operational Intelligence for Technology and Business.</p>
+        <p class="text-xs text-slate-600 mt-5">© 2026 Tech Sentry. Todos os direitos reservados.</p>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-3 text-sm text-slate-400">
+        <a class="hover:text-white transition" href="#itsm">Sentry-ITSM</a>
+        <a class="hover:text-white transition" href="#os">Sentry-OS</a>
+        <a class="hover:text-white transition" href="#roadmap">Visão 2027</a>
+        <a class="hover:text-white transition" href="mailto:comercial@techsentry.info">E-mail</a>
+        <a class="hover:text-white transition" href="https://wa.me/5519996589243" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="hover:text-white transition" href="politica-privacidade.html">Privacidade</a>
+        <a class="hover:text-white transition" href="termos-de-uso.html">Termos</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="contact-modal" class="hidden fixed inset-0 z-[80] bg-black/70 backdrop-blur-sm p-4 items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="contact-title">
+    <div class="glass rounded-3xl max-w-xl w-full shadow-sentry max-h-[92vh] overflow-y-auto">
+      <div class="p-6 md:p-8">
+        <div class="flex justify-between items-start gap-4">
+          <div>
+            <p class="text-blue-400 text-xs font-bold uppercase tracking-[.18em]">Contato comercial</p>
+            <h2 id="contact-title" class="text-2xl font-black text-white mt-2">Converse com a Tech Sentry</h2>
+          </div>
+          <button onclick="closeContact()" class="focus-ring w-9 h-9 rounded-xl border border-slate-700 text-slate-300" aria-label="Fechar">✕</button>
+        </div>
+
+        <form id="lead-form" class="mt-7 space-y-4" onsubmit="submitLead(event)">
+          <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off">
+          <div>
+            <label for="interest" class="text-sm text-slate-300">Produto / interesse</label>
+            <select id="interest" name="Interesse" class="mt-1.5 w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-white focus:border-blue-400 outline-none">
+              <option>Tech Sentry</option>
+              <option>Sentry-ITSM</option>
+              <option>Sentry-OS</option>
+            </select>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label for="name" class="text-sm text-slate-300">Nome</label>
+              <input id="name" name="Nome" required class="mt-1.5 w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-white focus:border-blue-400 outline-none">
+            </div>
+            <div>
+              <label for="company" class="text-sm text-slate-300">Empresa</label>
+              <input id="company" name="Empresa" class="mt-1.5 w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-white focus:border-blue-400 outline-none">
+            </div>
+          </div>
+          <div>
+            <label for="contact" class="text-sm text-slate-300">E-mail ou WhatsApp</label>
+            <input id="contact" name="Contato" required class="mt-1.5 w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-white focus:border-blue-400 outline-none">
+          </div>
+          <div>
+            <label for="challenge" class="text-sm text-slate-300">Qual é o principal desafio da operação?</label>
+            <textarea id="challenge" name="Desafio" rows="4" class="mt-1.5 w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-white focus:border-blue-400 outline-none"></textarea>
+          </div>
+          <button id="lead-submit" type="submit" class="focus-ring w-full py-3.5 rounded-xl bg-blue-500 hover:bg-blue-400 text-white font-bold transition">Enviar contato</button>
+          <p id="lead-status" class="text-sm text-slate-400 text-center" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="cookie-banner" class="hidden fixed z-[90] bottom-4 left-4 right-4 md:left-6 md:right-auto md:max-w-md glass rounded-2xl shadow-sentry p-5">
+    <p class="text-sm text-slate-300 leading-relaxed">Usamos armazenamento essencial para preferências. Com sua autorização, ativamos também ferramentas de medição de marketing. Leia a <a href="politica-privacidade.html" class="text-blue-300 hover:underline">Política de Privacidade</a>.</p>
+    <div class="mt-4 flex flex-col sm:flex-row gap-2">
+      <button onclick="setConsent('analytics')" class="focus-ring px-4 py-2.5 rounded-xl bg-blue-500 hover:bg-blue-400 text-white text-sm font-bold">Aceitar analytics</button>
+      <button onclick="setConsent('essential')" class="focus-ring px-4 py-2.5 rounded-xl border border-slate-700 hover:border-slate-500 text-slate-200 text-sm font-bold">Somente essenciais</button>
+    </div>
+  </div>
+
+  <script>
+    const CONTACT_ENDPOINT = 'https://formsubmit.co/ajax/comercial@techsentry.info';
+
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const button = document.getElementById('menu-button');
+      const hidden = menu.classList.toggle('hidden');
+      button.setAttribute('aria-expanded', String(!hidden));
+    }
+
+    function openContact(product) {
+      const modal = document.getElementById('contact-modal');
+      const interest = document.getElementById('interest');
+      if (product) interest.value = product;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => document.getElementById('name').focus(), 50);
+      trackConversion('contact_open', product || 'Tech Sentry');
+    }
+
+    function closeContact() {
+      const modal = document.getElementById('contact-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('contact-modal').addEventListener('click', (event) => {
+      if (event.target.id === 'contact-modal') closeContact();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeContact();
+    });
+
+    async function submitLead(event) {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const submit = document.getElementById('lead-submit');
+      const status = document.getElementById('lead-status');
+      const honey = form.querySelector('[name="_honey"]').value;
+      if (honey) return;
+
+      submit.disabled = true;
+      submit.textContent = 'Enviando...';
+      status.textContent = '';
+
+      const data = Object.fromEntries(new FormData(form).entries());
+      delete data._honey;
+      data.Origem = 'Website Tech Sentry — Repositioning v1';
+
+      try {
+        const response = await fetch(CONTACT_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data)
         });
+        if (!response.ok) throw new Error('Falha no envio');
+        status.textContent = 'Contato recebido. Nossa equipe retornará pelos dados informados.';
+        form.reset();
+        trackConversion('lead_submit', data.Interesse || 'Tech Sentry');
+        submit.textContent = 'Enviado';
+      } catch (error) {
+        status.innerHTML = 'Não foi possível enviar agora. Fale conosco pelo <a class="text-blue-300 underline" target="_blank" rel="noopener" href="https://wa.me/5519996589243">WhatsApp</a>.';
+        submit.disabled = false;
+        submit.textContent = 'Tentar novamente';
+      }
+    }
 
-        function acceptCookies() {
-            localStorage.setItem('techsentry_cookie_consent', 'true');
-            const banner = document.getElementById('cookie-banner');
-            banner.classList.add('translate-y-[150%]', 'opacity-0');
-        }
-    </script>
+    function loadMetaPixel() {
+      if (window.fbq) return;
+      !function(f,b,e,v,n,t,s){
+        if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];
+        t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)
+      }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1086168663977296');
+      fbq('track', 'PageView');
+    }
+
+    function loadLinkedIn() {
+      if (window.lintrk) return;
+      window._linkedin_partner_id = '10536425';
+      window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+      window._linkedin_data_partner_ids.push(window._linkedin_partner_id);
+      window.lintrk = function(a,b){ window.lintrk.q.push([a,b]); };
+      window.lintrk.q = [];
+      const first = document.getElementsByTagName('script')[0];
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = 'https://snap.licdn.com/li.lms-analytics/insight.min.js';
+      first.parentNode.insertBefore(script, first);
+    }
+
+    function enableAnalytics() {
+      loadMetaPixel();
+      loadLinkedIn();
+    }
+
+    function trackConversion(action, label) {
+      if (localStorage.getItem('techsentry_consent') !== 'analytics') return;
+      if (window.fbq) fbq('trackCustom', action, { label });
+      if (window.lintrk) lintrk('track', { conversion_id: 0 });
+    }
+
+    function setConsent(level) {
+      localStorage.setItem('techsentry_consent', level);
+      document.getElementById('cookie-banner').classList.add('hidden');
+      if (level === 'analytics') enableAnalytics();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const consent = localStorage.getItem('techsentry_consent');
+      if (!consent) document.getElementById('cookie-banner').classList.remove('hidden');
+      if (consent === 'analytics') enableAnalytics();
+    });
+  </script>
 </body>
 </html>
