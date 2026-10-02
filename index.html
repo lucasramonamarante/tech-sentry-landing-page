@@ -114,9 +114,9 @@
 
       <nav class="hidden lg:flex items-center gap-7 text-sm text-slate-300" aria-label="Navegação principal">
         <a class="focus-ring hover:text-white transition" href="#platform">Plataforma</a>
-        <a class="focus-ring hover:text-white transition" href="#itsm">Sentry-ITSM</a>
-        <a class="focus-ring hover:text-white transition" href="#os">Sentry-OS</a>
-        <a class="focus-ring hover:text-white transition" href="#governance">Governança</a>
+        <a class="focus-ring hover:text-white transition" href="/sentry-itsm/">Sentry-ITSM</a>
+        <a class="focus-ring hover:text-white transition" href="/sentry-os/">Sentry-OS</a>
+        <a class="focus-ring hover:text-white transition" href="/precos/">Preços</a><a class="focus-ring hover:text-white transition" href="#governance">Governança</a>
         <a class="focus-ring hover:text-white transition" href="#roadmap">Visão 2027</a>
       </nav>
 
@@ -130,9 +130,9 @@
     <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-800 bg-sentry-950/95 px-5 py-5">
       <div class="flex flex-col gap-4 text-sm text-slate-300">
         <a onclick="toggleMenu()" href="#platform">Plataforma</a>
-        <a onclick="toggleMenu()" href="#itsm">Sentry-ITSM</a>
-        <a onclick="toggleMenu()" href="#os">Sentry-OS</a>
-        <a onclick="toggleMenu()" href="#governance">Governança</a>
+        <a onclick="toggleMenu()" href="/sentry-itsm/">Sentry-ITSM</a>
+        <a onclick="toggleMenu()" href="/sentry-os/">Sentry-OS</a>
+        <a onclick="toggleMenu()" href="/precos/">Preços</a><a onclick="toggleMenu()" href="#governance">Governança</a>
         <a onclick="toggleMenu()" href="#roadmap">Visão 2027</a>
         <button onclick="toggleMenu();openContact('Tech Sentry')" class="mt-2 bg-blue-500 text-white font-bold rounded-xl py-3">Falar com especialista</button>
       </div>
@@ -157,10 +157,10 @@
           </p>
 
           <div class="mt-9 flex flex-col sm:flex-row gap-3">
-            <a href="#itsm" class="focus-ring inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-blue-500 hover:bg-blue-400 font-bold text-white transition shadow-lg shadow-blue-500/20">
+            <a href="/sentry-itsm/" class="focus-ring inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-blue-500 hover:bg-blue-400 font-bold text-white transition shadow-lg shadow-blue-500/20">
               Conhecer Sentry-ITSM
             </a>
-            <a href="#os" class="focus-ring inline-flex items-center justify-center px-6 py-3.5 rounded-xl border border-emerald-400/35 hover:border-emerald-300/70 bg-emerald-400/5 font-bold text-emerald-200 transition">
+            <a href="/sentry-os/" class="focus-ring inline-flex items-center justify-center px-6 py-3.5 rounded-xl border border-emerald-400/35 hover:border-emerald-300/70 bg-emerald-400/5 font-bold text-emerald-200 transition">
               Conhecer Sentry-OS
             </a>
           </div>
@@ -370,6 +370,23 @@
               <p class="text-xs text-center text-slate-500">Não existe pacote ou licença “BOTH”.</p>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+<section id="solucoes" class="py-24 lg:py-32 border-y border-slate-800/80 bg-sentry-900/35">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="text-cyan-300 text-sm font-bold uppercase tracking-[.2em]">Soluções por operação</p>
+          <h2 class="mt-4 text-4xl md:text-5xl font-black text-white">Entre pela dor da sua operação.</h2>
+          <p class="mt-5 text-lg text-slate-400">Páginas específicas para os cenários onde Sentry-ITSM e Sentry-OS geram valor hoje.</p>
+        </div>
+        <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+          <a href="/solucoes/isp-noc/" class="glass rounded-2xl p-5 hover:border-blue-400/50 transition"><p class="text-blue-300 text-xs font-bold uppercase">ITSM</p><h3 class="mt-2 font-bold text-white">ISP & NOC</h3><p class="mt-2 text-sm text-slate-400">Rede, Zabbix, CMDB, topologia e operação.</p></a>
+          <a href="/solucoes/ti-sre/" class="glass rounded-2xl p-5 hover:border-blue-400/50 transition"><p class="text-blue-300 text-xs font-bold uppercase">ITSM</p><h3 class="mt-2 font-bold text-white">TI & SRE</h3><p class="mt-2 text-sm text-slate-400">Incidentes, mudanças, observabilidade e governança.</p></a>
+          <a href="/solucoes/varejo/" class="glass rounded-2xl p-5 hover:border-emerald-400/50 transition"><p class="text-emerald-300 text-xs font-bold uppercase">OS</p><h3 class="mt-2 font-bold text-white">Varejo</h3><p class="mt-2 text-sm text-slate-400">PDV, estoque, vendas, clientes e caixa.</p></a>
+          <a href="/solucoes/food-service/" class="glass rounded-2xl p-5 hover:border-emerald-400/50 transition"><p class="text-emerald-300 text-xs font-bold uppercase">OS</p><h3 class="mt-2 font-bold text-white">Food Service</h3><p class="mt-2 text-sm text-slate-400">Comandas, produção, estoque e iFood.</p></a>
+          <a href="/solucoes/servicos/" class="glass rounded-2xl p-5 hover:border-emerald-400/50 transition"><p class="text-emerald-300 text-xs font-bold uppercase">OS</p><h3 class="mt-2 font-bold text-white">Serviços</h3><p class="mt-2 text-sm text-slate-400">Clientes, CRM operacional, vendas e caixa.</p></a>
         </div>
       </div>
     </section>
