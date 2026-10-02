@@ -1,9 +1,88 @@
-:root{color-scheme:dark}
-body{background:radial-gradient(circle at 15% 0%,rgba(79,140,255,.13),transparent 28%),radial-gradient(circle at 90% 18%,rgba(52,211,153,.08),transparent 24%),#050816;color:#e5edf8;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-::selection{background:rgba(79,140,255,.35);color:#fff}
-.glass{background:linear-gradient(180deg,rgba(13,23,41,.84),rgba(8,16,31,.72));border:1px solid rgba(148,163,184,.16);backdrop-filter:blur(18px)}
-.text-gradient{background:linear-gradient(90deg,#93c5fd 0%,#67e8f9 48%,#a7f3d0 100%);-webkit-background-clip:text;color:transparent}
-.roadmap{background:repeating-linear-gradient(135deg,rgba(79,140,255,.055),rgba(79,140,255,.055) 10px,rgba(79,140,255,.02) 10px,rgba(79,140,255,.02) 20px)}
-.focus-ring:focus-visible{outline:2px solid #67e8f9;outline-offset:3px}
-.hero-grid{background-image:linear-gradient(rgba(148,163,184,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(148,163,184,.055) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,#000,transparent 90%)}
-.price-card{transition:transform .2s ease,border-color .2s ease}.price-card:hover{transform:translateY(-3px);border-color:rgba(96,165,250,.5)}
+:root{
+  color-scheme:dark;
+  --bg:#03050b;
+  --panel:rgba(9,15,28,.72);
+  --panel-strong:rgba(8,13,24,.92);
+  --line:rgba(148,163,184,.14);
+  --blue:#5b8cff;
+  --cyan:#38d8ff;
+  --green:#42e3a5;
+  --violet:#9f7aea;
+  --text:#edf5ff;
+  --muted:#94a3b8;
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 12% 8%,rgba(91,140,255,.13),transparent 26rem),
+    radial-gradient(circle at 88% 12%,rgba(56,216,255,.08),transparent 22rem),
+    radial-gradient(circle at 52% 72%,rgba(66,227,165,.06),transparent 30rem),
+    linear-gradient(180deg,#03050b 0%,#060a13 46%,#03050b 100%);
+  color:var(--text);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  min-height:100vh;
+}
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-3;
+  opacity:.22;
+  background-image:
+    radial-gradient(circle at 1px 1px,rgba(255,255,255,.14) 1px,transparent 0);
+  background-size:28px 28px;
+  mask-image:linear-gradient(to bottom,rgba(0,0,0,.8),transparent 92%);
+}
+::selection{background:rgba(56,216,255,.28);color:#fff}
+a,button{ -webkit-tap-highlight-color:transparent }
+.glass{
+  position:relative;
+  background:linear-gradient(180deg,rgba(12,20,36,.82),rgba(6,11,22,.72));
+  border:1px solid var(--line);
+  backdrop-filter:blur(20px) saturate(135%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.025),0 24px 80px rgba(0,0,0,.24);
+}
+.glass:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border-radius:inherit;
+  background:linear-gradient(135deg,rgba(255,255,255,.035),transparent 26%,transparent 70%,rgba(56,216,255,.025));
+}
+.text-gradient{
+  background:linear-gradient(90deg,#dbeafe 0%,#73e7ff 45%,#83f4c3 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.roadmap{
+  background:
+    linear-gradient(180deg,rgba(13,20,36,.58),rgba(5,9,17,.85)),
+    repeating-linear-gradient(135deg,rgba(91,140,255,.045),rgba(91,140,255,.045) 10px,rgba(91,140,255,.018) 10px,rgba(91,140,255,.018) 20px);
+}
+.focus-ring:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.hero-grid{
+  background-image:
+    linear-gradient(rgba(148,163,184,.055) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(148,163,184,.055) 1px,transparent 1px);
+  background-size:46px 46px;
+  mask-image:linear-gradient(to bottom,#000,transparent 92%);
+}
+.price-card{
+  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+.price-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(91,140,255,.46);
+  box-shadow:0 30px 80px rgba(0,0,0,.34),0 0 40px rgba(91,140,255,.08);
+}
+@media (prefers-reduced-motion:no-preference){
+  .glass,.price-card{will-change:transform}
+}
+@media (max-width:640px){
+  body:before{background-size:22px 22px;opacity:.16}
+}
