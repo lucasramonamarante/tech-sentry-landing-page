@@ -81,14 +81,7 @@ function getAttributionForLead(){
 function openWhatsApp(context){
   const attr=getAttributionForLead();
   trackEvent('WhatsAppLead',{context,page:location.pathname,source:attr.source,campaign:attr.campaign});
-  const lines=[
-    'Olá, conheci a Tech Sentry pelo site e quero conversar sobre '+context+'.',
-    '',
-    'Origem: '+attr.source+' / '+attr.medium,
-    'Campanha: '+attr.campaign,
-    'Página: '+attr.page
-  ];
-  const msg=encodeURIComponent(lines.join('\n'));
+  const msg=encodeURIComponent('Olá! Conheci a Tech Sentry pelo site e gostaria de conhecer melhor as soluções da empresa. Pode me ajudar?');
   window.open('https://wa.me/'+TS_WHATSAPP+'?text='+msg,'_blank','noopener');
 }
 
