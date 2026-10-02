@@ -1,0 +1,19 @@
+:root{
+  --ts-void:#03050B;
+  --ts-night:#070B14;
+  --ts-grid:#0B1220;
+  --ts-blue:#5B8CFF;
+  --ts-cyan:#38D8FF;
+  --ts-emerald:#42E3A5;
+  --ts-violet:#9F7AEA;
+  --ts-roadmap:#F6C76B;
+  --ts-text:#EDF5FF;
+  --ts-muted:#94A3B8;
+  --ts-line:rgba(148,163,184,.14);
+  --ts-radius-control:12px;
+  --ts-radius-card:24px;
+  --ts-radius-hero:36px;
+  --ts-motion-fast:180ms;
+  --ts-motion-standard:260ms;
+  --ts-motion-reveal:620ms;
+}
