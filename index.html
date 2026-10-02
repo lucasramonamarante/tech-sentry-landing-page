@@ -616,7 +616,6 @@
     function trackConversion(action, label) {
       if (localStorage.getItem('techsentry_consent') !== 'analytics') return;
       if (window.fbq) fbq('trackCustom', action, { label });
-      if (window.lintrk) lintrk('track', { conversion_id: 0 });
     }
 
     function setConsent(level) {
