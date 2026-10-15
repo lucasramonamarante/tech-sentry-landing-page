@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" href="/assets/brand/tech-sentry-mark.svg" type="image/svg+xml">
-<title>Sentry-ITSM | ITSM, NOC, ISP, Telecom e SRE | Tech Sentry</title>
-<meta name="description" content="Sentry-ITSM para TI, telecom, ISPs, NOCs e SRE: incidentes, CMDB, topologia, GMUD/CAB, Zabbix, Vault, agentes, comandos e AIOps.">
+<title>Sentry-ITSM | ITSM, NOC, ISP, Telecom e AI Network Engineer | Tech Sentry</title>
+<meta name="description" content="Sentry-ITSM para TI, telecom, ISPs e NOCs: incidentes, SLA, CMDB, topologia, Zabbix e diagnóstico assistido pelo Sentry AI Network Engineer em modo Advisory Only.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://www.techsentry.com.br/sentry-itsm/">
 <script src="https://cdn.tailwindcss.com"></script>
@@ -17,7 +17,7 @@
 <header class="fixed inset-x-0 top-0 z-50 border-b border-slate-800/80 bg-[#050816]/85 backdrop-blur-xl">
 <div class="max-w-7xl mx-auto px-5 lg:px-8 h-20 flex items-center justify-between">
 <a href="/" class="flex items-center gap-3"><img src="/assets/brand/tech-sentry-mark.svg" alt="" width="36" height="36" class="w-9 h-9 rounded-xl"><span class="text-xl font-black text-white">Tech <span class="text-cyan-300">Sentry</span></span></a>
-<nav class="hidden lg:flex items-center gap-7 text-sm text-slate-300"><a href="/sentry-itsm/" class="text-blue-300">Sentry-ITSM</a><a href="/sentry-os/" class="hover:text-white">Sentry-OS</a><a href="/precos/" class="hover:text-white">Preços</a><a href="/#roadmap" class="hover:text-white">Visão 2027</a></nav>
+<nav class="hidden lg:flex items-center gap-7 text-sm text-slate-300"><a href="/sentry-itsm/" class="text-blue-300">Sentry-ITSM</a><a href="/sentry-os/" class="hover:text-white">Sentry-OS</a><a href="/precos/" class="hover:text-white">Preços</a></nav>
 <button onclick="openWhatsApp('Sentry-ITSM')" class="px-5 py-2.5 rounded-xl bg-blue-500 hover:bg-blue-400 text-white text-sm font-bold">Solicitar demo</button>
 </div></header>
 
@@ -25,9 +25,10 @@
 <section class="pt-36 lg:pt-44 pb-20">
 <div class="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-[1.05fr_.95fr] gap-12 items-center">
 <div>
-<div class="inline-flex px-3 py-1.5 rounded-full border border-blue-400/20 bg-blue-400/5 text-blue-300 text-xs font-bold uppercase tracking-[.18em]">Sentry-ITSM • disponível hoje</div>
-<h1 class="mt-6 text-5xl md:text-6xl font-black tracking-[-.04em] text-white">IT & Network Operations para <span class="text-gradient">operações críticas.</span></h1>
-<p class="mt-6 text-lg md:text-xl text-slate-300 leading-relaxed">Uma plataforma para TI, telecom, ISPs, NOCs e SRE que conecta incidentes, ativos, CMDB, topologia, mudanças, observabilidade e automação governada.</p>
+<div class="inline-flex px-3 py-1.5 rounded-full border border-blue-400/20 bg-blue-400/5 text-blue-300 text-xs font-bold uppercase tracking-[.18em]">Sentry-ITSM • IT & Network Operations</div>
+<h1 class="mt-6 text-5xl md:text-6xl font-black tracking-[-.04em] text-white">Operações de TI e Telecom com <span class="text-gradient">diagnóstico assistido por IA.</span></h1>
+<p class="mt-6 text-lg md:text-xl text-slate-300 leading-relaxed">Centralize incidentes, SLA, ativos, CMDB, topologia, mudanças e monitoramento. Quando um incidente acontece, o <strong class="text-white">Sentry AI Network Engineer</strong> cruza as evidências e orienta o NOC sobre causa provável, impacto e próximos passos.</p>
+<div class="mt-5 rounded-2xl border border-emerald-400/20 bg-emerald-400/5 p-4 text-sm leading-6 text-slate-300"><strong class="text-emerald-300">Advisory Only by design.</strong> A IA investiga, correlaciona, explica e recomenda. A decisão operacional e qualquer mudança em produção permanecem com sua equipe.</div>
 <div class="mt-8 flex gap-3 flex-wrap"><button onclick="openWhatsApp('Sentry-ITSM')" class="px-6 py-3.5 rounded-xl bg-blue-500 hover:bg-blue-400 text-white font-bold">Solicitar demonstração</button><a href="/precos/#itsm" class="px-6 py-3.5 rounded-xl border border-slate-700 hover:border-blue-400 text-slate-200 font-bold">Ver planos</a><a href="/diagnostico/itsm/" class="px-6 py-3.5 rounded-xl border border-cyan-400/30 text-cyan-200 font-bold">Fazer diagnóstico</a></div>
 </div>
 <div class="glass rounded-3xl p-4 shadow-2xl"><img src="/itsm-dashboard.png" alt="Dashboard do Sentry-ITSM" class="w-full rounded-2xl border border-slate-700"></div>
@@ -35,46 +36,63 @@
 
 <section class="py-20 border-y border-slate-800 bg-slate-950/35">
 <div class="max-w-7xl mx-auto px-5 lg:px-8">
-<p class="text-blue-400 text-sm font-bold uppercase tracking-[.2em]">ICP principal</p>
-<h2 class="mt-3 text-3xl md:text-4xl font-black text-white">Para times que operam infraestrutura e rede todos os dias.</h2>
+<p class="text-blue-400 text-sm font-bold uppercase tracking-[.2em]">Foco inicial</p>
+<h2 class="mt-3 text-3xl md:text-4xl font-black text-white">Feito para quem opera infraestrutura e rede todos os dias.</h2>
 <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
 <div class="glass rounded-2xl p-5 font-semibold">Provedores e ISPs com NOC próprio</div>
 <div class="glass rounded-2xl p-5 font-semibold">Telecom e operações de rede</div>
 <div class="glass rounded-2xl p-5 font-semibold">Times internos de TI e infraestrutura</div>
-<div class="glass rounded-2xl p-5 font-semibold">SRE e operações com observabilidade</div>
+<div class="glass rounded-2xl p-5 font-semibold">Operações com Zabbix e observabilidade</div>
 </div></div></section>
 
 <section class="py-24">
 <div class="max-w-7xl mx-auto px-5 lg:px-8">
-<p class="text-cyan-300 text-sm font-bold uppercase tracking-[.2em]">Capacidades atuais</p>
-<h2 class="mt-3 text-4xl font-black text-white">Operação técnica com contexto e governança.</h2>
-<div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-<div class="glass rounded-2xl p-5">✓ Incidentes e chamados</div><div class="glass rounded-2xl p-5">✓ Clientes e ativos</div><div class="glass rounded-2xl p-5">✓ CMDB</div>
-<div class="glass rounded-2xl p-5">✓ Topologia</div><div class="glass rounded-2xl p-5">✓ GMUD / CAB</div><div class="glass rounded-2xl p-5">✓ Histórico e auditoria</div>
-<div class="glass rounded-2xl p-5">✓ Vault de credenciais</div><div class="glass rounded-2xl p-5">✓ Integração com Zabbix</div><div class="glass rounded-2xl p-5">✓ Agente / satélite</div>
-<div class="glass rounded-2xl p-5">✓ Catálogo de comandos</div><div class="glass rounded-2xl p-5">✓ AIOps</div><div class="glass rounded-2xl p-5">✓ Telegram</div>
-<div class="glass rounded-2xl p-5">✓ RBAC e SSO</div><div class="glass rounded-2xl p-5">✓ White-label</div><div class="glass rounded-2xl p-5">✓ Feature flags de automação</div>
+<p class="text-cyan-300 text-sm font-bold uppercase tracking-[.2em]">Fluxo operacional</p>
+<h2 class="mt-3 text-4xl font-black text-white">Do alerta ao diagnóstico, sem substituir seu monitoramento.</h2>
+<div class="mt-10 grid md:grid-cols-5 gap-4 text-sm">
+<div class="glass rounded-2xl p-5"><p class="text-cyan-300 font-black">01</p><p class="mt-2 font-bold">Zabbix / Eventos</p><p class="mt-2 text-slate-400">O Sentry recebe o evento do ambiente existente.</p></div>
+<div class="glass rounded-2xl p-5"><p class="text-cyan-300 font-black">02</p><p class="mt-2 font-bold">Incidente</p><p class="mt-2 text-slate-400">O fluxo de ITSM organiza ticket, SLA e contexto.</p></div>
+<div class="glass rounded-2xl p-5"><p class="text-cyan-300 font-black">03</p><p class="mt-2 font-bold">CMDB + Topologia</p><p class="mt-2 text-slate-400">Ativos e dependências enriquecem a investigação.</p></div>
+<div class="glass rounded-2xl p-5"><p class="text-cyan-300 font-black">04</p><p class="mt-2 font-bold">AI Network Engineer</p><p class="mt-2 text-slate-400">A IA consolida evidências, hipótese e impacto.</p></div>
+<div class="glass rounded-2xl p-5"><p class="text-cyan-300 font-black">05</p><p class="mt-2 font-bold">NOC decide</p><p class="mt-2 text-slate-400">O analista valida e conduz a resolução.</p></div>
 </div></div></section>
+
+<section class="py-24 border-y border-slate-800 bg-[#070d19]">
+<div class="max-w-7xl mx-auto px-5 lg:px-8">
+<p class="text-blue-400 text-sm font-bold uppercase tracking-[.2em]">Capacidades</p>
+<h2 class="mt-3 text-4xl font-black text-white">Uma plataforma para operação, contexto e decisão.</h2>
+<div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+<div class="glass rounded-2xl p-5">✓ Incidentes, chamados e SLA</div><div class="glass rounded-2xl p-5">✓ Portal e colaboração</div><div class="glass rounded-2xl p-5">✓ CMDB e ativos</div>
+<div class="glass rounded-2xl p-5">✓ Topologia e dependências</div><div class="glass rounded-2xl p-5">✓ GMUD / CAB</div><div class="glass rounded-2xl p-5">✓ Histórico e auditoria</div>
+<div class="glass rounded-2xl p-5">✓ Integração com Zabbix</div><div class="glass rounded-2xl p-5">✓ Eventos e correlação</div><div class="glass rounded-2xl p-5">✓ Telegram e notificações</div>
+<div class="glass rounded-2xl p-5">✓ Sentry AI Network Engineer</div><div class="glass rounded-2xl p-5">✓ Diagnóstico read-only</div><div class="glass rounded-2xl p-5">✓ RBAC, SSO e white-label</div>
+</div></div></section>
+
+<section class="py-24">
+<div class="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-2 gap-8">
+<div class="glass rounded-3xl p-7"><p class="text-emerald-300 text-sm font-bold uppercase tracking-[.18em]">O que a IA faz</p><ul class="mt-5 space-y-3 text-slate-300"><li>✓ Analisa alarmes, histórico e contexto do incidente</li><li>✓ Correlaciona eventos e sinais relacionados</li><li>✓ Usa CMDB e topologia para estimar impacto</li><li>✓ Apresenta causa provável e confiança da evidência</li><li>✓ Recomenda verificações e procedimento ao NOC</li><li>✓ Pode solicitar apenas coletas autorizadas e read-only</li></ul></div>
+<div class="glass rounded-3xl p-7 border-red-400/15"><p class="text-red-300 text-sm font-bold uppercase tracking-[.18em]">O que a IA não faz</p><ul class="mt-5 space-y-3 text-slate-300"><li>✕ Não altera configuração de equipamentos</li><li>✕ Não executa reboot, commit ou restart em produção</li><li>✕ Não aprova GMUD automaticamente</li><li>✕ Não fecha incidente por decisão própria</li><li>✕ Não substitui a autoridade do analista ou CAB</li><li>✕ Não exige substituir o Zabbix para gerar valor</li></ul></div>
+</div></section>
 
 <section class="py-24 border-y border-slate-800 bg-[#070d19]">
 <div class="max-w-7xl mx-auto px-5 lg:px-8">
 <p class="text-blue-400 text-sm font-bold uppercase tracking-[.2em]">Pricing Brasil</p>
 <h2 class="mt-3 text-4xl font-black text-white">Planos Sentry-ITSM</h2>
-<p class="mt-3 text-slate-400">Mensalidade em reais. No anual, 12 meses pelo preço de 10. Implantação assistida a partir de R$ 1.990.</p>
+<p class="mt-3 text-slate-400">Mantemos os nomes comerciais atuais enquanto o novo catálogo de entitlements é migrado no Sentry-Master. Mensalidade em reais; no anual, 12 meses pelo preço de 10.</p>
 <div class="mt-10 grid lg:grid-cols-4 gap-5">
 <article class="price-card glass rounded-3xl p-6"><p class="text-blue-300 font-bold">Core</p><p class="mt-3 text-3xl font-black text-white">R$ 990<span class="text-base font-normal text-slate-500">/mês</span></p><p class="mt-2 text-sm text-slate-400">Até 5 operadores • até 250 ativos</p><ul class="mt-6 space-y-2 text-sm text-slate-300"><li>✓ Incidentes</li><li>✓ Ativos e clientes</li><li>✓ CMDB</li><li>✓ RBAC</li><li>✓ Auditoria</li><li>✓ Telegram</li></ul></article>
-<article class="price-card glass rounded-3xl p-6 border-blue-400/45"><p class="text-blue-300 font-bold">Operations</p><p class="mt-3 text-3xl font-black text-white">R$ 1.990<span class="text-base font-normal text-slate-500">/mês</span></p><p class="mt-2 text-sm text-slate-400">Até 10 operadores • até 1.000 ativos</p><ul class="mt-6 space-y-2 text-sm text-slate-300"><li>✓ Tudo do Core</li><li>✓ Topologia</li><li>✓ GMUD/CAB</li><li>✓ Vault</li><li>✓ Zabbix</li><li>✓ Agente/satélite</li><li>✓ Catálogo de comandos</li><li>✓ AIOps</li></ul></article>
+<article class="price-card glass rounded-3xl p-6 border-blue-400/45"><p class="text-blue-300 font-bold">Operations</p><p class="mt-3 text-3xl font-black text-white">R$ 1.990<span class="text-base font-normal text-slate-500">/mês</span></p><p class="mt-2 text-sm text-slate-400">Até 10 operadores • até 1.000 ativos</p><ul class="mt-6 space-y-2 text-sm text-slate-300"><li>✓ Tudo do Core</li><li>✓ Topologia</li><li>✓ GMUD/CAB</li><li>✓ Zabbix</li><li>✓ Diagnóstico read-only</li><li>✓ AI Network Engineer</li></ul></article>
 <article class="price-card glass rounded-3xl p-6"><p class="text-blue-300 font-bold">Scale</p><p class="mt-3 text-3xl font-black text-white">R$ 3.990<span class="text-base font-normal text-slate-500">/mês</span></p><p class="mt-2 text-sm text-slate-400">Até 25 operadores • até 5.000 ativos</p><ul class="mt-6 space-y-2 text-sm text-slate-300"><li>✓ Tudo do Operations</li><li>✓ SSO</li><li>✓ White-label</li><li>✓ Limites ampliados</li><li>✓ Suporte prioritário</li></ul></article>
-<article class="price-card glass rounded-3xl p-6"><p class="text-blue-300 font-bold">Enterprise</p><p class="mt-3 text-3xl font-black text-white">Sob consulta</p><p class="mt-2 text-sm text-slate-400">Acima dos limites do Scale</p><ul class="mt-6 space-y-2 text-sm text-slate-300"><li>✓ Limites customizados</li><li>✓ Implantação dedicada</li><li>✓ Governança de rollout</li></ul></article>
+<article class="price-card glass rounded-3xl p-6"><p class="text-blue-300 font-bold">Enterprise</p><p class="mt-3 text-3xl font-black text-white">Sob consulta</p><p class="mt-2 text-sm text-slate-400">Arquitetura e limites conforme contrato</p><ul class="mt-6 space-y-2 text-sm text-slate-300"><li>✓ Limites customizados</li><li>✓ Opção de infraestrutura dedicada</li><li>✓ SSO e governança de rollout</li></ul></article>
 </div></div></section>
 
-<section class="py-24 roadmap"><div class="max-w-7xl mx-auto px-5 lg:px-8">
-<div class="inline-flex px-3 py-1 rounded-full border border-amber-400/25 bg-amber-400/5 text-amber-300 text-xs font-bold uppercase tracking-[.18em]">Roadmap / visão</div>
-<h2 class="mt-4 text-4xl font-black text-white">Autonomous IT & Network Operations.</h2>
-<p class="mt-4 max-w-3xl text-slate-400">Event Correlation Engine, Telecom Digital Twin, Blast Radius, RCA automático com evidências, Change Risk Intelligence, Autonomous NOC governado e verify/rollback fazem parte da direção de evolução. Não são apresentados como funcionalidades já entregues.</p>
+<section class="py-24"><div class="max-w-7xl mx-auto px-5 lg:px-8">
+<div class="inline-flex px-3 py-1 rounded-full border border-cyan-400/25 bg-cyan-400/5 text-cyan-300 text-xs font-bold uppercase tracking-[.18em]">Direção do produto</div>
+<h2 class="mt-4 text-4xl font-black text-white">Mais profundidade operacional. Menos autonomia sem governança.</h2>
+<p class="mt-4 max-w-3xl text-slate-400">Correlação de eventos, topologia, Digital Twin, Blast Radius, RCA e Change Risk continuam evoluindo como mecanismos de evidência do Sentry AI Network Engineer. Em produção, a política é Advisory Only: a plataforma ajuda sua equipe a investigar e decidir, sem assumir autoridade livre sobre a infraestrutura.</p>
 </div></section>
 </main>
 
-<footer class="border-t border-slate-800 bg-[#050816]/85"><div class="max-w-7xl mx-auto px-5 lg:px-8 py-10 flex justify-between gap-8 flex-wrap"><div><p class="font-black text-white">Tech <span class="text-blue-400">Sentry</span></p><p class="text-sm text-slate-500 mt-2">Operational Intelligence for Technology and Business.</p></div><div class="flex gap-5 text-sm text-slate-400 flex-wrap"><a href="/sentry-os/">Sentry-OS</a><a href="/precos/">Preços</a><a href="/politica-privacidade.html">Privacidade</a><a href="mailto:comercial@techsentry.info">Contato</a></div></div></footer>
+<footer class="border-t border-slate-800 bg-[#050816]/85"><div class="max-w-7xl mx-auto px-5 lg:px-8 py-10 flex justify-between gap-8 flex-wrap"><div><p class="font-black text-white">Tech <span class="text-blue-400">Sentry</span></p><p class="text-sm text-slate-500 mt-2">Software SaaS para operações reais.</p></div><div class="flex gap-5 text-sm text-slate-400 flex-wrap"><a href="/sentry-os/">Sentry-OS</a><a href="/precos/">Preços</a><a href="/politica-privacidade.html">Privacidade</a><a href="mailto:comercial@techsentry.info">Contato</a></div></div></footer>
 <div id="cookie-banner" class="hidden fixed z-[90] bottom-4 left-4 right-4 md:left-6 md:right-auto md:max-w-md glass rounded-2xl shadow-2xl p-5"><p class="text-sm text-slate-300">Usamos armazenamento essencial e, com autorização, analytics de marketing.</p><div class="mt-4 flex gap-2"><button onclick="setConsent('analytics')" class="px-4 py-2 rounded-xl bg-blue-500 text-white text-sm font-bold">Aceitar analytics</button><button onclick="setConsent('essential')" class="px-4 py-2 rounded-xl border border-slate-700 text-sm">Somente essenciais</button></div></div>
 </body></html>
